@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="jumbotron col-md-6 offset-md-3">
+    <form action="">
+    	<h2 class="text-dark">Actualiza tu producto</h2>
+      <div class="form-group">
+        <label for="name_product">Nombre de Producto</label>
+        <input [value]="currentProduct.name" type="text" name="name_product" class="form-control" id="name_product" [(ngModel)]="currentProduct.name" >
+      </div>
+      <div class="form-group">
+        <label for="desc_product">Descripción de producto</label>
+        <input [value]="currentProduct.description" type="text" name="desc_product" class="form-control" id="desc_product" [(ngModel)]="currentProduct.description">
+      </div>
+      <div class="form-group">
+        <label for="price_product">Precio de producto</label>
+        <input [value]="currentProduct.price" type="number" name="price_product" class="form-control" id="price_product" [(ngModel)]="currentProduct.price">
+      </div>
+     
+      <div class="form-group">
+        <button type="button" (click)="updateProduct()" class="btn btn-primary">Enviar</button>
+      </div>
+    </form>
+  </div>
+</div>

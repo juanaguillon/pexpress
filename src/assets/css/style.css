@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css?family=Germania+One|Roboto+Slab:100,300,400,700');
+
+body
+{
+	border: 0;
+	color: #fff;
+	font-size: 35px;
+	height: 100%;
+	margin: 0;
+	text-align: center;
+}
+h1, h3
+{
+	margin: 0;
+	    
+}
+html
+{
+	height: 100%;
+}
+p{
+	margin:0;	
+}
+section
+{
+	height: 100%;
+	width: 100%;
+}
+ul
+{
+	font-family: 'Roboto Slab', serif;
+	list-style: none;
+	margin: 0;
+	padding: 0px;
+}
+/*PERSONAL CLASS*/
+.left
+{
+	background: url('../images/fondo.jpg') center center no-repeat;
+	background-size: cover;
+	box-sizing: border-box;
+	height: 100%;
+	left: 0px;
+	padding: 0px 50px;
+	position: absolute;
+	width: 60%;
+}
+.right
+{
+	right: 0;
+	height: 100%;
+	position: absolute;
+	width: 40%;
+}
+/*LOGO*/
+.logo
+{
+	height: 178px;
+}
+
+/*FOTOS*/
+.fotos
+{
+	position: relative;
+	height: 100%;
+	width: 100%;
+}
+.fotos li
+{
+	overflow: hidden;
+	position: relative;
+	height: 100%;
+	width: 100%;
+}
+.fotos li img
+{
+	height: 110%!important;
+    width: auto!important;
+    position: absolute;
+    top: -9999px;
+    bottom: -9999px;
+    left: -9999px;
+    right: -9999px;
+    margin: auto;
+    z-index: 0;
+}
+/*MENU*/
+.menu
+{
+	height: 75%;
+	overflow: hidden!important;
+}
+.no-js .owl-carousel, .owl-carousel.owl-loaded {
+    overflow: hidden;
+}
+.menu li
+{
+	border-bottom: 1px dashed #fff;
+	margin-bottom: 1vh;
+	padding-bottom: 11px;
+	text-align: left;
+}
+.menu li p
+{
+	font-size: 0.6em;
+}
+.plato
+{
+	display: inline-block;
+	width: 80%;
+}
+.precio
+{
+	display: inline-block;
+	text-align: right;
+	top: 0;
+	width: 20%;
+}
+.titulo
+{
+	font-family: 'Germania One', cursive;
+}
+.titulo h3
+{
+	display: inline-block;
+}
+/*OWL*/
+.no-js .owl-carousel, .owl-carousel.owl-loaded {
+    height: 100%!important;
+}
+.owl-carousel .owl-stage-outer {
+
+   height: 100%!important;
+}
+.owl-carousel .owl-stage {
+   height: 100%!important;
+}
+.owl-carousel.owl-drag .owl-item {
+height: 100%!important;
+}

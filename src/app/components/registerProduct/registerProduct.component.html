@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="jumbotron col-md-6 offset-md-3">
+    <form action="">
+      <div class="form-group">
+        <label for="name_product">Nombre de Producto</label>
+        <input type="text" name="name_product" class="form-control" id="name_product" [(ngModel)]="currentProduct.name" >
+      </div>
+      <div class="form-group">
+        <label for="desc_product">Descripción de producto</label>
+        <input type="text" name="desc_product" class="form-control" id="desc_product" [(ngModel)]="currentProduct.description">
+      </div>
+      <div class="form-group">
+        <label for="price_product">Precio de producto</label>
+        <input type="number" name="price_product" class="form-control" id="price_product" [(ngModel)]="currentProduct.price">
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Subir Archivo</span>
+        </div>
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" (change)="uploadImage($event)" name="image_product" id="image_product">
+          <label class="custom-file-label" for="image_product">Seleccionar Archivo</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <button type="button" (click)="uploadProduct()" class="btn btn-primary">Enviar</button>
+      </div>
+    </form>
+  </div>
+</div>
