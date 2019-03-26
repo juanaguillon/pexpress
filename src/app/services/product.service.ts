@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore'
-import { AngularFireStorage } from '@angular/fire/storage'
 import { Product } from '../shared/product';
 
 @Injectable({
@@ -9,24 +8,20 @@ import { Product } from '../shared/product';
 export class ProductService {
 
   
-  constructor(private fdb: AngularFirestore, private stg: AngularFireStorage, ) {}
+  constructor(private fdb: AngularFirestore ) {}
 
-  public createProduct( data:Product, image ){
+  public createProduct( data:Product ){
     var idUnique = new Date().getTime();
 
-    this.stg.upload("productos/" + idUnique, image ).then( check => {
-
-      data.id = idUnique;
-      data.image = idUnique.toString();
-      this.fdb.doc("productos/" + idUnique ).set( data )
-        .then( resp => {
-          alert('Producto creado correctamente')
+    data.id = idUnique;
+    this.fdb.doc("productos/" + idUnique ).set( data )
+      .then( resp => {
+        alert('Producto creado correctamente')
       })
-        .catch( err => {
-          alert('Error al crear el nuevo producto, intente nuevamente.');
-          console.log( err );
-      })
-    } )
+      .catch( err => {
+        alert('Error al crear el nuevo producto, intente nuevamente.');
+        console.log( err );
+    })
     
 
 
@@ -42,9 +37,6 @@ export class ProductService {
     return this.fdb.doc("productos/" + $id ).valueChanges();
   }
 
-  getImageById( id ){
-    return this.stg.ref( 'productos/' + id ).getDownloadURL();    
-  }
 
   updateProductById( productID, newData ){
     this.fdb.doc("productos/" + productID ).update( newData )

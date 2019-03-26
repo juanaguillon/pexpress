@@ -5,6 +5,7 @@ import { ListProductComponent } from './components/listProduct/listProduct.compo
 import { UpdateProductComponent } from './components/updateProduct/updateProduct.component';
 import { ViewproductsComponent } from './components/viewproducts/viewproducts.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { SlideimagesComponent } from './components/slideimages/slideimages.component';
 
 const routes: Routes = [
   {
@@ -31,7 +32,12 @@ const routes: Routes = [
   {
     path:'admin',
     component: AdminComponent
-  }
+  },
+  {
+    path: "slides/:action",
+    component: SlideimagesComponent    
+  },
+  
   
 ];
 

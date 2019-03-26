@@ -1,0 +1,12 @@
+label {
+  margin-bottom: .5rem;
+  color: #212529;
+  font-size: 1rem;
+}
+
+.form-group {
+  text-align: left;
+}
+.card-body .card-title{
+  color: #212529;
+}

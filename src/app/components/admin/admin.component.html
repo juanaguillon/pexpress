@@ -16,11 +16,14 @@
     </form>
 
     <div class="list-group" *ngIf="currentUser">
-      <a routerLink="/nuevo-producto" href="#" class="list-group-item list-group-item-action text-left">
+      <a routerLink="/nuevo-producto" class="list-group-item list-group-item-action text-left">
         <p class="mb-1 font-default">Crear Producto</p>
       </a>
-      <a routerLink="/all-products" href="#" class="list-group-item list-group-item-action text-left">
+      <a routerLink="/all-products" class="list-group-item list-group-item-action text-left">
         <p class="mb-1 font-default">Actualizar Productos</p>
+      </a>
+      <a routerLink="/slides/list" class="list-group-item list-group-item-action text-left">
+        <p class="mb-1 font-default">Ver Slider</p>
       </a>
       <a (click)="closeSesion($event)" href="#" class="text-danger font-default">Cerrar Sesión</a>
     </div>

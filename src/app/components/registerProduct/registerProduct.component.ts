@@ -11,7 +11,6 @@ export class RegisterProductComponent implements OnInit {
 
   currentProduct: Product = {
     id: null,
-    image: "",
     name: ""
 
   };  
@@ -28,7 +27,7 @@ export class RegisterProductComponent implements OnInit {
   }
 
   uploadProduct( ){
-    this.productService.createProduct( this.currentProduct, this.imageProduct );
+    this.productService.createProduct( this.currentProduct );
   }
   
 

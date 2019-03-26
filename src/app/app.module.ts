@@ -18,6 +18,7 @@ import { RegisterProductComponent } from './components/registerProduct/registerP
 import { ListProductComponent } from './components/listProduct/listProduct.component';
 import { UpdateProductComponent } from './components/updateProduct/updateProduct.component';
 import { ViewproductsComponent } from './components/viewproducts/viewproducts.component';
+import { SlideimagesComponent } from './components/slideimages/slideimages.component';
 
 
 // Environment
@@ -30,7 +31,8 @@ import { environment } from '../environments/environment';
     ListProductComponent,
     UpdateProductComponent,
     ViewproductsComponent,
-    AdminComponent
+    AdminComponent,
+    SlideimagesComponent
   ],
   imports: [
     BrowserModule,

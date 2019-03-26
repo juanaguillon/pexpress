@@ -11,8 +11,10 @@ import { ActivatedRoute } from '@angular/router';
 export class UpdateProductComponent implements OnInit{
 	currentProduct:any = {}
 	currentID = null;
-	constructor ( private prService:ProductService,
-	private activeRoute:ActivatedRoute ){
+	constructor ( 
+		private prService:ProductService,
+		private activeRoute:ActivatedRoute
+	){
 		this.currentID = this.activeRoute.snapshot.params['id'];
 		this.prService.getProductById( this.currentID )
 			.subscribe( reps => {

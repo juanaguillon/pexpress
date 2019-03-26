@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
-import { map, switchMap, flatMap } from 'rxjs/operators/';
-import { Observable } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators/';
 import { ProductService } from '../../services/product.service';
-
-
+import { SlideService } from '../../services/slide.service';
 
 
 @Component({
@@ -35,26 +32,42 @@ export class ListProductComponent implements OnInit {
     }
   }
 
-  constructor( private prservice:ProductService) {
+  constructor( private prservice:ProductService,
+    private slide: SlideService
+    ) {
 
-  	var s = this.prservice.getAllProducts().pipe( 
+  	this.prservice.getAllProducts().pipe( 
   		map( action => {
   			return action.map( a => {   
-
           return { 
             id: a.payload.doc.id,
             data: a.payload.doc.data(),
-            image: this.prservice.getImageById( a.payload.doc.id )
           }
-  			})       
-
+  			})
   		})
+    )
+    .subscribe( resp => {
+      this.products = resp;  
+    });
 
-  	);
+    this.slide.getAllDocs( )
+    .pipe(
+      map( doc => {
+          return doc.map( docsInd => {
+            console.log(docsInd )
+          })
 
-    s.subscribe( resp => {
-      this.products = resp;      
-    } )
+          
+      })
+     
+    )     
+    
+    .subscribe( res => {
+      console.log( res )
+    });
+
+
+    
 
 
   }
