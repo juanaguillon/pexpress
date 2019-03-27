@@ -25,7 +25,7 @@ export class SlideService {
   }
 
   getAllDocs( ){
-    return this.db.collection('slide').valueChanges();
+    return this.db.collection('slide').snapshotChanges();
   }
 
 

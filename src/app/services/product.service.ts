@@ -22,9 +22,6 @@ export class ProductService {
         alert('Error al crear el nuevo producto, intente nuevamente.');
         console.log( err );
     })
-    
-
-
   }
 
 

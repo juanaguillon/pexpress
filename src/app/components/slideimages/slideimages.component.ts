@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class SlideimagesComponent implements OnInit {
 
   increate:string;
+  sliders;
   currentSlide = {
     id: null,
     name: "",
@@ -23,8 +24,10 @@ export class SlideimagesComponent implements OnInit {
     private route: ActivatedRoute
   ) { 
 
-    this.increate = this.route.snapshot.params["action"];   
-
+    this.increate = this.route.snapshot.params["action"];    
+    this.slide.getAllDocs().subscribe( response => {
+      this.sliders = response.map( data => data.payload.doc.data() );
+    })
   }
 
   ngOnInit() {}

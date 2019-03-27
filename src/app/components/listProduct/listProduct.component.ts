@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { map, switchMap } from 'rxjs/operators/';
+import { map, switchMap, mergeMap, concatMap, tap, flatMap } from 'rxjs/operators/';
+import { of, merge, forkJoin } from 'rxjs';
 import { ProductService } from '../../services/product.service';
 import { SlideService } from '../../services/slide.service';
 
@@ -35,7 +36,8 @@ export class ListProductComponent implements OnInit {
   constructor( private prservice:ProductService,
     private slide: SlideService
     ) {
-
+    
+    // Obtener lista de datos.
   	this.prservice.getAllProducts().pipe( 
   		map( action => {
   			return action.map( a => {   
@@ -50,26 +52,36 @@ export class ListProductComponent implements OnInit {
       this.products = resp;  
     });
 
+
+
+    // Obtener datos de slider
     this.slide.getAllDocs( )
     .pipe(
-      map( doc => {
-          return doc.map( docsInd => {
-            console.log(docsInd )
-          })
+      map( results => {
+          return results.map( f => {
+            return {
+              id: f.payload.doc.get('id'),
+              name: f.payload.doc.get('name')
+            }
+          } )
+        }
+      ),
+      flatMap( result => {
+        
+        let mp = []
+        result.forEach(element => {
+          mp.push(this.slide.getImageById(element.id))           
+        });
 
-          
-      })
+        return forkJoin(mp); 
+        
+      } )
      
     )     
     
     .subscribe( res => {
-      console.log( res )
+      this.images = res;
     });
-
-
-    
-
-
   }
 
   ngOnInit() {
