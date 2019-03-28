@@ -1,0 +1,147 @@
+.titulo > h1{
+	height: 43%;
+}
+.logov {
+	height: 125px;
+}
+.titulo{
+  height: 58%;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+.titulo h3{
+  letter-spacing: 3px;
+	font-size: 7vh;
+}
+#theProductos{
+  font-family: 'Germania One', cursive;
+}
+
+.words-desc h3{
+  font-size: 5vh;
+	letter-spacing: inherit;
+}
+
+.combo-day{
+	justify-content: center;
+	font-family: 'Germania One', cursive;
+	text-align: left;
+	line-height: 1.3;
+	font-size: 3.7vh;
+	align-items: center;
+}
+
+.combo-day > ul{
+	width: 50%;
+	text-align: left;
+	font-size: 2.9vh;
+	font-weight: 600;
+	font-family: 'Roboto Slab', serif;
+}
+
+.combo-day .price-combo{
+	width: 50%;
+	font-size: 240%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.post-combo{
+	height: 12%;
+	color: #fbce65;
+	border-top: 3px dashed;
+	border-bottom: 3px dashed;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.post-combo > p {
+  padding: 5px 0;
+	/* border-bottom: 2px dashed #fbce65; */
+	display: flex;
+	justify-content: space-between;
+  font-size: 4vh;
+}
+
+.mini-price{
+	font-size: 2.5vh;
+	font-family: 'Roboto Slab', serif;
+	font-weight: bold;
+}
+
+.exec-lanuchers > div{
+  width: 50%;
+}
+
+.exec-lanuchers > div:first-child{
+  text-align: left;
+}
+.exec-lanuchers > div:last-child{
+  text-align: right;
+}
+.exec-lanuchers{
+	height: 30%;
+	font-size: 3.5vh;
+	align-items: center;
+}
+
+.exec-lanuchers h3{
+  font-size: 4.2vh;
+}
+
+.exec-lanuchers .exec-launchers-price{
+  font-size: 5vh;
+	display: block;
+	margin: auto;
+}
+
+.exec-lanuchers .absolute-ofert{
+  width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	line-height: 1;
+}
+
+.exec-lanuchers .absolute-ofert p{
+  border: 2px dotted;
+	border-radius: 40px;
+	padding: 14px;
+}
+.exec-launcers-items{
+	font-family: 'Roboto Slab', serif;
+	font-weight: bold;
+	font-size: 2.9vh;
+	line-height: 1.3;
+}
+.exec-launcers-items ul{
+  list-style: none;
+}
+
+.exec-launcer-title {
+	background: black;
+	width: 81%;
+	border-radius: 7px;
+	padding: 0 1.7vw;
+}
+
+.exec-launcer-title.two{
+  margin-left: auto;
+}
+
+owl-carousel {
+  height: 43%;
+	margin: 0 -25px;
+}
+.owl-carousel {
+	display: block;
+}
+.fotos li img {
+	height: auto !important;
+	width: 100% !important;
+}

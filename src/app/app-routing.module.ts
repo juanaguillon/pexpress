@@ -6,6 +6,7 @@ import { UpdateProductComponent } from './components/updateProduct/updateProduct
 import { ViewproductsComponent } from './components/viewproducts/viewproducts.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { SlideimagesComponent } from './components/slideimages/slideimages.component';
+import { VerticalItemsComponent } from './components/verticalItems/verticalItems.component';
 
 const routes: Routes = [
   {
@@ -14,12 +15,16 @@ const routes: Routes = [
     pathMatch: "full"
   },
   {
-    path: 'nuevo-producto',
-    component: RegisterProductComponent
+    path:'productos',
+    component: ListProductComponent
   },
   {
-  	path:'productos',
-  	component: ListProductComponent
+    path:'verticalproductos',
+    component: VerticalItemsComponent
+  },
+  {
+    path: 'nuevo-producto',
+    component: RegisterProductComponent
   },
   {
     path:'editar/:id',

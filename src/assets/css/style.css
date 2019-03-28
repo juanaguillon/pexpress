@@ -138,3 +138,13 @@ ul
 .owl-carousel.owl-drag .owl-item {
 height: 100%!important;
 }
+.vertical-products{
+	background: url('../images/fondo.jpg') center center no-repeat;
+	background-size: cover;
+	box-sizing: border-box;
+	height: 100%;
+	left: 0px;
+	padding: 0px 25px;
+	position: absolute;
+	width: 100%;
+}

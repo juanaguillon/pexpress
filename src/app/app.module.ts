@@ -19,6 +19,7 @@ import { ListProductComponent } from './components/listProduct/listProduct.compo
 import { UpdateProductComponent } from './components/updateProduct/updateProduct.component';
 import { ViewproductsComponent } from './components/viewproducts/viewproducts.component';
 import { SlideimagesComponent } from './components/slideimages/slideimages.component';
+import { VerticalItemsComponent } from './components/verticalItems/verticalItems.component';
 
 
 // Environment
@@ -32,7 +33,8 @@ import { environment } from '../environments/environment';
     UpdateProductComponent,
     ViewproductsComponent,
     AdminComponent,
-    SlideimagesComponent
+    SlideimagesComponent,
+    VerticalItemsComponent
   ],
   imports: [
     BrowserModule,
