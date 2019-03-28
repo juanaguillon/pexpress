@@ -10,8 +10,10 @@ import { AngularFireAuthModule } from '@angular/fire/auth'
 import { AngularFireStorageModule } from '@angular/fire/storage'
 import { OwlModule } from 'ngx-owl-carousel';
 
+/** Modulos personalizados */
+import { AdminModule } from './components/admin/admin.module';
+
 /** Componenetes */
-import { AdminComponent } from './components/admin/admin.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterProductComponent } from './components/registerProduct/registerProduct.component';
@@ -24,6 +26,7 @@ import { VerticalItemsComponent } from './components/verticalItems/verticalItems
 
 // Environment
 import { environment } from '../environments/environment'; 
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -32,9 +35,9 @@ import { environment } from '../environments/environment';
     ListProductComponent,
     UpdateProductComponent,
     ViewproductsComponent,
-    AdminComponent,
     SlideimagesComponent,
-    VerticalItemsComponent
+    VerticalItemsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,8 @@ import { environment } from '../environments/environment';
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
-    OwlModule
+    OwlModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]
