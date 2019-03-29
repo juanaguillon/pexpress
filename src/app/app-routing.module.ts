@@ -8,7 +8,10 @@ import { SlideimagesComponent } from './components/slideimages/slideimages.compo
 import { VerticalItemsComponent } from './components/verticalItems/verticalItems.component';
 import { LoginComponent } from './components/login/login.component';
 
+// Rutas de modulos
 import { adminRoutes } from './components/admin/admin.module'
+import { screenTwoRoutes } from './components/screen-two/screen-two.module';
+
 import { AuthGuard } from './services/auth.guard';
 
 
@@ -56,6 +59,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forChild(adminRoutes ),
+    RouterModule.forChild( screenTwoRoutes ),
     RouterModule.forRoot( routes ,{ useHash: true })
   ],
  

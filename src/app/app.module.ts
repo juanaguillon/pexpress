@@ -12,6 +12,7 @@ import { OwlModule } from 'ngx-owl-carousel';
 
 /** Modulos personalizados */
 import { AdminModule } from './components/admin/admin.module';
+import { ScreenTwoModule } from './components/screen-two/screen-two.module';
 
 /** Componenetes */
 import { AppRoutingModule } from './app-routing.module';
@@ -48,7 +49,8 @@ import { LoginComponent } from './components/login/login.component';
     AngularFireStorageModule,
     AngularFireAuthModule,
     OwlModule,
-    AdminModule
+    AdminModule,
+    ScreenTwoModule
   ],
   providers: [],
   bootstrap: [AppComponent]
