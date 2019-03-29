@@ -9,6 +9,8 @@ import { PresetsComponent } from './presets/presets.component';
 import { NewComboComponent } from './newCombo/newCombo.component';
 import { NewEjecutiveComponent } from './newEjecutive/newEjecutive.component';
 import { NewMenuDayComponent } from './newMenuDay/newMenuDay.component';
+import { ChangeClassDirective } from 'src/app/shared/changeClass.directive';
+import { SanitizeHTMLPipe } from 'src/app/shared/sanitizeHTML.pipe';
 
 @NgModule({
   imports: [
@@ -22,7 +24,9 @@ import { NewMenuDayComponent } from './newMenuDay/newMenuDay.component';
     PresetsComponent,
     NewComboComponent,
     NewEjecutiveComponent,
-    NewMenuDayComponent
+    NewMenuDayComponent,
+    ChangeClassDirective,
+    SanitizeHTMLPipe
   ],
   bootstrap: [ ]
 })

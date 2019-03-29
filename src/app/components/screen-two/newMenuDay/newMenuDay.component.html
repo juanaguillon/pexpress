@@ -2,29 +2,48 @@
 
   <div class="form-group">
     <label for="full_title">Título de día</label>
-    <input type="text" class="form-control" name="full_title" id="full_title" placeholder="Ej: Pechuga Gratinada">
+    <input [(ngModel)]="inValues.name" type="text" class="form-control" name="full_title" id="full_title" placeholder="Ej: Pechuga Gratinada">
   </div>
   <div class="form-group">
     <label for="full_eatings">Alimentos</label>
-    <input type="text" class="form-control" name="full_eatings" id="full_eatings" placeholder="Ej: Carne - Lomo - Milanesa">
+    <input [(ngModel)]="inValues.aliments" type="text" class="form-control" name="full_eatings" id="full_eatings" placeholder="Ej: Carne - Lomo - Milanesa">
   </div>
-  <div class="form-group">
-    <label for="full_aditions">Adiciones</label>
-    <input type="text" class="form-control" name="full_aditions" id="full_aditions">
-    <small class="form-text text-muted">Ej: Sopa: * Cuchuco o fruta | * Ensalada: Caliente </small>
+  <div class="form-row">
+    <div class="form-group col-10">
+      <label for="full_aditions">Adiciones</label>
+      <input (keydown)="addAditionWithEnter( $event )" [(ngModel)]="currentAdition" type="text" class="form-control" name="full_aditions" id="full_aditions">
+      <small class="form-text text-muted">Agrega los alimentos que añades a el menú del dia. EJ: Sopa o fruta.</small>
+    </div>
+    <div class="form-group col-2 d-flex flex-column justify-content-center">
+      <button (click)="addAdition( )" [disabled]="currentAdition == '' " class="btn btn-success">+</button>
+    </div>
   </div>
+
+  <div class="form-group" *ngIf="adiciones.length > 0">
+    <div class="card">
+      <ul class="list-group list-group-flush" *ngFor="let ad of adiciones">
+        <li class="list-group-item">{{ad}}</li>
+      </ul>
+    </div>  
+  </div>
+  
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="full_price">Precio</label>
-      <input type="number" class="form-control" name="full_price" id="full_price">
+      <input [(ngModel)]="inValues.price" type="number" class="form-control" name="full_price" id="full_price">
     </div>
     <div class="form-group col-md-6">
       <label for="full_option">Menu opción 2</label>
-      <input type="text" class="form-control" name="full_option" id="full_option">
+      <input [(ngModel)]="inValues.name_option" type="text" class="form-control" name="full_option" id="full_option">
       <small class="form-text text-muted">Ej: Mojarra</small>
       <label for="full_option_price">Precio opción 2</label>
-      <input type="number" class="form-control" name="full_option_price" id="full_option_price">
+      <input [(ngModel)]="inValues.name_option_price" type="number" class="form-control" name="full_option_price" id="full_option_price">
     </div>
   </div>
-    
+  <div class="form-group text-right">
+    <button (click)="saveMenu()" type="button" class="btn btn-primary" [innerHTML]="statusVals[status] | sanitizeHTML"></button>
+  </div>
+<!-- <pre>
+  {{ inValues | json }}
 
+</pre> -->

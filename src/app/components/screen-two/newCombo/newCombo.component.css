@@ -1,0 +1,11 @@
+.list-group-item, label{
+  color: var(--dark);
+}
+
+.form-group{
+  text-align: left;
+}
+
+.less-margin{
+  margin-top: -0.8rem;
+}

@@ -24,7 +24,8 @@ export class ScreenTwoComponent implements OnInit {
     this.router.navigate(["/login"]);
   }
 
-  toggleComponent(number: number) {
+  toggleComponent($e, number: number) {
+    $e.preventDefault();
     this.compActive = number;
   }
 

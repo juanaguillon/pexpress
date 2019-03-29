@@ -6,16 +6,16 @@
         <a routerLink="/admin/listing" class="btn btn-success mb-2">Atras</a>
         <ul class="nav nav-tabs card-header-tabs">
           <li class="nav-item">
-            <a class="nav-link active" href="#">Menú de Día</a>
+            <a class="nav-link active" [ngClass]="{'active':compActive == 1}" (click)="toggleComponent( $event, 1 )" href="#">Menú de Día</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Combo</a>
+            <a class="nav-link" href="#" [ngClass]="{'active':compActive == 2}" (click)="toggleComponent( $event, 2 )">Combo</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Ejecutivo</a>
+            <a class="nav-link" href="#" [ngClass]="{'active':compActive == 3}" (click)="toggleComponent( $event, 3 )">Ejecutivo</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Presets</a>
+            <a class="nav-link" href="#" [ngClass]="{'active':compActive == 4}" (click)="toggleComponent( $event, 4 )">Presets</a>
           </li>
         </ul>
       </div>
@@ -28,8 +28,8 @@
         
       </div>
 
-      <div class="card-footer">
-        <div class="btn btn-danger">Cerrar Sesión</div>
+      <div class="card-footer text-left">
+        <a class="btn btn-danger">Cerrar Sesión</a>
       </div>
       
     </div>

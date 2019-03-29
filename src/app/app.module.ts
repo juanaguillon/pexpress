@@ -24,6 +24,7 @@ import { ViewproductsComponent } from './components/viewproducts/viewproducts.co
 import { SlideimagesComponent } from './components/slideimages/slideimages.component';
 import { VerticalItemsComponent } from './components/verticalItems/verticalItems.component';
 
+// Directives
 
 // Environment
 import { environment } from '../environments/environment'; 
