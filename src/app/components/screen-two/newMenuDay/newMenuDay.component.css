@@ -1,0 +1,21 @@
+h2{
+  color: #212529;
+}
+label {
+  margin-bottom: .5rem;
+  color: #212529;
+  font-size: 1rem;
+}
+
+small{
+  color: #212529;
+  font-size: 13px;
+}
+
+.form-group {
+  text-align: left;
+}
+
+.font-default{
+  font-size: 1rem;
+}

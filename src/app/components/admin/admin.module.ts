@@ -7,7 +7,6 @@ import { Routes, RouterModule} from '@angular/router';
 import { AdminComponent } from './admin.component';
 import { AdminListingComponent } from './admin-listing/admin-listing.component';
 import { AdminScreenOneComponent } from './admin-screen-one/admin-screen-one.component';
-import { AdminScreenTwoComponent } from './admin-screen-two/admin-screen-two.component';
 import { AuthGuard } from 'src/app/services/auth.guard';
 
 export const adminRoutes: Routes = [
@@ -28,11 +27,7 @@ export const adminRoutes: Routes = [
       {
         path: "screen-one",
         component: AdminScreenOneComponent
-      },
-      {
-        path: "screen-two",
-        component: AdminScreenTwoComponent
-      }
+      }     
 
     ]
   }
@@ -42,8 +37,7 @@ export const adminRoutes: Routes = [
   declarations: [
     AdminListingComponent,
     AdminComponent,
-    AdminScreenOneComponent,
-    AdminScreenTwoComponent
+    AdminScreenOneComponent
   ],
   imports: [
     BrowserModule,

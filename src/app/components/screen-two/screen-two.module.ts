@@ -10,36 +10,6 @@ import { NewComboComponent } from './newCombo/newCombo.component';
 import { NewEjecutiveComponent } from './newEjecutive/newEjecutive.component';
 import { NewMenuDayComponent } from './newMenuDay/newMenuDay.component';
 
-export const screenTwoRoutes:Routes = [
-  {
-    path:'screentwo',
-    component: ScreenTwoComponent,
-    children:[
-      {
-        path:'',
-        redirectTo: 'presets',
-        pathMatch: 'full',
-      },
-      {
-        path: 'presets',
-        component: PresetsComponent
-      },
-      {
-        path: 'nuevo-combo',
-        component: NewComboComponent
-      },
-      {
-        path: 'nuevo-ejecutivo',
-        component: NewEjecutiveComponent
-      },
-      {
-        path: 'nuevo-mday',
-        component: NewMenuDayComponent
-      }
-    ]
-  }
-]
-
 @NgModule({
   imports: [
     CommonModule,

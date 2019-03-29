@@ -1,4 +1,37 @@
-<p>
-  screen-two works!
-</p>
-<router-outlet></router-outlet>
+<div class="container">
+  <div class="col-md-8 offset-md-2">
+    
+    <div class="card">
+      <div class="card-header text-left">
+        <a routerLink="/admin/listing" class="btn btn-success mb-2">Atras</a>
+        <ul class="nav nav-tabs card-header-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Menú de Día</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Combo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Ejecutivo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Presets</a>
+          </li>
+        </ul>
+      </div>
+      <div class="card-body">
+        
+        <app-newMenuDay *ngIf="compActive == 1"></app-newMenuDay>
+        <app-newCombo *ngIf="compActive == 2"></app-newCombo>
+        <app-newEjecutive *ngIf="compActive == 3"></app-newEjecutive>
+        <app-presets *ngIf="compActive == 4"></app-presets>
+        
+      </div>
+
+      <div class="card-footer">
+        <div class="btn btn-danger">Cerrar Sesión</div>
+      </div>
+      
+    </div>
+
+  </div>

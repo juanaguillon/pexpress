@@ -10,9 +10,10 @@ import { LoginComponent } from './components/login/login.component';
 
 // Rutas de modulos
 import { adminRoutes } from './components/admin/admin.module'
-import { screenTwoRoutes } from './components/screen-two/screen-two.module';
 
 import { AuthGuard } from './services/auth.guard';
+import { NoauthGuard } from './services/noauth.guard';
+import { ScreenTwoComponent } from './components/screen-two/screen-two.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
   {
     path:'login',
     component: LoginComponent,
+    canActivate: [ NoauthGuard ]
   },
   {
     path:'productos',
@@ -52,14 +54,17 @@ const routes: Routes = [
     path: "slides/:action",
     component: SlideimagesComponent,
     canActivate: [AuthGuard]    
-  }  
+  },
+  {
+    path: 'screentwo',
+    component: ScreenTwoComponent
+  }
   
 ];
 
 @NgModule({
   imports: [
     RouterModule.forChild(adminRoutes ),
-    RouterModule.forChild( screenTwoRoutes ),
     RouterModule.forRoot( routes ,{ useHash: true })
   ],
  
