@@ -1,3 +1,72 @@
-<p>
-  newEjecutive works!
-</p>
+<form>
+  <p class="text-muted text-left">Añade menús ejecutivos, serán guardados, y mostrados en el preset.</p>
+  <div class="new_title_container my-3">
+    
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="full_title_menu">Título</label>
+        <input placeholder="Parrilla Mixta" [(ngModel)]="vals.title" type="text" class="form-control" name="full_title_menu" id="full_title_menu">      
+      </div>
+      <div class="form-group col-md-6">
+        <label for="full_price">Precio</label>
+        <input [(ngModel)]="vals.price" type="number" class="form-control" name="full_price" id="full_price"></div>
+      </div>
+      <div class="card">
+        <ul class="list-group list-group-flush">
+          
+          <li class="list-group-item flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+
+              <input (keyup)="enteringAdition( $event )" [(ngModel)]="currentAdition" type="text" placeholder="EJ:Carne + Pechuga" class="form-control" name="full_adition">        
+              <button (click)="addAdition()" class="btn btn-success btn-sm button-adding">+</button>
+
+            </div>
+          </li>
+
+          <li *ngFor="let ad of aditions" class="list-group-item flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+              <span class="text-success">{{ad}}</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="form-group text-right mt-2"><button (click)="addMenu( )" class="btn btn-success">Añadir Menú</button></div>
+    </div>  
+    
+    {{ menus | json }}
+    <div class="form-group"> 
+      <div id="accordion">
+        <div class="card" *ngFor="let menu of menus">
+          <div class="card-header" id="headingOne">
+            <a class="d-flex justify-content-between" data-toggle="collapse" data-target="#collapseOne" aria-controls="collapseOne">
+              <h5 class="text-muted">
+                {{menu.name}}
+              </h5>
+              <span class="text-muted">${{menu.price | number}}</span>
+            </a>
+          </div>
+          
+          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+
+
+              <ul class="list-group list-group-flush">                
+                <li *ngFor="let ad of menu.aditions" class="list-group-item flex-column align-items-start">
+                  <div class="d-flex w-100 justify-content-between">
+                    <span class="text-muted">{{ad}}</span>
+                  </div>
+                </li>
+              </ul>
+
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+    <div class="form-group text-right">
+      <button (click)="saveDocument()" class="btn btn-primary" [innerHTML]="statusVals[status] | sanitizeHTML"></button>
+    </div>
+  </form>
+  
