@@ -62,7 +62,7 @@ export class NewComboComponent implements OnInit {
     
     let saved = this.database.saveDocument( 'secondscreen', this.inValues );
     saved.then( onProm );
-    saved.catch ( err => console.log( err ) );
+    saved.catch( onError );
     
   }
 

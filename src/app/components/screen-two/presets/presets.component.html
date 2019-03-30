@@ -8,32 +8,35 @@
       <input name="current_title" id="current_title" [(ngModel)]="currentTitle" type="text" class="form-control">
     </div>
   </div>
-  <p class="text-muted">Modifica y guarda tus presets, úsalos para en el día deseado.</p>
+  <p class="text-muted">Modifica y guarda tus presets, úsalos para modificar el día deseado.</p>
   <div class="form-group">
-    <label for="menu_day_preset">Menú de Día</label>
-    <select class="custom-select" name="menu_day_preset" id="menu_day_preset">
-      <option value="">1</option>
-      <option value="">2</option>
-      <option value="">3</option>
+    <label for="menu_day_preset">Menú de día</label>
+    <select [(ngModel)]="inVals.menu" class="custom-select" name="menu_day_preset" id="menu_day_preset">
+      <option *ngFor="let menu of menus" [value]="menu.id">{{menu.name}}</option>
     </select>
+
+
   </div>
   <div class="form-group">
+
     <label for="combo_preset">Combo</label>
-    <select class="custom-select" name="combo_preset" id="combo_preset">
-      <option value="">1</option>
-      <option value="">2</option>
-      <option value="">3</option>
+    <select [(ngModel)]="inVals.combo" class="custom-select" name="combo_preset" id="combo_preset">
+      <option *ngFor="let combo of combos" [value]="combo.id">{{combo.title}}</option>
     </select>
   </div>
   <div class="form-group">
-    <label for="ejecutive_preset">Ejecutivo</label>
-    <select class="custom-select" name="ejecutive_preset" id="ejecutive_preset">
-      <option value="">1</option>
-      <option value="">2</option>
-      <option value="">3</option>
+    <label for="ejecutive_preset">Menú Ejecutivo</label>
+    <select [(ngModel)]="inVals.ejec" class="custom-select" name="ejecutive_preset" id="ejecutive_preset">
+      <option *ngFor="let ejec of ejecs" [value]="ejec.id">{{ejec.title}}</option>
     </select>
   </div>
 
+  <div class="form-group text-right">
+    <button (click)="savePreset( $event )" class="btn btn-primary" [innerHTML]="statusVals[status]" >Guardar Preset</button>
+  </div>
+  
 </form>
+<pre>
 
+</pre>
   
