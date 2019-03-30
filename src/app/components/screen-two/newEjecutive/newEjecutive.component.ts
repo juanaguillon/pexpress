@@ -8,6 +8,7 @@ import { DatabaseService } from 'src/app/services/database.service';
 })
 export class NewEjecutiveComponent implements OnInit {
 
+  currentTitle = "";
   vals: any = {}
   currentAdition = ""
   aditions = [];
@@ -61,6 +62,7 @@ export class NewEjecutiveComponent implements OnInit {
     this.inValues.id = new Date().getTime();
     this.inValues.type = "ejecutive";
     this.inValues.menus = this.menus;
+    this.inValues.title = this.currentTitle;
     
     this.status = 1;
 

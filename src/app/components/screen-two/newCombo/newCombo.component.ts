@@ -8,6 +8,7 @@ import { DatabaseService } from 'src/app/services/database.service';
 })
 export class NewComboComponent implements OnInit {
 
+  currentTitle = "";
   vals:any = {}
   inValues:any = {}
   theCombo:any[] = []
@@ -45,7 +46,9 @@ export class NewComboComponent implements OnInit {
     this.inValues.id = new Date().getTime();
     this.inValues.type = "combo";
     this.inValues.combos = this.theCombo;
+    this.inValues.title = this.currentTitle;
     this.status = 1;
+    
     const onProm = res => {
       alert('Combos guardados correctamente');
       this.status = 2;

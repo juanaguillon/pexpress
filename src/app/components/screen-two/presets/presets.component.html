@@ -1,3 +1,39 @@
-<p>
-  presets works!
-</p>
+
+<form>
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-lg">Título</span>
+      </div>
+      <input name="current_title" id="current_title" [(ngModel)]="currentTitle" type="text" class="form-control">
+    </div>
+  </div>
+  <p class="text-muted">Modifica y guarda tus presets, úsalos para en el día deseado.</p>
+  <div class="form-group">
+    <label for="menu_day_preset">Menú de Día</label>
+    <select class="custom-select" name="menu_day_preset" id="menu_day_preset">
+      <option value="">1</option>
+      <option value="">2</option>
+      <option value="">3</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="combo_preset">Combo</label>
+    <select class="custom-select" name="combo_preset" id="combo_preset">
+      <option value="">1</option>
+      <option value="">2</option>
+      <option value="">3</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="ejecutive_preset">Ejecutivo</label>
+    <select class="custom-select" name="ejecutive_preset" id="ejecutive_preset">
+      <option value="">1</option>
+      <option value="">2</option>
+      <option value="">3</option>
+    </select>
+  </div>
+
+</form>
+
+  

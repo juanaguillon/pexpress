@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PresetsComponent implements OnInit {
 
+  currentTitle = "";
   constructor() { }
 
   ngOnInit() {
