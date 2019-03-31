@@ -12,14 +12,15 @@ export class ScreenTwoComponent implements OnInit {
 
   compActive = 1;
   presets = []
+  config = [];
   dayWeek:any = [
+    { name: "Domingo", day:0 },
     { name: "Lunes", day:1 },
     { name: "Martes", day:2 },
     { name: "Miércoles", day:3 },
     { name: "Jueves", day:4 },
     { name: "Viernes", day:5 },
-    { name: "Sábado", day:6 },
-    { name: "Domingo", day:0 },
+    { name: "Sábado", day:6 }
   ]
   
   constructor(
@@ -32,6 +33,11 @@ export class ScreenTwoComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  // public dropChange( ){
+  //   this.datx = this.config.length === Array( this.config ).values.length;
+  //   console.log( this.config.includes( undefined ) );
+  // }
 
   closeSesion($e) {
     $e.preventDefault();
@@ -47,8 +53,25 @@ export class ScreenTwoComponent implements OnInit {
   public getPresets( ){
     this.db.getFullCollection('presets').subscribe( docs => {
       this.presets = docs;
-      console.log( docs );
     })
   }
+
+  public saveConfig( ){
+
+    if ( this.config.length < 7 || this.config.includes(undefined) ){
+      alert('Porfavor, añade un preset a todos los días');
+      return;
+    }
+    
+    let data = {
+      config: this.config,
+      id: "actual_presets"
+    }
+    this.db.saveDocument("config", data ).then( resp => alert('Configuración guardada correctamente') )
+    .catch( err => { alert('Error al guardar la configuración') ; console.log( err ) })
+
+  }
+
+
 
 }

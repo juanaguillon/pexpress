@@ -28,6 +28,6 @@ import { SanitizeHTMLPipe } from 'src/app/shared/sanitizeHTML.pipe';
     ChangeClassDirective,
     SanitizeHTMLPipe
   ],
-  bootstrap: [ ]
+  bootstrap: [ ScreenTwoComponent ]
 })
 export class ScreenTwoModule { }

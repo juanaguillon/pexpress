@@ -9,18 +9,21 @@
 
         <div class="list-group" *ngFor="let preset of presets; let i = index">
           <div class="list-group-item flex-column align-items-start">
+
             <h5 class="text-dark">{{preset.title}}</h5>
+
             <div class="custom-control custom-radio custom-control-inline" *ngFor="let day of dayWeek" >
-              <input type="radio" [id]=" i + 'week_day_preset' + day.day" [name]="'week_day_preset' + day.day " class="custom-control-input">
+              <input [(ngModel)]="config[day.day]" type="radio" [value]="preset.id" [id]=" i + 'week_day_preset' + day.day" [name]="'week_day_preset' + day.day " class="custom-control-input">
               <label class="pointer custom-control-label" [for]="i + 'week_day_preset' + day.day">{{day.name}}</label>
             </div>
           </div>
-        </div>    
-        
-
+        </div>
 
       </div>
-      <div class="card-footer"></div>
+      
+      <div class="card-footer">
+        <button (click)="saveConfig()" class="btn btn-primary btn-lg">Guardar Configuración</button>
+      </div>
     </div>
     
     

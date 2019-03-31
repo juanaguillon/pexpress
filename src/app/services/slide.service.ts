@@ -28,6 +28,18 @@ export class SlideService {
     return this.db.collection('slide').snapshotChanges();
   }
 
+  getTheConfig( ){
+    return this.db.collection('config').valueChanges( );
+  }
+
+  getPresetById( id:number ){
+    return this.db.doc('presets/' + id ).get();
+  }
+  
+  getSecondScreenDocById( id:number ){
+    return this.db.doc(`secondscreen/${id}`).get();
+  }
+
 
 
 }
