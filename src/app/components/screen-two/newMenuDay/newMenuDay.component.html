@@ -26,15 +26,19 @@
   </div>  
 </div>
 
+<div class="form-group">
+  <label for="full_price">Precio</label>
+  <input [(ngModel)]="inValues.price" type="number" class="form-control" name="full_price" id="full_price">
+</div>
+<h4 class="text-muted mb-2">Agrega una opción alternativa a tu menú.</h4>
 <div class="form-row">
-  <div class="form-group col-md-6">
-    <label for="full_price">Precio</label>
-    <input [(ngModel)]="inValues.price" type="number" class="form-control" name="full_price" id="full_price">
-  </div>
   <div class="form-group col-md-6">
     <label for="full_option">Menu opción 2</label>
     <input [(ngModel)]="inValues.name_option" type="text" class="form-control" name="full_option" id="full_option">
     <small class="form-text text-muted">Ej: Mojarra</small>
+  </div>
+  <div class="form-group col-md-6">
+    
     <label for="full_option_price">Precio opción 2</label>
     <input [(ngModel)]="inValues.name_option_price" type="number" class="form-control" name="full_option_price" id="full_option_price">
   </div>

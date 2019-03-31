@@ -64,6 +64,8 @@ export class NewMenuDayComponent implements OnInit {
     const promResolve = ( res ) => {
       alert('Menú guardado correctamente');
       this.status = 2;
+      this.adiciones = []
+      this.inValues ={};
     }
     const promError = ( error ) => {
       this.status = 0
