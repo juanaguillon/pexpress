@@ -7,7 +7,6 @@ import { FormsModule } from '@angular/forms';
 import { EditComponent } from './edit.component';
 
 
-import { SanitizeHTMLPipe } from 'src/app/shared/sanitizeHTML.pipe';
 import { EditComboComponent } from './editCombo/editCombo.component';
 import { EditMenuComponent } from './editMenu/editMenu.component';
 import { EditEjecutiveComponent } from './editEjecutive/editEjecutive.component';
@@ -20,14 +19,13 @@ import { EditPresetComponent } from './editPreset/editPreset.component';
     RouterModule,
     FormsModule
   ],
-  declarations: [
-    
-    SanitizeHTMLPipe,
+  declarations: [    
     EditComboComponent,
     EditMenuComponent,
     EditEjecutiveComponent,
-    EditPresetComponent
+    EditPresetComponent,
+    EditComponent
   ],
   bootstrap: [EditComponent]
 })
-export class ScreenTwoModule { }
+export class EditModule { }

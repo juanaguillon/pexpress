@@ -1,19 +1,114 @@
-<div class="text-left">
 
-  <h1 class="text-dark">Menus</h1>
-  <pre>
-    {{ menus | json }}
-  </pre>
-  <h1 class="text-dark">Presets</h1>
-  <pre>
-    {{presets | json }}
-  </pre>
-  <h1 class="text-dark">Combos</h1>
-  <pre>
-    {{combos | json }}
-  </pre>
-  <h1 class="text-dark">Ejecutivos</h1>
-  <pre>
-    {{ejects | json }}
-  </pre>
+<div class="container">
+  <h2 class="text-primary text-center">Editar tu lista</h2>
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div id="accordion">
+        <div class="card" >
+          <div class="card-header" id="headingOne">
+            <a class="d-flex justify-content-between" data-toggle="collapse" data-target="#menusData"
+              aria-controls="menusData">
+              <h5 class="text-muted">
+                Menus
+              </h5>
+            </a>
+          </div>
+      
+          <div id="menusData" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+      
+      
+              <ul class="list-group list-group-flush">
+                <li *ngFor="let menu of menus" [routerLink]="'menu_' + menu.id" class="pointer text-left list-group-item flex-column align-items-start list-group-item-action">
+                  <span class="text-muted" >{{menu.name }}</span>
+                </li>                
+              </ul>
+      
+            </div>
+          </div>
+        </div>
+        <div class="card" >
+          <div class="card-header" id="headingOne">
+            <a class="d-flex justify-content-between" data-toggle="collapse" data-target="#combosData"
+              aria-controls="combosData">
+              <h5 class="text-muted">
+                Combos
+              </h5>
+            </a>
+          </div>
+      
+          <div id="combosData" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+      
+      
+            <ul class="list-group list-group-flush">
+              <li *ngFor="let combo of combos" [routerLink]="'combo_' + combo.id"
+                class="pointer text-left list-group-item flex-column align-items-start list-group-item-action">
+                <span class="text-muted">{{combo.title }}</span>
+              </li>
+            </ul>
+      
+            </div>
+          </div>
+        </div>
+        
+        <div class="card" >
+          <div class="card-header" id="headingOne">
+            <a class="d-flex justify-content-between" data-toggle="collapse" data-target="#ejecsData"
+              aria-controls="ejecsData">
+              <h5 class="text-muted">
+                Ejecutivos
+              </h5>
+            </a>
+          </div>
+      
+          <div id="ejecsData" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+      
+      
+              <ul class="list-group list-group-flush">
+                <li *ngFor="let eject of ejects" [routerLink]="'eject_' + eject.id"
+                  class="pointer text-left list-group-item flex-column align-items-start list-group-item-action">
+                  <span class="text-muted">{{eject.title }}</span>
+                </li>
+              </ul>
+      
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <a class="d-flex justify-content-between" data-toggle="collapse" data-target="#presetsData"
+              aria-controls="presetsData">
+              <h5 class="text-muted">
+                Presets
+              </h5>
+            </a>
+          </div>
+        
+          <div id="presetsData" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+        
+        
+              <ul class="list-group list-group-flush">
+                <li *ngFor="let preset of presets" [routerLink]="'preset_' + preset.id"
+                  class="pointer text-left list-group-item flex-column align-items-start list-group-item-action">
+                  <span class="text-muted">{{preset.title }}</span>
+                </li>
+              </ul>
+        
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 </div>
+
+<!-- <pre>
+  {{ menus | json }}
+  {{ combos | json }}
+  {{ ejects | json }}
+  {{ presets | json }}
+</pre> -->

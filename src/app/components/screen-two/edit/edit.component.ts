@@ -11,7 +11,9 @@ export class EditComponent implements OnInit {
   menus = [];
   presets = [];
   combos = [];
-  ejects = []
+  ejects = [];
+
+  currentAward = 1;
 
   constructor( private db:DatabaseService) {
     this.getAllAwards();
@@ -20,6 +22,7 @@ export class EditComponent implements OnInit {
 
   /** Obtener todos los combos, menus ejecutivos, menu diarios y presets */
   private getAllAwards( ){
+
     let menus = this.db.searcQueryInCollection('secondscreen','type','menuday');
     let combos = this.db.searcQueryInCollection('secondscreen','type','combo');
     let ejecs = this.db.searcQueryInCollection('secondscreen','type','ejecutive');
@@ -29,6 +32,7 @@ export class EditComponent implements OnInit {
     combos.subscribe(m => this.combos = m );
     ejecs.subscribe(m => this.ejects = m );
     presets.subscribe( m => this.presets = m );
+
   }  
 
   ngOnInit() {}

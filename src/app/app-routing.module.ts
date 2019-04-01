@@ -65,6 +65,7 @@ const routes: Routes = [
     component: EditComponent
   }
   
+  
 ];
 
 @NgModule({

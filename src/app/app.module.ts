@@ -29,6 +29,7 @@ import { VerticalItemsComponent } from './components/verticalItems/verticalItems
 // Environment
 import { environment } from '../environments/environment'; 
 import { LoginComponent } from './components/login/login.component';
+import { EditModule } from './components/screen-two/edit/edit.module';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { LoginComponent } from './components/login/login.component';
     AngularFireAuthModule,
     OwlModule,
     AdminModule,
-    ScreenTwoModule
+    ScreenTwoModule,
+    EditModule
   ],
   providers: [],
   bootstrap: [AppComponent]
