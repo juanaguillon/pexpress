@@ -59,12 +59,7 @@ const routes: Routes = [
   {
     path: 'screentwo',
     component: ScreenTwoComponent
-  },
-  {
-    path: 'screentwo/editing',
-    component: EditComponent
   }
-  
   
 ];
 

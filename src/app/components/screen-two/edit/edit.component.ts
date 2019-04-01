@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from 'src/app/services/database.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-edit',
@@ -12,11 +13,22 @@ export class EditComponent implements OnInit {
   presets = [];
   combos = [];
   ejects = [];
+  
+  isChildrened:boolean;
 
-  currentAward = 1;
-
-  constructor( private db:DatabaseService) {
+  constructor( 
+    private db:DatabaseService ,
+    private router: Router,
+    private activeRoute: ActivatedRoute
+    ) {
     this.getAllAwards();
+
+    // Verificar si está actualmente en un componenete Hijo.
+    this.router.events.subscribe( ev => {
+      this.isChildrened = this.activeRoute.children.length > 0
+    });
+
+    
   }
 
 

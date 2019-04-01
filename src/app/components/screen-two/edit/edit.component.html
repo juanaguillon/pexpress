@@ -19,7 +19,7 @@
       
       
               <ul class="list-group list-group-flush">
-                <li *ngFor="let menu of menus" [routerLink]="'menu_' + menu.id" class="pointer text-left list-group-item flex-column align-items-start list-group-item-action">
+                <li *ngFor="let menu of menus" [routerLink]="'menu/' + menu.id" class="pointer text-left list-group-item flex-column align-items-start list-group-item-action">
                   <span class="text-muted" >{{menu.name }}</span>
                 </li>                
               </ul>
@@ -42,7 +42,7 @@
       
       
             <ul class="list-group list-group-flush">
-              <li *ngFor="let combo of combos" [routerLink]="'combo_' + combo.id"
+              <li *ngFor="let combo of combos" [routerLink]="'combo/' + combo.id"
                 class="pointer text-left list-group-item flex-column align-items-start list-group-item-action">
                 <span class="text-muted">{{combo.title }}</span>
               </li>
@@ -67,7 +67,7 @@
       
       
               <ul class="list-group list-group-flush">
-                <li *ngFor="let eject of ejects" [routerLink]="'eject_' + eject.id"
+                <li *ngFor="let eject of ejects" [routerLink]="'ejec/' + eject.id"
                   class="pointer text-left list-group-item flex-column align-items-start list-group-item-action">
                   <span class="text-muted">{{eject.title }}</span>
                 </li>
@@ -91,7 +91,7 @@
         
         
               <ul class="list-group list-group-flush">
-                <li *ngFor="let preset of presets" [routerLink]="'preset_' + preset.id"
+                <li *ngFor="let preset of presets" [routerLink]="'preset/' + preset.id"
                   class="pointer text-left list-group-item flex-column align-items-start list-group-item-action">
                   <span class="text-muted">{{preset.title }}</span>
                 </li>
@@ -105,6 +105,10 @@
     </div>
   </div>
 </div>
+
+
+<router-outlet></router-outlet>
+
 
 <!-- <pre>
   {{ menus | json }}

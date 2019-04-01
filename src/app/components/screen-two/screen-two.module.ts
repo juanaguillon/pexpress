@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 import { ScreenTwoComponent } from './screen-two.component';
@@ -13,13 +13,17 @@ import { NewMenuDayComponent } from './newMenuDay/newMenuDay.component';
 
 import { ChangeClassDirective } from 'src/app/shared/changeClass.directive';
 import { SanitizeHTMLPipe } from 'src/app/shared/sanitizeHTML.pipe';
+import { EditModule } from './edit/edit.module';
+
+
 
 @NgModule({
   imports: [
     CommonModule,
     BrowserModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    EditModule
   ],
   declarations: [
     ScreenTwoComponent,
@@ -28,8 +32,7 @@ import { SanitizeHTMLPipe } from 'src/app/shared/sanitizeHTML.pipe';
     NewEjecutiveComponent,
     NewMenuDayComponent,
     ChangeClassDirective,
-    SanitizeHTMLPipe
-    
+    // SanitizeHTMLPipe    
   ],
   bootstrap: [ ScreenTwoComponent ]
 })

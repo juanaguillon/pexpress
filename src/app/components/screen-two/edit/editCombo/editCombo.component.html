@@ -1,3 +1,59 @@
-<p>
-  editCombo works!
-</p>
+<div class="col-md-10 offset-md-1">
+  <div class="card mt-2">
+    <div class="card-header">
+      <h3 class="text-primary">Actualizar</h3>
+    </div>
+    <div class="card-body">
+      
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-lg">Título</span>
+          </div>
+          <input name="current_title" id="current_title" [(ngModel)]="currentTitle" type="text" class="form-control">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="full_name">Nombre de Combo</label>
+          <div class="input-group">
+            <input (keyup)="enteringCombo($event)" [(ngModel)]="vals.name" type="text" class="form-control" name="full_name"
+            id="full_name" placeholder="Ej: Hamburguesa">
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="full_price">Precio</label>
+          <div class="input-group">
+            <input (keyup)="enteringCombo($event)" [(ngModel)]="vals.price" type="number" class="form-control"
+            name="full_price" id="full_price">
+          </div>
+        </div>
+        <div class="form-group col less-margin">
+          <a class="btn btn-sm btn-success" (click)="addCombo()">+</a>
+        </div>
+      </div>
+      
+      <div class="form-group" *ngIf="theCombo.length > 0">
+        <div class="card">
+          <ul class="list-group list-group-flush">
+            <li *ngFor="let combo of theCombo; let i = index" class="list-group-item list-group-item-action flex-column align-items-start">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1 text-success">{{combo.name}}</h5>
+                <div class="d-flex">
+                  <small>${{combo.price | number }}</small>
+                  <button (click)="removeCombo( i  )" class="badge btn btn-danger btn-sm badge-danger ml-1">x</button>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="form-group text-right">
+        <button (click)="saveDocument()" type="button" class="btn btn-primary"
+        [innerHTML]="statusVals[status] | sanitizeHTML"></button>
+      </div>
+    </div>
+  </div>
+  
+</div>

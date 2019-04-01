@@ -6,3 +6,13 @@ a{
 .pointer{
 	cursor: pointer;
 }
+
+label {
+  margin-bottom: .5rem;
+  color: #212529;
+  font-size: 1rem;
+}
+
+.form-group {
+  text-align: left;
+}
