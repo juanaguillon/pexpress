@@ -1,18 +1,30 @@
-$(document).ready(function(){
+$(document).ready(function () {
 
 	/*var pixeles = 100;*/
 	/*var tiempo = 50;*/
 	p = 0;
-	var plato = $('.menu').height()/3;
-  	var menu = $('.menu');
-  	console.log(plato);
+	var plato = $('.menu').height() / 3;
+	var menu = $('.menu');
 
-	setInterval(function(){
 
-	$('.menu').animate({ scrollTop: (p += plato + 77) }, 1000);
+	setInterval(function () {
+
+		var scroll = $('.menu').scrollTop();
+
+		console.log(scroll);
+
+		if (scroll >= 1400) {
+
+			p = 0;
+
+			$('.menu').animate({ scrollTop: (0) }, 4000);
+
+		} else {
+			$('.menu').animate({ scrollTop: (p += plato + 77) }, 2000);
+
+		}
 
 	}, 10000);
-
 
 });
 
