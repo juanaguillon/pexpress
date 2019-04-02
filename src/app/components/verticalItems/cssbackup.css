@@ -1,3 +1,24 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .titulo > h1{
 	height: 43%;
 }
@@ -14,19 +35,7 @@
   letter-spacing: 3px;
 	font-size: 7vh;
 }
-.carouselowl{
-	display: block;
-	max-height: 60vh;
-}
 #theProductos{
-		-webkit-transform: rotate(90deg);
-	transform: rotate(90deg);
-	-webkit-transform-origin: bottom left;
-	transform-origin: bottom left;
-	position: absolute;
-	top: -100vw;
-	height: 100vw;
-	width: 100vh;
   font-family: 'Germania One', cursive;
 }
 
@@ -48,7 +57,6 @@
 	width: 50%;
 	text-align: left;
 	font-size: 2.9vh;
-	display: inline-block;
 	font-weight: 600;
 	font-family: 'Roboto Slab', serif;
 }
@@ -56,9 +64,7 @@
 .combo-day .price-combo{
 	width: 50%;
 	font-size: 240%;
-	/* display: flex; */
-	display: inline-block;
-	text-align: center;
+	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
@@ -77,20 +83,9 @@
 .post-combo > p {
   padding: 5px 0;
 	/* border-bottom: 2px dashed #fbce65; */
-	/* display: flex; */
+	display: flex;
 	justify-content: space-between;
   font-size: 4vh;
-}
-.post-combo > p span{
-	display: inline-block;
-	width: 50%; 
-}
-.post-combo > p span:first-child{
-	text-align: left;
-
-}
-.post-combo > p span:last-child{
-	text-align: right;
 }
 
 .mini-price{
@@ -104,12 +99,10 @@
 }
 
 .exec-lanuchers > div:first-child{
-	text-align: left;
-	display: inline-block;
+  text-align: left;
 }
 .exec-lanuchers > div:last-child{
-	text-align: right;
-	display: inline-block;
+  text-align: right;
 }
 .exec-lanuchers{
 	height: 30%;
@@ -173,6 +166,3 @@ owl-carousel {
 	height: auto !important;
 	width: 100% !important;
 }
-
-
-

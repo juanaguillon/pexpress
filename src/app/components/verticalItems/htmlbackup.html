@@ -1,7 +1,7 @@
 <section *ngIf="status == 1" id="theProductos">
   <div class="vertical-products">
     <div class="titulo">
-      <owl-carousel [options]="slideOption" [carouselClasses]="['owl-theme', 'sliding', 'carouselowl']" [items]="images">
+      <owl-carousel [options]="slideOption" [carouselClasses]="['owl-theme', 'sliding']" [items]="images">
         <ul class="fotos owl-carousel owl-theme" *ngFor="let prod of images">
           <li><img [src]="prod"></li>
         </ul>
@@ -10,7 +10,7 @@
       <div class="words-desc">
         <h3 class="exec-launcer-title">{{menu.aliments}}</h3>
       </div>
-      <div class="combo-day">
+      <div class="d-flex combo-day">
         <ul>
           <li *ngFor="let aliment of menu.aditions">{{aliment}}</li>
         </ul>
@@ -30,7 +30,7 @@
       </p>
     </div>
 
-    <div *ngIf="ejec.menus" class="exec-lanuchers position-relative">
+    <div *ngIf="ejec.menus" class="exec-lanuchers d-flex position-relative">
       <div>
         <div class="exec-launcer-title">
           <h3>{{ejec.menus[0].name}}</h3>
