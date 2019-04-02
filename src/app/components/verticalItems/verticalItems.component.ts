@@ -72,7 +72,7 @@ export class VerticalItemsComponent implements OnInit {
       })
     }
 
-    const docs = this.slide.getAllDocs();
+    const docs = this.slide.getAllDocs2();
     docs.pipe( map( mapF ), flatMap( flatF ) )
     .subscribe(res => {
       this.images = res;

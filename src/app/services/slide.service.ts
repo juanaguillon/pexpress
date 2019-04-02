@@ -23,9 +23,16 @@ export class SlideService {
   saveDocument( idDoc, dataData:any ){
     return this.db.doc('slide/' + idDoc ).set( dataData );
   }
+  
+  saveDocument2( idDoc, dataData:any ){
+    return this.db.doc('slide2/' + idDoc ).set( dataData );
+  }
 
   getAllDocs( ){
     return this.db.collection('slide').snapshotChanges();
+  }
+  getAllDocs2( ){
+    return this.db.collection('slide2').snapshotChanges();
   }
 
   getTheConfig( ){

@@ -55,6 +55,9 @@
           <li class="nav-item">
             <a class="nav-link" href="#" [ngClass]="{'active':compActive == 4}" (click)="toggleComponent( $event, 4 )">Presets</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" [ngClass]="{'active':compActive == 5}" (click)="toggleComponent( $event, 5 )">Sliders</a>
+          </li>
         </ul>
       </div>
       <div class="card-body">
@@ -63,6 +66,7 @@
         <app-newCombo *ngIf="compActive == 2"></app-newCombo>
         <app-newEjecutive *ngIf="compActive == 3"></app-newEjecutive>
         <app-presets *ngIf="compActive == 4"></app-presets>
+        <app-slider *ngIf="compActive == 5"></app-slider>
         
       </div>
 

@@ -1,4 +1,19 @@
-@import url('https://fonts.googleapis.com/css?family=Germania+One|Roboto+Slab:100,300,400,700');
+/* @import url('https://fonts.googleapis.com/css?family=Germania+One|Roboto+Slab:100,300,400,700'); */
+
+
+@font-face{
+	font-family: Germania One;
+  src: url(../fonts/GermaniaOne-Regular.ttf);
+}
+@font-face{
+	font-family: Roboto Slab;
+  src: url(../fonts/RobotoSlab-Regular.ttf);
+}
+@font-face{
+	font-family: Roboto Slab;
+	src: url(../fonts/RobotoSlab-Bold.ttf);
+	font-weight: bold;
+}
 
 
 body
@@ -146,7 +161,7 @@ height: 100%!important;
 	box-sizing: border-box;
 	height: 100%;
 	left: 0px;
-	padding: 0px 25px;
+	padding: 0px 15px;
 	position: absolute;
 	width: 100%;
 }
