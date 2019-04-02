@@ -23,10 +23,8 @@ export class EditComponent implements OnInit {
     ) {
     this.getAllAwards();
 
-    // Verificar si está actualmente en un componenete Hijo.
-    this.router.events.subscribe( ev => {
-      this.isChildrened = this.activeRoute.children.length > 0
-    });
+
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
 
     
   }

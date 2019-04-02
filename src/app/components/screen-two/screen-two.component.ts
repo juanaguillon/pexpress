@@ -29,16 +29,19 @@ export class ScreenTwoComponent implements OnInit {
     private db: DatabaseService
   ) {
     this.getPresets();
+    this.checkIfHadPresets();
    }
 
   ngOnInit() {
   }
 
-  // public dropChange( ){
-  //   this.datx = this.config.length === Array( this.config ).values.length;
-  //   console.log( this.config.includes( undefined ) );
-  // }
-
+  checkIfHadPresets( ){
+    this.db.getDocById( 'config','actual_presets' ).subscribe( doc => {
+      // console.log( doc )
+      this.config = doc["config"];
+    })
+  }
+  
   closeSesion($e) {
     $e.preventDefault();
     this.auth.closeSesion();

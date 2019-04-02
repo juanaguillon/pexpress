@@ -30,4 +30,8 @@ export class DatabaseService {
     return this.database.collection(collection, ref => ref.where( fieldToSearch , '==' , search ) ).valueChanges();
   }
 
+  public getDocById( collection:string, id:any){
+    return this.database.doc(`${collection}/${id}`).valueChanges();
+  }
+
 }

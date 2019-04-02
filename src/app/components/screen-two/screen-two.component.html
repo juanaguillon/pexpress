@@ -7,17 +7,28 @@
       </div>
       <div class="card-body">
 
-        <div class="list-group" *ngFor="let preset of presets; let i = index">
-          <div class="list-group-item flex-column align-items-start">
+        <!-- <div class="list-group" *ngFor="let preset of presets; let i = index">
+          <div class="list-group-item flex-column align-items-start"> -->
 
-            <h5 class="text-dark">{{preset.title}}</h5>
+            <!-- <h5 class="text-dark">{{preset.title}}</h5> -->
 
-            <div class="custom-control custom-radio custom-control-inline" *ngFor="let day of dayWeek" >
-              <input [(ngModel)]="config[day.day]" type="radio" [value]="preset.id" [id]=" i + 'week_day_preset' + day.day" [name]="'week_day_preset' + day.day " class="custom-control-input">
-              <label class="pointer custom-control-label" [for]="i + 'week_day_preset' + day.day">{{day.name}}</label>
-            </div>
-          </div>
-        </div>
+              <!-- <input [(ngModel)]="config[day.day]" type="radio" [value]="preset.id" [id]=" i + 'week_day_preset' + day.day" [name]="'week_day_preset' + day.day " class="custom-control-input">
+              <label class="pointer custom-control-label" [for]="i + 'week_day_preset' + day.day">{{day.name}}</label> -->
+              <div class="d-flex m-select-container">
+                <div class="m-select"  *ngFor="let day of dayWeek">
+
+                  <label for="">{{day.name}}</label>
+                  <select  class="custom-select" [(ngModel)]="config[day.day]">                    
+                    <option *ngFor="let preset of presets" [value]="preset.id">{{preset.title}}</option>
+                  </select>
+  
+                </div>
+
+              </div>
+              
+            
+          <!-- </div>
+        </div> -->
 
       </div>
       

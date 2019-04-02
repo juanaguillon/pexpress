@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from 'src/app/services/database.service';
 import { SlideService } from 'src/app/services/slide.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-editPreset',
@@ -27,7 +27,8 @@ export class EditPresetComponent implements OnInit {
   constructor(
     private data: DatabaseService,
     private slide:SlideService,
-    private activatedRouted:ActivatedRoute
+    private activatedRouted:ActivatedRoute,
+    private router:Router
   ) {
 
     /* Obteniendo los menus del dia */
@@ -45,14 +46,24 @@ export class EditPresetComponent implements OnInit {
       this.ejecs = docs;
     });
 
+    
+    
+    this.inVals.id = this.activatedRouted.snapshot.params["id"]
+    this.slide.getPresetById(this.inVals.id).subscribe(doc => {
+      this.currentTitle = doc.get('title');
+      this.inVals.menu = doc.get('menu');
+      this.inVals.ejec = doc.get('ejec');
+      this.inVals.combo = doc.get('combo');
+    })
+
   }
 
   ngOnInit() { 
 
-    this.inVals.id = this.activatedRouted.snapshot.params["id"]
-    this.slide.getPresetById( this.inVals.id ).subscribe( doc => {this.currentTitle = doc.get('title') } )
+    
     
   }
+ 
 
   savePreset(e) {
     e.preventDefault();
