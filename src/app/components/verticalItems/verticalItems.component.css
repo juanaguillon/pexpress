@@ -101,13 +101,14 @@
 .mini-prie-parraf{
 	width: 70%;
 	margin: auto;
-	background: #ff9900;
+	background: #ffb300;
 	border-radius: 39px;
 	padding: 10px;
-	color: white;
+	color: black;
 }
+
 .mini-prie-parraf span:last-child{
-	color: #ffed00;
+	color: black;
 }
 
 .exec-lanuchers > div{
@@ -144,18 +145,27 @@
 }
 
 .exec-lanuchers .absolute-ofert{
-  width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	width: 100%;
 	height: 100%;
 	line-height: 1;
+	margin: 0;
+	top: 0;
+	display: block;
+	text-align: center;
 }
 
 .exec-lanuchers .absolute-ofert p{
-  border: 2px dotted;
-	border-radius: 40px;
-	padding: 14px;
+	display: block;
+	position: relative;
+	padding: 10px;
+	width: 30%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	top: 50%;
+	background: #ffb300;
+	color: black;
+	border-radius: 15px;
+	font-size: 147%;
 }
 .exec-launcers-items{
 	font-family: 'Roboto Slab', serif;

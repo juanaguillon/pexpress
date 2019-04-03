@@ -29,6 +29,12 @@ $(document).ready(function () {
 	
 });
 
+setInterval(() => {
+
+	$('.scale-animation').toggleClass('active');
+	
+}, 600);
+
 
 
 // $('.owl-carousel').owlCarousel({
