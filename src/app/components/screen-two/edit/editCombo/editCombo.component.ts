@@ -28,6 +28,10 @@ export class EditComboComponent implements OnInit {
     private activateRoute:ActivatedRoute
   ) {
 
+    
+    
+
+    
     this.inValues.id = this.activateRoute.snapshot.params["id"];
 
     this.slide.getSecondScreenDocById( this.inValues.id )
@@ -72,6 +76,7 @@ export class EditComboComponent implements OnInit {
 
     const onProm = res => {
       alert('Combos actualizados correctamente');
+      this.slide.updateConfig()
       this.status = 2;
     }
 

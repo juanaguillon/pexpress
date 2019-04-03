@@ -86,6 +86,7 @@ export class EditEjecutiveComponent implements OnInit {
 
     const onProm = res => {
       alert('Menu ejecutivo guardado correctamente');
+      this.slide.updateConfig()
       this.status = 2;
     }
 

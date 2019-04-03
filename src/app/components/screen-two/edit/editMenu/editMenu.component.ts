@@ -77,6 +77,7 @@ export class EditMenuComponent implements OnInit {
     const promResolve = (res) => {
       alert('Menú actualizado correctamente');
       this.status = 2;
+      this.slide.updateConfig()
     }
     const promError = (error) => {
       this.status = 0

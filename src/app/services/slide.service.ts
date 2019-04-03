@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage'
 import { AngularFirestore } from '@angular/fire/firestore'
+import { take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -46,6 +47,17 @@ export class SlideService {
   getSecondScreenDocById( id:number ){
     return this.db.doc(`secondscreen/${id}`).get();
   }
+
+  updateConfig( ){
+    let confg = this.getTheConfig().pipe(take(1)/* Retornar el observable en complete */).toPromise();
+
+    confg.then( rs => {
+      rs[0]['date'] = new Date().getTime();
+      this.db.doc('config/actual_presets').set( rs[0] )
+    })
+   
+  }
+
 
 
 

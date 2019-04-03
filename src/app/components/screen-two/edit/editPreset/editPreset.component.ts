@@ -103,6 +103,7 @@ export class EditPresetComponent implements OnInit {
     saved.then(resp => {
       alert('Preset guardado correctamente');
       this.status = 2;
+      this.slide.updateConfig()
       setTimeout(() => {
         this.status = 0;
       }, 2000);
