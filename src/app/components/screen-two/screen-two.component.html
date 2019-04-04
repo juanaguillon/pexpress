@@ -7,28 +7,16 @@
       </div>
       <div class="card-body">
 
-        <!-- <div class="list-group" *ngFor="let preset of presets; let i = index">
-          <div class="list-group-item flex-column align-items-start"> -->
+        <div class="d-flex m-select-container">
+          <div class="m-select"  *ngFor="let day of dayWeek">
 
-            <!-- <h5 class="text-dark">{{preset.title}}</h5> -->
+            <label for="">{{day.name}}</label>
+            <select  class="custom-select" [(ngModel)]="config[day.day]">                    
+              <option *ngFor="let preset of presets" [value]="preset.id">{{preset.title}}</option>
+            </select>
 
-              <!-- <input [(ngModel)]="config[day.day]" type="radio" [value]="preset.id" [id]=" i + 'week_day_preset' + day.day" [name]="'week_day_preset' + day.day " class="custom-control-input">
-              <label class="pointer custom-control-label" [for]="i + 'week_day_preset' + day.day">{{day.name}}</label> -->
-              <div class="d-flex m-select-container">
-                <div class="m-select"  *ngFor="let day of dayWeek">
-
-                  <label for="">{{day.name}}</label>
-                  <select  class="custom-select" [(ngModel)]="config[day.day]">                    
-                    <option *ngFor="let preset of presets" [value]="preset.id">{{preset.title}}</option>
-                  </select>
-  
-                </div>
-
-              </div>
-              
-            
-          <!-- </div>
-        </div> -->
+          </div>
+        </div>
 
       </div>
       
@@ -41,39 +29,34 @@
     <div class="card">
       <div class="card-header text-left">
         <a routerLink="/admin/listing" class="btn btn-success mb-2">Atras</a>
-        <a routerLink="/screentwo/editing" class="btn btn-warning mb-2 ml-2">Editar items</a>
         <ul class="nav nav-tabs card-header-tabs">
+         
           <li class="nav-item">
-            <a class="nav-link active" [ngClass]="{'active':compActive == 1}" (click)="toggleComponent( $event, 1 )" href="#">Menú de Día</a>
+            <a class="nav-link" href="#" [ngClass]="{'active':compActive == 1}" (click)="toggleComponent( $event, 1 )">Presets</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" [ngClass]="{'active':compActive == 2}" (click)="toggleComponent( $event, 2 )">Combo</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" [ngClass]="{'active':compActive == 3}" (click)="toggleComponent( $event, 3 )">Ejecutivo</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" [ngClass]="{'active':compActive == 4}" (click)="toggleComponent( $event, 4 )">Presets</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" [ngClass]="{'active':compActive == 5}" (click)="toggleComponent( $event, 5 )">Sliders</a>
+            <a class="nav-link" href="#" [ngClass]="{'active':compActive == 2}" (click)="toggleComponent( $event, 2 )">Sliders</a>
           </li>
         </ul>
       </div>
       <div class="card-body">
         
-        <app-newMenuDay *ngIf="compActive == 1"></app-newMenuDay>
-        <app-newCombo *ngIf="compActive == 2"></app-newCombo>
-        <app-newEjecutive *ngIf="compActive == 3"></app-newEjecutive>
-        <app-presets *ngIf="compActive == 4"></app-presets>
-        <app-slider *ngIf="compActive == 5"></app-slider>
+        <app-presets *ngIf="compActive == 1"></app-presets>
+        <app-newMenuDay  *ngIf="compActive == 1"></app-newMenuDay>
+        <app-newCombo (methodName)="reciveValsComboComponent($event)" [events]="eventsSubject.asObservable()" *ngIf="compActive == 1"></app-newCombo>
+        <app-newEjecutive *ngIf="compActive == 1"></app-newEjecutive>
+        <app-slider *ngIf="compActive == 2"></app-slider>
         
       </div>
 
       <div class="card-footer text-left">
         <a (click)="closeSesion()" class="btn btn-danger">Cerrar Sesión</a>
       </div>
-      
+
+      <button class="btn btn-success" (click)="emitToNewCombo()">VER</button>
+      <pre class="text-left">
+        {{compVals | json }}
+      </pre>
     </div>
 
   </div>

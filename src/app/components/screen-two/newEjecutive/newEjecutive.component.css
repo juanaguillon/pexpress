@@ -1,5 +1,10 @@
-.list-group-item, label{
+.list-group-item, label, h2{
   color: var(--dark);
+}
+
+h2{
+	padding-top: 10px;
+	border-top: 2px solid var(--red);
 }
 
 .form-group{
@@ -13,11 +18,4 @@
 .button-adding{
   width: 60px;
 	margin-left: 15px;
-}
-
-.new_title_container {
-	margin: 0 -20px;
-	padding: 20px 20px;
-	border-top: 1px solid #e0e0e0;
-	border-bottom: 1px solid #d6d6d6;
 }

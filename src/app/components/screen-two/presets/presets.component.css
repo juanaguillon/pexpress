@@ -1,6 +1,6 @@
 .form-group{
   text-align: left;
 }
-label{
+label,h2{
   color: var(--dark);
 }

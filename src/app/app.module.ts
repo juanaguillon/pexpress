@@ -29,7 +29,6 @@ import { VerticalItemsComponent } from './components/verticalItems/verticalItems
 // Environment
 import { environment } from '../environments/environment'; 
 import { LoginComponent } from './components/login/login.component';
-import { EditModule } from './components/screen-two/edit/edit.module';
 
 @NgModule({
   declarations: [
@@ -53,7 +52,6 @@ import { EditModule } from './components/screen-two/edit/edit.module';
     OwlModule,
     AdminModule,
     ScreenTwoModule,
-    EditModule
   ],
   providers: [],
   bootstrap: [AppComponent]

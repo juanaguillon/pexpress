@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { DatabaseService } from 'src/app/services/database.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-screen-two',
@@ -10,9 +11,11 @@ import { DatabaseService } from 'src/app/services/database.service';
 })
 export class ScreenTwoComponent implements OnInit {
 
+  eventsSubject = new Subject;
   compActive = 1;
   presets = []
   config = [];
+  compVals:any = {};
   dayWeek:any = [
     { name: "Domingo", day:0 },
     { name: "Lunes", day:1 },
@@ -35,11 +38,19 @@ export class ScreenTwoComponent implements OnInit {
   ngOnInit() {
   }
 
+  emitToNewCombo( ){
+    this.eventsSubject.next();
+  }
+
   checkIfHadPresets( ){
     this.db.getDocById( 'config','actual_presets' ).subscribe( doc => {
       // console.log( doc )
       this.config = doc["config"];
     })
+  }
+
+  reciveValsComboComponent( e ){
+    this.compVals = e;
   }
   
   closeSesion($e) {

@@ -16,13 +16,7 @@ export class NewMenuDayComponent implements OnInit {
   adiciones:string[] = [];
   currentAdition = "";
   inValues:any = { };
-  statusVals = [
-    "Guardar",
-    "<span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span>",
-    "Guardado"
-  ]
-  status = 0;
-
+ 
 
   constructor(
     private database: DatabaseService
@@ -47,37 +41,37 @@ export class NewMenuDayComponent implements OnInit {
     }
   }
 
-  saveMenu( ){
-    let lengt = Object.keys( this.inValues ).length 
-    if ( lengt < 5 ){
-      alert('Todos los campos son obligatorios')
-      return false;
-    }
-    if ( this.status == 1 ) return false;
+  // saveMenu( ){
+  //   let lengt = Object.keys( this.inValues ).length 
+  //   if ( lengt < 5 ){
+  //     alert('Todos los campos son obligatorios')
+  //     return false;
+  //   }
+  //   if ( this.status == 1 ) return false;
     
-    this.inValues.id = new Date().getTime();
-    this.inValues.aditions = this.adiciones;
-    this.inValues.type = 'menuday';
+  //   this.inValues.id = new Date().getTime();
+  //   this.inValues.aditions = this.adiciones;
+  //   this.inValues.type = 'menuday';
 
-    this.status = 1
+  //   this.status = 1
     
-    const promResolve = ( res ) => {
-      alert('Menú guardado correctamente');
-      this.status = 2;
-      this.adiciones = []
-      this.inValues ={};
-    }
-    const promError = ( error ) => {
-      this.status = 0
-      alert('Error al guardar el documento')
-      console.log( error );
-    }
+  //   const promResolve = ( res ) => {
+  //     alert('Menú guardado correctamente');
+  //     this.status = 2;
+  //     this.adiciones = []
+  //     this.inValues ={};
+  //   }
+  //   const promError = ( error ) => {
+  //     this.status = 0
+  //     alert('Error al guardar el documento')
+  //     console.log( error );
+  //   }
     
-    this.database.saveDocument('secondscreen', this.inValues).then( promResolve  ).catch( promError );
+  //   this.database.saveDocument('secondscreen', this.inValues).then( promResolve  ).catch( promError );
     
 
     
-  }
+  // }
 
 
   

@@ -1,5 +1,7 @@
 h2{
-  color: #212529;
+  color: var(--dark);
+  padding-top: 10px;
+  border-top: 2px solid var(--red);
 }
 label {
   margin-bottom: .5rem;

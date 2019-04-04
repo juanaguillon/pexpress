@@ -1,12 +1,7 @@
 <form>
-
+  <h2>Menú ejecutivo Actual</h2>
   <div class="form-group">
-  <div class="input-group">
-    <div class="input-group-prepend">
-      <span class="input-group-text" id="inputGroup-sizing-lg">Título</span>
-    </div>
-    <input name="current_title" id="current_title" [(ngModel)]="currentTitle" type="text" class="form-control">
-  </div>
+  
   </div>
   
   <p class="text-muted text-left">Añade menús ejecutivos, serán guardados, y mostrados en el preset.</p>
@@ -44,6 +39,8 @@
     </div>  
     
     {{ menus | json }}
+
+    <!-- ACORDION -->
     <div class="form-group"> 
       <div id="accordion">
         <div class="card" *ngFor="let menu of menus">
@@ -73,10 +70,7 @@
         </div>
         
       </div>
-    </div>
-    
-    <div class="form-group text-right">
-      <button (click)="saveDocument()" class="btn btn-primary" [innerHTML]="statusVals[status] | sanitizeHTML"></button>
-    </div>
+    </div>    
+   
   </form>
   

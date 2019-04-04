@@ -13,7 +13,6 @@ import { SliderComponent } from './slider/slider.component';
 
 
 import { ChangeClassDirective } from 'src/app/shared/changeClass.directive';
-import { EditModule } from './edit/edit.module';
 
 
 
@@ -23,7 +22,6 @@ import { EditModule } from './edit/edit.module';
     BrowserModule,
     RouterModule,
     FormsModule,
-    EditModule
   ],
   declarations: [
     ScreenTwoComponent,
@@ -33,7 +31,6 @@ import { EditModule } from './edit/edit.module';
     NewMenuDayComponent,
     ChangeClassDirective,
     SliderComponent
-    // SanitizeHTMLPipe    
   ],
   bootstrap: [ ScreenTwoComponent ]
 })

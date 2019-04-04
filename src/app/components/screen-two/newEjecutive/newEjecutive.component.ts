@@ -15,13 +15,7 @@ export class NewEjecutiveComponent implements OnInit {
   menus = []
 
   inValues: any = {}
-  statusVals = [
-    "Guardar",
-    "<span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span>",
-    "Guardado"
-  ]
-  status = 0;
-
+ 
   constructor(
     private database: DatabaseService
   ) { }
@@ -58,29 +52,29 @@ export class NewEjecutiveComponent implements OnInit {
     
   }
 
-  saveDocument() {
-    this.inValues.id = new Date().getTime();
-    this.inValues.type = "ejecutive";
-    this.inValues.menus = this.menus;
-    this.inValues.title = this.currentTitle;
+  // saveDocument() {
+  //   this.inValues.id = new Date().getTime();
+  //   this.inValues.type = "ejecutive";
+  //   this.inValues.menus = this.menus;
+  //   this.inValues.title = this.currentTitle;
     
-    this.status = 1;
+  //   this.status = 1;
 
-    const onProm = res => {
-      alert('Menu ejecutivo guardado correctamente');
-      this.status = 2;
-    }
+  //   const onProm = res => {
+  //     alert('Menu ejecutivo guardado correctamente');
+  //     this.status = 2;
+  //   }
 
-    const onError = error => {
-      alert('Error al crear el combo')
-      console.log(error);
-    }
+  //   const onError = error => {
+  //     alert('Error al crear el combo')
+  //     console.log(error);
+  //   }
 
 
-    let saved = this.database.saveDocument('secondscreen', this.inValues);
-    saved.then(onProm);
-    saved.catch(err => console.log(err));
+  //   let saved = this.database.saveDocument('secondscreen', this.inValues);
+  //   saved.then(onProm);
+  //   saved.catch(err => console.log(err));
 
-  }
+  // }
 
 }

@@ -14,7 +14,6 @@ import { adminRoutes } from './components/admin/admin.module'
 import { AuthGuard } from './services/auth.guard';
 import { NoauthGuard } from './services/noauth.guard';
 import { ScreenTwoComponent } from './components/screen-two/screen-two.component';
-import { EditComponent } from './components/screen-two/edit/edit.component';
 
 
 const routes: Routes = [

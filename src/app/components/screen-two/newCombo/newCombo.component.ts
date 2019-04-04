@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { DatabaseService } from 'src/app/services/database.service';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-newCombo',
@@ -8,27 +8,35 @@ import { DatabaseService } from 'src/app/services/database.service';
 })
 export class NewComboComponent implements OnInit {
 
-  currentTitle = "";
+  @Output() methodName = new EventEmitter<string>();
+  @Input() events:Observable<void>;
+  
   vals:any = {}
   inValues:any = {}
   theCombo:any[] = []
-  statusVals = [
-    "Guardar",
-    "<span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span>",
-    "Guardado"
-  ]
-  status = 0;
+  private eventSubs:any;
   
   constructor(
-    private database:DatabaseService
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.eventSubs = this.events.subscribe( ( ) => {
+      this.inValues.id = new Date().getTime();
+      this.inValues.type = "combo";
+      this.inValues.combos = this.theCombo;
+      this.methodName.emit( this.inValues )
+    } )
+  }
+
+  ngOnDestroy(): void {
+    this.eventSubs.unsubscribe();
+  }
   
   addCombo( ){
     let lengt = Object.keys( this.vals ).length;
     if ( lengt < 2 ){
       alert('Añade nombre y precio a el combo')
+      return;
     }
 
     this.theCombo.push(this.vals )
@@ -42,29 +50,27 @@ export class NewComboComponent implements OnInit {
     }
   }
 
-  saveDocument( ){
-    this.inValues.id = new Date().getTime();
-    this.inValues.type = "combo";
-    this.inValues.combos = this.theCombo;
-    this.inValues.title = this.currentTitle;
-    this.status = 1;
+  // saveDocument( ){
+  //   this.inValues.id = new Date().getTime();
+  //   this.inValues.type = "combo";
+  //   this.inValues.combos = this.theCombo;
+  //   this.inValues.title = this.currentTitle;
     
-    const onProm = res => {
-      alert('Combos guardados correctamente');
-      this.status = 2;
-    }
+  //   const onProm = res => {
+  //     alert('Combos guardados correctamente');
+  //   }
 
-    const onError = error => {
-      alert('Error al crear el combo')
-      console.log( error );
-    }
+  //   const onError = error => {
+  //     alert('Error al crear el combo')
+  //     console.log( error );
+  //   }
     
     
-    let saved = this.database.saveDocument( 'secondscreen', this.inValues );
-    saved.then( onProm );
-    saved.catch( onError );
+  //   let saved = this.database.saveDocument( 'secondscreen', this.inValues );
+  //   saved.then( onProm );
+  //   saved.catch( onError );
     
-  }
+  // }
 
 
 }
