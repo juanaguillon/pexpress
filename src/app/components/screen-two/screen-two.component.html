@@ -40,23 +40,34 @@
         </ul>
       </div>
       <div class="card-body">
+
+        <select (change)="changeThePreset($event)" name="editing_preset" id="editing_preset" class="custom-select">
+          <option value="new">Crear nuevo preset</option>
+          <option *ngFor="let preset of presets" [value]="preset.id">{{preset.title}}</option>
+        </select>
+
+        <h2>Título de actual preset</h2>
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-lg">Título</span>
+            </div>
+            <input name="current_title" id="current_title" [(ngModel)]="currentTitle" type="text" class="form-control">
+          </div>
+        </div>
         
-        <app-presets *ngIf="compActive == 1"></app-presets>
-        <app-newMenuDay  *ngIf="compActive == 1"></app-newMenuDay>
-        <app-newCombo (methodName)="reciveValsComboComponent($event)" [events]="eventsSubject.asObservable()" *ngIf="compActive == 1"></app-newCombo>
-        <app-newEjecutive *ngIf="compActive == 1"></app-newEjecutive>
+        <app-newMenuDay [inValues]="compVals[0]" (takeInfo)="reciveValsComponent($event)" [searchInfo]="eventsSubject.asObservable()" *ngIf="compActive == 1"></app-newMenuDay>
+        <app-newCombo [data]="compVals[1]" (methodName)="reciveValsComponent($event)" [events]="eventsSubject.asObservable()" *ngIf="compActive == 1"></app-newCombo>
+        <app-newEjecutive [data]="compVals[2]" (takeInfo)="reciveValsComponent($event)" [searchInfo]="eventsSubject.asObservable()" *ngIf="compActive == 1"></app-newEjecutive>
         <app-slider *ngIf="compActive == 2"></app-slider>
         
       </div>
 
       <div class="card-footer text-left">
         <a (click)="closeSesion()" class="btn btn-danger">Cerrar Sesión</a>
-      </div>
-
-      <button class="btn btn-success" (click)="emitToNewCombo()">VER</button>
-      <pre class="text-left">
-        {{compVals | json }}
-      </pre>
+        <button class="btn btn-primary ml-1" (click)="emitToChildren()">Guardar Preset</button>
+      </div>      
+      
     </div>
 
   </div>

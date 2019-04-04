@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 import { ScreenTwoComponent } from './screen-two.component';
-import { PresetsComponent } from './presets/presets.component';
 import { NewComboComponent } from './newCombo/newCombo.component';
 import { NewEjecutiveComponent } from './newEjecutive/newEjecutive.component';
 import { NewMenuDayComponent } from './newMenuDay/newMenuDay.component';
@@ -25,7 +24,6 @@ import { ChangeClassDirective } from 'src/app/shared/changeClass.directive';
   ],
   declarations: [
     ScreenTwoComponent,
-    PresetsComponent,
     NewComboComponent,
     NewEjecutiveComponent,
     NewMenuDayComponent,

@@ -10,6 +10,7 @@ export class NewComboComponent implements OnInit {
 
   @Output() methodName = new EventEmitter<string>();
   @Input() events:Observable<void>;
+  @Input() data;
   
   vals:any = {}
   inValues:any = {}

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { DatabaseService } from 'src/app/services/database.service' 
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Observable } from 'rxjs';
 
 export interface Adiciones {
   name: string
@@ -13,16 +13,36 @@ export interface Adiciones {
 
 export class NewMenuDayComponent implements OnInit {
 
+  @Output() takeInfo = new EventEmitter;
+  @Input() searchInfo: Observable<any>;
+  @Input() inValues;
+  
   adiciones:string[] = [];
   currentAdition = "";
-  inValues:any = { };
- 
+  // inValues: any = {}
+  
+  subscribeObject:any;
 
-  constructor(
-    private database: DatabaseService
-  ) { }
+  constructor() {
+    
+  }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this.subscribeObject = this.searchInfo.subscribe( ( ) => {
+      this.inValues.id = new Date().getTime();
+      this.inValues.aditions = this.adiciones;
+      this.inValues.type = 'menuday';
+
+      this.takeInfo.emit( this.inValues );
+    })
+
+  }
+
+  
+
+  ngOnDestroy(): void {
+  this.subscribeObject.unsubscribe();    
+  }
 
   addAdition(  ){
     if ( !this.currentAdition ){

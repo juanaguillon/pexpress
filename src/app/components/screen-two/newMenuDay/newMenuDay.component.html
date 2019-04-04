@@ -1,6 +1,10 @@
 <h2>Menu actual</h2>
 
 <div class="form-group">
+  <label for="full_name">Título</label>
+  <input [(ngModel)]="inValues.name" type="text" class="form-control" name="full_name" id="full_name" placeholder="Ej: Pechuga a la Reina">
+</div>
+<div class="form-group">
   <label for="full_eatings">Alimentos</label>
   <input [(ngModel)]="inValues.aliments" type="text" class="form-control" name="full_eatings" id="full_eatings" placeholder="Ej: Carne - Lomo - Milanesa">
 </div>
@@ -40,4 +44,5 @@
     <input [(ngModel)]="inValues.name_option_price" type="number" class="form-control" name="full_option_price" id="full_option_price">
   </div>
 </div>
+
 

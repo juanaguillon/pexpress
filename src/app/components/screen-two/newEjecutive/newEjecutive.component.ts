@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { DatabaseService } from 'src/app/services/database.service';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Subject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-newEjecutive',
@@ -8,19 +8,35 @@ import { DatabaseService } from 'src/app/services/database.service';
 })
 export class NewEjecutiveComponent implements OnInit {
 
-  currentTitle = "";
+  @Output() takeInfo = new EventEmitter;
+  @Input() searchInfo:Observable<any>;
+  @Input() data;
+  
   vals: any = {}
   currentAdition = ""
   aditions = [];
   menus = []
 
-  inValues: any = {}
- 
-  constructor(
-    private database: DatabaseService
-  ) { }
 
-  ngOnInit() { }
+  inValues: any = {}
+  subscibedObject:any;
+ 
+  constructor() { }
+
+  ngOnInit() {
+    this.subscibedObject = this.searchInfo.subscribe( ( ) => {
+      this.inValues.id = new Date().getTime();
+      this.inValues.type = "ejecutive";
+      this.inValues.menus = this.menus;
+
+      this.takeInfo.emit( this.inValues );
+    } )
+  }
+
+  ngOnDestroy(): void {
+    this.subscibedObject.unsubscribe();
+  }
+  
 
   addAdition() {
     

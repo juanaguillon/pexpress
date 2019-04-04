@@ -3,6 +3,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { DatabaseService } from 'src/app/services/database.service';
 import { Subject } from 'rxjs';
+import { SlideService } from 'src/app/services/slide.service';
+import { switchMap, combineLatest, flatMap, combineAll } from 'rxjs/operators';
 
 @Component({
   selector: 'app-screen-two',
@@ -11,11 +13,14 @@ import { Subject } from 'rxjs';
 })
 export class ScreenTwoComponent implements OnInit {
 
+  compVals:any = [];
   eventsSubject = new Subject;
+  actualPreset:number;
+
   compActive = 1;
   presets = []
   config = [];
-  compVals:any = {};
+  currentTitle:string ;
   dayWeek:any = [
     { name: "Domingo", day:0 },
     { name: "Lunes", day:1 },
@@ -29,28 +34,101 @@ export class ScreenTwoComponent implements OnInit {
   constructor(
     private auth: AuthService,
     private router: Router,
-    private db: DatabaseService
+    private db: DatabaseService,
+    private slide:SlideService,
   ) {
     this.getPresets();
-    this.checkIfHadPresets();
+    this.checkIfHadPresets();    
    }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  emitToNewCombo( ){
+  /* Emitir seleccion de datos a los componenets hijos */
+  emitToChildren( ){
+    this.eventsSubject.subscribe({      
+      next: ( ) => {
+        this.saveDataChildrens( );
+      }
+    })
+
     this.eventsSubject.next();
+
+  }  
+
+  saveDataChildrens( ){
+    this.compVals[1]['id'] += 10;
+    this.compVals[2]['id'] += 20;
+
+    
+    let savedChecked = true;
+    
+    const err = ( ) => {
+      alert('Error al guardar el preset. Intente nuevamente');
+      savedChecked = false;
+      return false;
+    }
+
+    
+    this.db.saveDocument('secondscreenalt', this.compVals[0] ).catch(err);
+    this.db.saveDocument('secondscreenalt', this.compVals[1] ).catch(err);
+    this.db.saveDocument('secondscreenalt', this.compVals[2] ).catch(err);
+
+    if ( savedChecked ){
+      let data = {
+        id: new Date().getTime(),
+        menu: this.compVals[0]["id"],
+        combo: this.compVals[1]["id"],
+        ejecutive: this.compVals[2]["id"],
+        title: this.currentTitle
+      }
+
+      this.db.saveDocument('presets', data )
+    }
+
+    
   }
 
+  // Obtener la configuración actual.
   checkIfHadPresets( ){
     this.db.getDocById( 'config','actual_presets' ).subscribe( doc => {
-      // console.log( doc )
       this.config = doc["config"];
     })
   }
 
-  reciveValsComboComponent( e ){
-    this.compVals = e;
+
+  changeThePreset( event ){
+    let id = event.target.value;
+
+    if ( id == "new" ){
+      this.compVals = [];
+    }else{
+      let preset = this.slide.getPresetById( id ).pipe(
+        switchMap( doc => {
+          let menuID = doc.get('menu');
+          let comboID = doc.get('combo');
+          let ejecID = doc.get('ejec');
+          return [
+            this.slide.getSecondScreenDocById(menuID),
+            this.slide.getSecondScreenDocById(comboID),
+            this.slide.getSecondScreenDocById(ejecID)
+          ]          
+        }),
+        combineAll()
+      )
+      
+      preset.subscribe( docs => {
+        this.compVals = docs.map( doc => {
+          return doc.data();
+        })        
+      });
+    }
+
+
+
+  }
+
+  reciveValsComponent( e ){
+    this.compVals.push(e);
   }
   
   closeSesion($e) {
@@ -64,14 +142,19 @@ export class ScreenTwoComponent implements OnInit {
     this.compActive = number;
   }
 
+  /**
+   * Obtener todos los presets actuales.
+   */
   public getPresets( ){
     this.db.getFullCollection('presets').subscribe( docs => {
       this.presets = docs;
     })
   }
 
+  /**
+   * Guardar los preset seleccionados en la semana.
+   */
   public saveConfig( ){
-
     if ( this.config.length < 7 || this.config.includes(undefined) ){
       alert('Porfavor, añade un preset a todos los días');
       return;
