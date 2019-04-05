@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, SimpleChanges } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -17,8 +17,7 @@ export class NewComboComponent implements OnInit {
   theCombo:any[] = []
   private eventSubs:any;
   
-  constructor(
-  ) { }
+  constructor() { }
 
   ngOnInit() {
     this.eventSubs = this.events.subscribe( ( ) => {
@@ -31,6 +30,15 @@ export class NewComboComponent implements OnInit {
 
   ngOnDestroy(): void {
     this.eventSubs.unsubscribe();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log( changes );
+    if ( changes.data && changes.data.currentValue !== undefined){
+      this.theCombo = changes.data.currentValue['combos'];
+    } else if (changes.data && changes.data.currentValue == undefined ){
+      this.theCombo = [];
+    }
   }
   
   addCombo( ){
@@ -50,28 +58,6 @@ export class NewComboComponent implements OnInit {
       this.addCombo ( );
     }
   }
-
-  // saveDocument( ){
-  //   this.inValues.id = new Date().getTime();
-  //   this.inValues.type = "combo";
-  //   this.inValues.combos = this.theCombo;
-  //   this.inValues.title = this.currentTitle;
-    
-  //   const onProm = res => {
-  //     alert('Combos guardados correctamente');
-  //   }
-
-  //   const onError = error => {
-  //     alert('Error al crear el combo')
-  //     console.log( error );
-  //   }
-    
-    
-  //   let saved = this.database.saveDocument( 'secondscreen', this.inValues );
-  //   saved.then( onProm );
-  //   saved.catch( onError );
-    
-  // }
 
 
 }

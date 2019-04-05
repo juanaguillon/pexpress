@@ -16,6 +16,7 @@ export class ScreenTwoComponent implements OnInit {
   compVals:any = [];
   eventsSubject = new Subject;
   actualPreset:number;
+  currentID:number;
 
   compActive = 1;
   presets = []
@@ -56,12 +57,13 @@ export class ScreenTwoComponent implements OnInit {
   }  
 
   saveDataChildrens( ){
-    this.compVals[1]['id'] += 10;
-    this.compVals[2]['id'] += 20;
-
     
-    let savedChecked = true;
+    if ( this.currentID == null ){
+      this.compVals[1]['id'] += 10;
+      this.compVals[2]['id'] += 20;
+    }
     
+    let savedChecked = true;    
     const err = ( ) => {
       alert('Error al guardar el preset. Intente nuevamente');
       savedChecked = false;
@@ -69,20 +71,25 @@ export class ScreenTwoComponent implements OnInit {
     }
 
     
-    this.db.saveDocument('secondscreenalt', this.compVals[0] ).catch(err);
-    this.db.saveDocument('secondscreenalt', this.compVals[1] ).catch(err);
-    this.db.saveDocument('secondscreenalt', this.compVals[2] ).catch(err);
+    this.db.saveDocument('secondscreen', this.compVals[0] ).catch(err);
+    this.db.saveDocument('secondscreen', this.compVals[1] ).catch(err);
+    this.db.saveDocument('secondscreen', this.compVals[2] ).catch(err);
 
     if ( savedChecked ){
       let data = {
-        id: new Date().getTime(),
         menu: this.compVals[0]["id"],
         combo: this.compVals[1]["id"],
-        ejecutive: this.compVals[2]["id"],
+        ejec: this.compVals[2]["id"],
         title: this.currentTitle
       }
 
+      if ( this.currentID == null ){
+        data["id"] = new Date().getTime();
+      }else{
+        data["id"] = this.currentID;
+      }
       this.db.saveDocument('presets', data )
+      this.slide.updateConfig();
     }
 
     
@@ -100,13 +107,19 @@ export class ScreenTwoComponent implements OnInit {
     let id = event.target.value;
 
     if ( id == "new" ){
+      this.currentID = null;
       this.compVals = [];
     }else{
+      
+      // Agregar el id actual para evitar nueva creación de preset.
+      this.currentID = id;
+
       let preset = this.slide.getPresetById( id ).pipe(
         switchMap( doc => {
           let menuID = doc.get('menu');
           let comboID = doc.get('combo');
           let ejecID = doc.get('ejec');
+          this.currentTitle = doc.get('title'); 
           return [
             this.slide.getSecondScreenDocById(menuID),
             this.slide.getSecondScreenDocById(comboID),

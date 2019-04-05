@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input, SimpleChanges } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export interface Adiciones {
@@ -15,11 +15,11 @@ export class NewMenuDayComponent implements OnInit {
 
   @Output() takeInfo = new EventEmitter;
   @Input() searchInfo: Observable<any>;
-  @Input() inValues;
+  @Input() data;
   
   adiciones:string[] = [];
   currentAdition = "";
-  // inValues: any = {}
+  inValues: any = {}
   
   subscribeObject:any;
 
@@ -41,7 +41,17 @@ export class NewMenuDayComponent implements OnInit {
   
 
   ngOnDestroy(): void {
-  this.subscribeObject.unsubscribe();    
+   this.subscribeObject.unsubscribe();    
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if ( changes.data && changes.data.currentValue != undefined ){
+      this.inValues = changes.data.currentValue;
+      this.adiciones = changes.data.currentValue.aditions;
+    } else if (changes.data && changes.data.currentValue == undefined) {
+      this.inValues = {};
+      this.adiciones = [];
+    }
   }
 
   addAdition(  ){

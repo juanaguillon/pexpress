@@ -34,4 +34,5 @@ export class DatabaseService {
     return this.database.doc(`${collection}/${id}`).valueChanges();
   }
 
+
 }

@@ -56,7 +56,7 @@
           </div>
         </div>
         
-        <app-newMenuDay [inValues]="compVals[0]" (takeInfo)="reciveValsComponent($event)" [searchInfo]="eventsSubject.asObservable()" *ngIf="compActive == 1"></app-newMenuDay>
+        <app-newMenuDay [data]="compVals[0]" (takeInfo)="reciveValsComponent($event)" [searchInfo]="eventsSubject.asObservable()" *ngIf="compActive == 1"></app-newMenuDay>
         <app-newCombo [data]="compVals[1]" (methodName)="reciveValsComponent($event)" [events]="eventsSubject.asObservable()" *ngIf="compActive == 1"></app-newCombo>
         <app-newEjecutive [data]="compVals[2]" (takeInfo)="reciveValsComponent($event)" [searchInfo]="eventsSubject.asObservable()" *ngIf="compActive == 1"></app-newEjecutive>
         <app-slider *ngIf="compActive == 2"></app-slider>

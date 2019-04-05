@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input, SimpleChanges } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 
 @Component({
@@ -35,6 +35,14 @@ export class NewEjecutiveComponent implements OnInit {
 
   ngOnDestroy(): void {
     this.subscibedObject.unsubscribe();
+  }
+  
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.data && changes.data.currentValue != undefined) {
+      this.menus = changes.data.currentValue.menus;
+    } else if (changes.data && changes.data.currentValue == undefined) {
+      this.menus = [];
+    }
   }
   
 
