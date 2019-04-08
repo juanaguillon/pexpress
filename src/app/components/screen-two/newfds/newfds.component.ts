@@ -1,5 +1,4 @@
-import { Component, OnInit, Output, Input } from '@angular/core';
-import { EventEmitter } from 'events';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -11,7 +10,7 @@ export class NewFdsComponent implements OnInit {
   constructor() { }
 
   @Output() takeInfo = new EventEmitter();
-  @Input() searcInfo:Observable<any>
+  @Input() searchInfo:Observable<any>
   @Input() data;
 
   subscribeData;
@@ -23,8 +22,12 @@ export class NewFdsComponent implements OnInit {
 
   
   ngOnInit() { 
-    this.subscribeData = this.searcInfo.subscribe( doc => {
-      
+    this.subscribeData = this.searchInfo.subscribe( doc => {
+      this.inValues.id = new Date().getTime();
+      this.inValues.type = "fdslaunchs"
+      this.inValues.aditions = this.launchers;
+
+      this.takeInfo.emit(this.inValues);
     })    
     
   }
@@ -33,16 +36,15 @@ export class NewFdsComponent implements OnInit {
     this.subscribeData.unsubscribe();
   }
 
-  addLaunch( e ){
-    e.preventDefault();
+  addLaunch(  ){
 
     this.launchers.push(this.launcData)
     this.launcData = {}
   }
 
-  addLaunchKey( e ){
-    if ( e.keyCode == 27 ){
-      this.addLaunch( e )
+  addLaunchKey( eeve ){
+    if (eeve.keyCode == 13 ){
+      this.addLaunch(  )
     }
   }
   

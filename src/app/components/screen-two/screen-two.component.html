@@ -65,15 +65,15 @@
         
         <app-newMenuDay [data]="compVals[0]" (takeInfo)="reciveValsComponent($event)" [searchInfo]="eventsSubject.asObservable()" *ngIf="compActive == 1 && !isFDS"></app-newMenuDay>
 
-        <app-newfds *ngIf="compActive == 1 && isFDS" ></app-newfds>
+        <app-newfds [data]="compVals[0]" (takeInfo)="reciveValsComponent($event)" [searchInfo]="eventsSubject.asObservable()" *ngIf="compActive == 1 && isFDS" ></app-newfds>
 
         <app-newCombo [data]="compVals[1]" (methodName)="reciveValsComponent($event)" [events]="eventsSubject.asObservable()" *ngIf="compActive == 1"></app-newCombo>
 
-        <app-newfdscombo *ngIf="compActive == 1 && isFDS"></app-newfdscombo>
+        <app-newfdscombo [data]="compVals[2]" (takeInfo)="reciveValsComponent($event)" [searchInfo]="eventsSubject.asObservable()" *ngIf="compActive == 1 && isFDS"></app-newfdscombo>
 
         <app-newEjecutive [data]="compVals[2]" (takeInfo)="reciveValsComponent($event)" [searchInfo]="eventsSubject.asObservable()" *ngIf="compActive == 1 && !isFDS"></app-newEjecutive>
 
-
+        <!-- Mostrar en pestaña 2 -->
         <app-slider *ngIf="compActive == 2"></app-slider>
         
       </div>

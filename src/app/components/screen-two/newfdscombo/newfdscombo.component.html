@@ -1,1 +1,32 @@
-<p>newfdscombo works</p>
+<h2 class="text-dark">Menú diario</h2>
+<div class="form-group">
+  <label for="name_day">Nombre</label>
+  <input class="form-control"  [(ngModel)]="menuName" id="name_day" name="name_day" type="text">
+  <small class="text-muted form-text">EJ: Carne - Pechuga - Lomo - Milanesa - Trucha - Mojarra</small>
+</div>
+
+<div class="form-group">
+  <label for="list_day">Lista de adiciones</label>
+  <div class="form-row">
+    <div class="col-md-10">
+      <input (keyup)="addAditionKey($event)" class="form-control" [(ngModel)]="aditionData.name" type="text" name="list_day" id="list_day">
+    </div>
+    <div class="col-md-2">        
+      <button type="button" (click)="addAdition()" class="btn btn-success">Añadir item</button>
+    </div>
+  </div>    
+</div>
+
+<div class="form-group" *ngIf="aditions.length > 0">
+  <div class="card">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item d-flex justify-content-between" *ngFor="let launcher of aditions; let i = index">
+        <span class="text-success">{{launcher.name}}</span>
+        <span class="text-muted">
+          <button type="button" (click)="removeAdition(i)" class="btn btn-danger btn-sm ml-2">x</button>
+        </span>  
+      </li>
+    </ul>
+  </div>
+</div>
+  

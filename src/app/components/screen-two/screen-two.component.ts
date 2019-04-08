@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { DatabaseService } from 'src/app/services/database.service';
-import { Subject } from 'rxjs';
+import { Subject} from 'rxjs';
 import { SlideService } from 'src/app/services/slide.service';
-import { switchMap, combineLatest, flatMap, combineAll } from 'rxjs/operators';
+import { switchMap, combineAll } from 'rxjs/operators';
 
 @Component({
   selector: 'app-screen-two',
@@ -13,8 +13,13 @@ import { switchMap, combineLatest, flatMap, combineAll } from 'rxjs/operators';
 })
 export class ScreenTwoComponent implements OnInit {
 
+  /**
+   * Se usará para gurdar la información de los componentes hijos.
+   */
   compVals:any = [];
-  eventsSubject = new Subject;
+  
+  
+  eventsSubject = new Subject();
   actualPreset:number;
   currentID:number;
 
@@ -27,7 +32,7 @@ export class ScreenTwoComponent implements OnInit {
   status = 0;
   statusHTML = [
     "Guardar preset",
-    '<div class="spinner-border" role="status"></div>',
+    '<div class="spinner-border" role="status"></div>'
   ]
   
   dayWeek:any = [
@@ -52,6 +57,7 @@ export class ScreenTwoComponent implements OnInit {
 
   ngOnInit() {}
 
+
   /* Emitir seleccion de datos a los componenets hijos */
   emitToChildren( ){
     this.eventsSubject.subscribe({      
@@ -59,6 +65,7 @@ export class ScreenTwoComponent implements OnInit {
         this.saveDataChildrens( );
       }
     })
+
 
     this.eventsSubject.next();
 
@@ -69,44 +76,47 @@ export class ScreenTwoComponent implements OnInit {
     // Evitar multiples click al guardar
     if ( this.status == 1 ) return;
 
+    console.log( this.compVals );
+    this.compVals = []
+    
     // Loading status
-    this.status = 1;
-    if ( this.currentID == null ){
-      this.compVals[1]['id'] += 10;
-      this.compVals[2]['id'] += 20;
-    }
+    // this.status = 1;
+    // if ( this.currentID == null ){
+    //   this.compVals[1]['id'] += 10;
+    //   this.compVals[2]['id'] += 20;
+    // }
     
-    let savedChecked = true;    
-    const err = ( ) => {
-      alert('Error al guardar el preset. Intente nuevamente');
-      savedChecked = false;
-      return false;
-    }
+    // let savedChecked = true;    
+    // const err = ( ) => {
+    //   alert('Error al guardar el preset. Intente nuevamente');
+    //   savedChecked = false;
+    //   return false;
+    // }
 
     
-    this.db.saveDocument('secondscreen', this.compVals[0] ).catch(err);
-    this.db.saveDocument('secondscreen', this.compVals[1] ).catch(err);
-    this.db.saveDocument('secondscreen', this.compVals[2] ).catch(err);
+    // this.db.saveDocument('secondscreen', this.compVals[0] ).catch(err);
+    // this.db.saveDocument('secondscreen', this.compVals[1] ).catch(err);
+    // this.db.saveDocument('secondscreen', this.compVals[2] ).catch(err);
 
-    if ( savedChecked ){
-      let data = {
-        menu: this.compVals[0]["id"],
-        combo: this.compVals[1]["id"],
-        ejec: this.compVals[2]["id"],
-        title: this.currentTitle
-      }
+    // if ( savedChecked ){
+    //   let data = {
+    //     menu: this.compVals[0]["id"],
+    //     combo: this.compVals[1]["id"],
+    //     ejec: this.compVals[2]["id"],
+    //     title: this.currentTitle
+    //   }
 
-      if ( this.currentID == null ){
-        data["id"] = new Date().getTime();
-      }else{
-        data["id"] = this.currentID;
-      }
-      this.db.saveDocument('presets', data ).then( rf => {
-        alert('Preset guardado correctamente');
-        this.status = 0;
-      })
-      this.slide.updateConfig();
-    }
+    //   if ( this.currentID == null ){
+    //     data["id"] = new Date().getTime();
+    //   }else{
+    //     data["id"] = this.currentID;
+    //   }
+    //   this.db.saveDocument('presets', data ).then( rf => {
+    //     alert('Preset guardado correctamente');
+    //     this.status = 0;
+    //   })
+    //   this.slide.updateConfig();
+    // }
 
     
   }
@@ -156,6 +166,10 @@ export class ScreenTwoComponent implements OnInit {
 
   }
 
+  /**
+   * Llamar la información de los componentes hijos.
+   * Este métodos se usará en el HTML para obtener su respectiva información.
+   * */
   reciveValsComponent( e ){
     this.compVals.push(e);
   }
