@@ -44,4 +44,20 @@ label {
   .m-select{
     min-width: 50%;
   }
+  .button-block{
+    width: 100%;
+    display: block;
+    margin: 0 !important;
+    margin-top: 0.5em !important;
+  }
+  .card-footer-preset{
+    display: flex;
+    flex-direction: column;
+  }
+  .card-footer-preset > .button-block:first-child{
+    order:2;
+  }
+  .card-footer-preset > .button-block:last-child{
+    order:1;
+  }
 }

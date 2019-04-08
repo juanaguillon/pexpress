@@ -14,7 +14,7 @@
             <select  class="custom-select" [(ngModel)]="config[day.day]">                    
               <option *ngFor="let preset of presets" [value]="preset.id">{{preset.title}}</option>
             </select>
-
+            
           </div>
         </div>
 
@@ -46,6 +46,10 @@
             <option value="new">Crear nuevo preset</option>
             <option *ngFor="let preset of presets" [value]="preset.id">{{preset.title}}</option>
           </select>
+          <div class="custom-control custom-checkbox">
+            <input [(ngModel)]="isFDS" type="checkbox" class="custom-control-input" id="isfds" name="isfds">
+            <label class="custom-control-label" for="isfds">¿Es fin de Semana?</label>
+          </div>
   
           <h2>Título de actual preset</h2>
           <div class="form-group">
@@ -59,16 +63,24 @@
         </ng-container>
         
         
-        <app-newMenuDay [data]="compVals[0]" (takeInfo)="reciveValsComponent($event)" [searchInfo]="eventsSubject.asObservable()" *ngIf="compActive == 1"></app-newMenuDay>
+        <app-newMenuDay [data]="compVals[0]" (takeInfo)="reciveValsComponent($event)" [searchInfo]="eventsSubject.asObservable()" *ngIf="compActive == 1 && !isFDS"></app-newMenuDay>
+
+        <app-newfds *ngIf="compActive == 1 && isFDS" ></app-newfds>
+
         <app-newCombo [data]="compVals[1]" (methodName)="reciveValsComponent($event)" [events]="eventsSubject.asObservable()" *ngIf="compActive == 1"></app-newCombo>
-        <app-newEjecutive [data]="compVals[2]" (takeInfo)="reciveValsComponent($event)" [searchInfo]="eventsSubject.asObservable()" *ngIf="compActive == 1"></app-newEjecutive>
+
+        <app-newfdscombo *ngIf="compActive == 1 && isFDS"></app-newfdscombo>
+
+        <app-newEjecutive [data]="compVals[2]" (takeInfo)="reciveValsComponent($event)" [searchInfo]="eventsSubject.asObservable()" *ngIf="compActive == 1 && !isFDS"></app-newEjecutive>
+
+
         <app-slider *ngIf="compActive == 2"></app-slider>
         
       </div>
 
-      <div class="card-footer text-left">
-        <a (click)="closeSesion($event)" class="btn btn-danger">Cerrar Sesión</a>
-        <button *ngIf="compActive == 1" class="btn btn-primary ml-1" (click)="emitToChildren()">Guardar Preset</button>
+      <div class="card-footer card-footer-preset text-left">
+        <a (click)="closeSesion($event)" class="btn btn-danger button-block">Cerrar Sesión</a>
+        <button *ngIf="compActive == 1" class="btn btn-primary ml-1 button-block" (click)="emitToChildren()" [innerHTML]="statusHTML[status] | sanitizeHTML" ></button>
       </div>      
       
     </div>

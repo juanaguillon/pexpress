@@ -21,7 +21,15 @@ export class ScreenTwoComponent implements OnInit {
   compActive = 1;
   presets = []
   config = [];
-  currentTitle:string ;
+  currentTitle:string;
+  isFDS:boolean;
+
+  status = 0;
+  statusHTML = [
+    "Guardar preset",
+    '<div class="spinner-border" role="status"></div>',
+  ]
+  
   dayWeek:any = [
     { name: "Domingo", day:0 },
     { name: "Lunes", day:1 },
@@ -57,7 +65,12 @@ export class ScreenTwoComponent implements OnInit {
   }  
 
   saveDataChildrens( ){
-    
+
+    // Evitar multiples click al guardar
+    if ( this.status == 1 ) return;
+
+    // Loading status
+    this.status = 1;
     if ( this.currentID == null ){
       this.compVals[1]['id'] += 10;
       this.compVals[2]['id'] += 20;
@@ -88,7 +101,10 @@ export class ScreenTwoComponent implements OnInit {
       }else{
         data["id"] = this.currentID;
       }
-      this.db.saveDocument('presets', data )
+      this.db.saveDocument('presets', data ).then( rf => {
+        alert('Preset guardado correctamente');
+        this.status = 0;
+      })
       this.slide.updateConfig();
     }
 

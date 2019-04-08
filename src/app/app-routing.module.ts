@@ -62,7 +62,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]   
   },
   {
-    path: 'verticalproducts2',
+    path: 'fds',
     component: VerticalItems2Component
   }
   

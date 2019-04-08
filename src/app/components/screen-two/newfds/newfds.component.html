@@ -1,0 +1,33 @@
+<form class="mb-3">
+  <h2>Almuerzos Actuales</h2>
+  <div class="form-row">
+    <div class="col-md-6">
+      <label for="item_name">Nombre de almuerzo</label>
+      <input [(ngModel)]="launcData.name" type="text" name="item_name" id="item_name" class="form-control">
+    </div>
+    <div class="col-md-6">
+      <label for="item_price">Precio de almuerzo</label>
+      <input [(ngModel)]="launcData.price" type="number" name="item_price" id="item_price" class="form-control">
+    </div>
+    <div class="col-md-4">
+      <button (click)="addLaunch( $event )" type="button" class="btn btn-success btn-sm my-1">Agregar almuerzo</button>
+    </div>
+  </div>
+
+  <div class="form-group" *ngIf="launchers.length > 0">
+    <div class="card">
+      <ul class="list-group list-group-flush" >
+        <li class="list-group-item d-flex justify-content-between" *ngFor="let launcher of launchers; let i = index">
+          <span class="text-success">{{launcher.name}}</span>
+          <span class="text-muted">
+            ${{launcher.price | number }} 
+            <button (click)="removeAdition(i)" class="btn btn-danger btn-sm ml-2">x</button>
+          </span>
+          
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  
+</form>

@@ -15,6 +15,7 @@ export class NoauthGuard implements CanActivate, CanActivateChild {
     
     if ( this.auth.isLogged() ){
       this.router.navigate(["/admin/listing"]);
+      return false;
     }
 
     return true;

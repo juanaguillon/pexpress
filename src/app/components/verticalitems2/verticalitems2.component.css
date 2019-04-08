@@ -7,7 +7,6 @@
 .titulo{
 	height: auto;
 	display: block;
-	min-height: 30%;
 }
 .titulo h3{
   letter-spacing: 3px;
@@ -71,7 +70,7 @@ span.li-text-left {
 
 .combo-day > ul > li{
 	padding: 7px 0;
-	border-bottom: 3px dashed #fbce65ad;
+	border-bottom: 3px dashed #fbce65;
 }
 .combo-day .price-combo{
 	width: 50%;
@@ -233,7 +232,7 @@ line-height: 1.2;
 owl-carousel {
 	display: block;
 	max-height: 310px;
-	height: 310px;
+	height: 216px;
 	margin: 0px -15px;
 	margin-bottom: 15px;
 }
