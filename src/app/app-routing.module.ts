@@ -14,6 +14,7 @@ import { adminRoutes } from './components/admin/admin.module'
 import { AuthGuard } from './services/auth.guard';
 import { NoauthGuard } from './services/noauth.guard';
 import { ScreenTwoComponent } from './components/screen-two/screen-two.component';
+import { VerticalItems2Component } from './components/verticalitems2/verticalitems2.component';
 
 
 const routes: Routes = [
@@ -57,7 +58,12 @@ const routes: Routes = [
   },
   {
     path: 'screentwo',
-    component: ScreenTwoComponent
+    component: ScreenTwoComponent,
+    canActivate: [AuthGuard]   
+  },
+  {
+    path: 'verticalproducts2',
+    component: VerticalItems2Component
   }
   
 ];

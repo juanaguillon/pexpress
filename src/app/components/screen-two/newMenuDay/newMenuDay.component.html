@@ -21,8 +21,11 @@
 
 <div class="form-group" *ngIf="adiciones.length > 0">
   <div class="card">
-    <ul class="list-group list-group-flush" *ngFor="let ad of adiciones">
-      <li class="list-group-item">{{ad}}</li>
+    <ul class="list-group list-group-flush" *ngFor="let ad of adiciones; let i = index">
+      <li class="list-group-item d-flex justify-content-between">        
+        <span class="text-success">{{ad}}</span>
+        <button (click)="removeAdition(i)" class="btn btn-danger btn-sm">x</button>
+      </li>
     </ul>
   </div>  
 </div>

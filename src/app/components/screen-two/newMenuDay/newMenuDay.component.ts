@@ -71,38 +71,11 @@ export class NewMenuDayComponent implements OnInit {
     }
   }
 
-  // saveMenu( ){
-  //   let lengt = Object.keys( this.inValues ).length 
-  //   if ( lengt < 5 ){
-  //     alert('Todos los campos son obligatorios')
-  //     return false;
-  //   }
-  //   if ( this.status == 1 ) return false;
-    
-  //   this.inValues.id = new Date().getTime();
-  //   this.inValues.aditions = this.adiciones;
-  //   this.inValues.type = 'menuday';
+  removeAdition( i:number ){
 
-  //   this.status = 1
+    this.adiciones.splice(i, 1 );
     
-  //   const promResolve = ( res ) => {
-  //     alert('Menú guardado correctamente');
-  //     this.status = 2;
-  //     this.adiciones = []
-  //     this.inValues ={};
-  //   }
-  //   const promError = ( error ) => {
-  //     this.status = 0
-  //     alert('Error al guardar el documento')
-  //     console.log( error );
-  //   }
-    
-  //   this.database.saveDocument('secondscreen', this.inValues).then( promResolve  ).catch( promError );
-    
-
-    
-  // }
-
+  }
 
   
 }

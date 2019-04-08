@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { map, flatMap, switchMap, mergeAll, concatAll, tap } from 'rxjs/operators/';
-import { forkJoin, of, from, combineLatest } from 'rxjs';
-import { ProductService } from '../../services/product.service';
+import { map, switchMap } from 'rxjs/operators/';
+import { combineLatest } from 'rxjs';
 import { SlideService } from '../../services/slide.service';
 
 @Component({
@@ -37,7 +36,7 @@ export class VerticalItemsComponent implements OnInit {
     }
   }
 
-  constructor(private prservice: ProductService,
+  constructor(
     private slide: SlideService,
   ) {
     
@@ -46,34 +45,12 @@ export class VerticalItemsComponent implements OnInit {
     
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   // Obtener datos de slider
   public getSliderDocs( ){
 
-    // FlatMap Function
-    const flatF = (result )=>{
-      let mp = []
-      result.forEach(element => {
-        mp.push(this.slide.getImageById(element.id))
-      });
-
-      return forkJoin(mp);
-    }
-
-    // Map Fucntion
-    const mapF = results => {
-      return results.map(f => {
-        return {
-          id: f.payload.doc.get('id'),
-          name: f.payload.doc.get('name')
-        }
-      })
-    }
-
-    const docs = this.slide.getAllDocs2();
-    docs.pipe( map( mapF ), flatMap( flatF ) )
+    this.slide.getSliderTwoDocs()
     .subscribe(res => {
       this.images = res;
     });

@@ -34,5 +34,9 @@ export class DatabaseService {
     return this.database.doc(`${collection}/${id}`).valueChanges();
   }
 
+  public deleteDocumentById(collection:string,id:number){
+    return this.database.doc(`${collection}/${id}`).delete();
+  }
+
 
 }

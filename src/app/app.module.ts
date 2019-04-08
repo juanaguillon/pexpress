@@ -29,6 +29,7 @@ import { VerticalItemsComponent } from './components/verticalItems/verticalItems
 // Environment
 import { environment } from '../environments/environment'; 
 import { LoginComponent } from './components/login/login.component';
+import { VerticalItems2Component } from './components/verticalitems2/verticalitems2.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { LoginComponent } from './components/login/login.component';
     ViewproductsComponent,
     SlideimagesComponent,
     VerticalItemsComponent,
-    LoginComponent
+    LoginComponent,
+    VerticalItems2Component
   ],
   imports: [
     BrowserModule,

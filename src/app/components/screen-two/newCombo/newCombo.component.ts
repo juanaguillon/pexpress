@@ -33,7 +33,6 @@ export class NewComboComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log( changes );
     if ( changes.data && changes.data.currentValue !== undefined){
       this.theCombo = changes.data.currentValue['combos'];
     } else if (changes.data && changes.data.currentValue == undefined ){
@@ -57,6 +56,10 @@ export class NewComboComponent implements OnInit {
     if ( e.keyCode == 13 ){
       this.addCombo ( );
     }
+  }
+
+  removeAdition(i:number){
+    this.theCombo.splice(i,1);
   }
 
 

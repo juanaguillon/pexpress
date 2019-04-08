@@ -1,0 +1,13 @@
+h2{
+  color: var(--dark)
+}
+.actual_image_container{
+	width: 25%;
+	display: inline-block;
+	position: relative;
+	padding: 10px;
+}
+.actual_image_container > img{
+  width: 100%;
+  height: auto;
+}

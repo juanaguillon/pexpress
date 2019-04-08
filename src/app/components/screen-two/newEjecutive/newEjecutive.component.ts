@@ -76,29 +76,9 @@ export class NewEjecutiveComponent implements OnInit {
     
   }
 
-  // saveDocument() {
-  //   this.inValues.id = new Date().getTime();
-  //   this.inValues.type = "ejecutive";
-  //   this.inValues.menus = this.menus;
-  //   this.inValues.title = this.currentTitle;
-    
-  //   this.status = 1;
+  removeAdition(i: number) {
+    this.menus.splice(i, 1);
+  }
 
-  //   const onProm = res => {
-  //     alert('Menu ejecutivo guardado correctamente');
-  //     this.status = 2;
-  //   }
-
-  //   const onError = error => {
-  //     alert('Error al crear el combo')
-  //     console.log(error);
-  //   }
-
-
-  //   let saved = this.database.saveDocument('secondscreen', this.inValues);
-  //   saved.then(onProm);
-  //   saved.catch(err => console.log(err));
-
-  // }
-
+  
 }

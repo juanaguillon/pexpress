@@ -1,9 +1,6 @@
 <form>
-  <h2>Menú ejecutivo Actual</h2>
-  <div class="form-group">
-  
-  </div>
-  
+  <h2>Menús ejecutivos Actuales</h2>
+    
   <p class="text-muted text-left">Añade menús ejecutivos, serán guardados, y mostrados en el preset.</p>
   <div class="new_title_container my-3">
     
@@ -43,17 +40,17 @@
     <!-- ACORDION -->
     <div class="form-group"> 
       <div id="accordion">
-        <div class="card" *ngFor="let menu of menus">
+        <div class="card" *ngFor="let menu of menus; let i = index">
           <div class="card-header" id="headingOne">
-            <a class="d-flex justify-content-between" data-toggle="collapse" data-target="#collapseOne" aria-controls="collapseOne">
+            <a class="d-flex justify-content-between" data-toggle="collapse" [attr.data-target]="'#collapse' + i" [attr.aria-controls]="'collapse' + i">
               <h5 class="text-muted">
                 {{menu.name}}
               </h5>
-              <span class="text-muted">${{menu.price | number}}</span>
+              <span class="text-muted">${{menu.price | number}} <button (click)="removeAdition(i)" class="btn btn-danger btn-sm">x</button>    </span>
             </a>
           </div>
           
-          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+          <div [id]="'collapse' + i" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
             <div class="card-body">
 
 

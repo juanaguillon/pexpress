@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage'
 import { AngularFirestore } from '@angular/fire/firestore'
-import { take } from 'rxjs/operators';
+import { take, map, flatMap } from 'rxjs/operators';
+import { forkJoin } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -56,6 +57,31 @@ export class SlideService {
       this.db.doc('config/actual_presets').set( rs[0] )
     })
    
+  }
+
+  getSliderTwoDocs(){
+    // FlatMap Function
+    const flatF = (result) => {
+      let mp = []
+      result.forEach(element => {
+        mp.push(this.getImageById(element.id))
+      });
+
+      return forkJoin(mp);
+    }
+
+    // Map Fucntion
+    const mapF = results => {
+      return results.map(f => {
+        return {
+          id: f.payload.doc.get('id'),
+          name: f.payload.doc.get('name')
+        }
+      })
+    }
+
+    const docs = this.getAllDocs2();
+    return docs.pipe(map(mapF), flatMap(flatF))
   }
 
 
