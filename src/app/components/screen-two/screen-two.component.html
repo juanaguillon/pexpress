@@ -74,11 +74,13 @@
         <!-- FINAL DE RESETEAR EL COMPONENTE -->
 
         <app-newfdscombo [data]="compVals[2]" (takeInfo)="reciveValsComponent($event)" [searchInfo]="eventsSubject.asObservable()" *ngIf="compActive == 1 && isFDS"></app-newfdscombo>
-
+        
+        <app-newnight *ngIf="compActive == 1 && !isFDS"></app-newnight>
+        
 
         <!-- RESETEAR EL COMPONENETE -->
         <!-- Es necesario hacer un "toggle" en los componentes para crear un reinizialización. -->
-        <app-newEjecutive [data]="compVals[2]" (takeInfo)="reciveValsComponent($event)" [searchInfo]="eventsSubject.asObservable()" *ngIf="compActive == 1 && !isFDS"></app-newEjecutive>
+        <app-newEjecutive [data]="compVals[3]" (takeInfo)="reciveValsComponent($event)" [searchInfo]="eventsSubject.asObservable()" *ngIf="compActive == 1 && !isFDS"></app-newEjecutive>
         <app-newEjecutive [data]="compVals[3]" (takeInfo)="reciveValsComponent($event)" [searchInfo]="eventsSubject.asObservable()" *ngIf="compActive == 1 && isFDS"></app-newEjecutive>
         <!-- FINAL DE RESETEAR EL COMPONENTE -->
 

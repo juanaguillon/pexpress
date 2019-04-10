@@ -150,7 +150,7 @@
 
 .exec-lanuchers .absolute-ofert{
 	width: 100%;
-	height: 100%;
+	height: 128%;
 	line-height: 1;
 	margin: 0;
 	top: 0;
@@ -174,7 +174,7 @@
 .exec-launcers-items{
 	font-family: 'Roboto Slab', serif;
 	font-weight: bold;
-	font-size: 30px;
+	font-size: 2.3vw;
 	line-height: 1.3;
 }
 .exec-launcers-items ul{
@@ -194,8 +194,7 @@
 
 owl-carousel {
 	display: block;
-	max-height: 310px;
-	height: 310px;
+	height: 23vw;
 	margin: 0px -15px;
 	margin-bottom: 15px;
 }

@@ -15,6 +15,7 @@ import { ChangeClassDirective } from 'src/app/shared/changeClass.directive';
 import { NewFdsComponent } from './newfds/newfds.component';
 import { NewFdsComboComponent } from './newfdscombo/newfdscombo.component';
 import { SharedModule } from 'src/app/shared.module';
+import { NewNightComponent } from './newnightmenu/newnight.component';
 
 
 
@@ -24,7 +25,8 @@ import { SharedModule } from 'src/app/shared.module';
     BrowserModule,
     RouterModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    
   ],
   declarations: [
     ScreenTwoComponent,
@@ -35,6 +37,7 @@ import { SharedModule } from 'src/app/shared.module';
     SliderComponent,
     NewFdsComponent,
     NewFdsComboComponent,
+    NewNightComponent
     
   ],
   bootstrap: [ ScreenTwoComponent ]

@@ -90,10 +90,9 @@ export class ScreenTwoComponent implements OnInit {
         // Con esta adición + diez, se evitará la reescritura de el documento, pues si se imprime el array compVals, se notará que los id tienen el mismo número, y esto provacará que no se guarde correctamente los 3 documentos.
         this.compVals[1]['id'] += 10;
         this.compVals[2]['id'] += 20;
+        this.compVals[3]['id'] += 30;
 
-        if ( this.compVals.length > 3  ){
-          this.compVals[3]['id'] += 30;
-        }
+        
         
         
       }
@@ -107,7 +106,7 @@ export class ScreenTwoComponent implements OnInit {
   
       // En caso error al guardar los documentos, se cambiar la variable savedChecked, y no permitirá guardar el preset actual.      
       
-       if (this.compVals.length == 8){
+      if (this.compVals.length == 8){
         this.compVals.splice(0,4);
       }
       this.db.saveDocument('secondscreen', this.compVals[0]).catch(err);
@@ -158,12 +157,10 @@ export class ScreenTwoComponent implements OnInit {
           let returnedAr = [
             this.slide.getSecondScreenDocById(menuID),
             this.slide.getSecondScreenDocById(comboID),
-            this.slide.getSecondScreenDocById(ejecID)
+            this.slide.getSecondScreenDocById(ejecID),
+            this.slide.getSecondScreenDocById(doc.get('menufds'))
           ]
-
-          if ( doc.get('menufds') ){
-            returnedAr.push(this.slide.getSecondScreenDocById(doc.get('menufds')) )
-          }
+          
           return returnedAr;
 
         }),
@@ -238,6 +235,7 @@ export class ScreenTwoComponent implements OnInit {
       menu: this.compVals[0]["id"],
       combo: this.compVals[1]["id"],
       ejec: this.compVals[2]["id"],
+      menufds: this.compVals[3]['id'],
       title: this.currentTitle,
       type: (this.isFDS) ? 'fds' : 'nofds'
     }
@@ -247,11 +245,7 @@ export class ScreenTwoComponent implements OnInit {
     // Al momento de hacer un console.log de dicha variable, podría enviar hasta 4 u 8 elementos en el array.
     // Es esta razón, por la que estaremos agregando la siguiente condicional.
 
-    if (this.compVals.length == 8) {
-      data["menufds"] = this.compVals[7]['id'];
-    }else if ( this.compVals.length == 4){
-      data["menufds"] = this.compVals[3]['id'];
-    }
+   
 
     if (this.currentID == null) {
       data["id"] = new Date().getTime() + 1;
