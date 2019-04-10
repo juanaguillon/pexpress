@@ -116,35 +116,7 @@ export class ScreenTwoComponent implements OnInit {
       
 
       if ( savedChecked ){
-
-        // Guardar en la colección de presets.
-
-        let data = {
-          menu: this.compVals[0]["id"],
-          combo: this.compVals[1]["id"],
-          ejec: this.compVals[2]["id"],
-          title: this.currentTitle,
-          type: (this.isFDS) ? 'fds' : 'nofds'
-        }
-
-        if (this.compVals.length == 4) {
-          data["menufds"] = this.compVals[3]['id'];
-        }
-  
-        if ( this.currentID == null ){
-          data["id"] = new Date().getTime();
-        }else{
-          data["id"] = this.currentID;
-        }
-
-
-        
-        this.db.saveDocument('presets', data ).then( rf => {
-          alert('Preset guardado correctamente');
-          this.status = 0;
-          this.compVals = [];
-        })
-        this.slide.updateConfig();
+        this.saveThePreset();        
       }
     }  
 
@@ -186,18 +158,17 @@ export class ScreenTwoComponent implements OnInit {
             this.slide.getSecondScreenDocById(ejecID)
           ]
 
-          if ( this.isFDS ){
+          if ( doc.get('menufds') ){
             returnedAr.push(this.slide.getSecondScreenDocById(doc.get('menufds')) )
           }
-
-          // console.log(returnedAr)
-          
           return returnedAr;
+
         }),
         combineAll()
       )
       
       preset.subscribe( docs => {
+        console.log(docs)
         this.compVals = docs.map( doc => {
           return doc.data();
         })        
@@ -252,6 +223,48 @@ export class ScreenTwoComponent implements OnInit {
     this.db.saveDocument("config", data ).then( resp => alert('Configuración guardada correctamente') )
     .catch( err => { alert('Error al guardar la configuración') ; console.log( err ) })
 
+  }
+
+  /**
+   * Guardar el preset actual, este se ejecutará cuando los menus, combos, ejecutivos, etc, sean satisfactoriamente guardados.
+   */
+  private saveThePreset( ){
+
+    // Guardar en la colección de presets.
+
+    let data = {
+      menu: this.compVals[0]["id"],
+      combo: this.compVals[1]["id"],
+      ejec: this.compVals[2]["id"],
+      title: this.currentTitle,
+      type: (this.isFDS) ? 'fds' : 'nofds'
+    }
+
+
+    // El array this.compVals, toma comportamiento bidireccional, de componente padre (screen two) a componentes hijos ( newfds, newfdscomb, newmenuday, etc ), y viceversa.
+    // Al momento de hacer un console.log de dicha variable, podría enviar hasta 4 u 8 elementos en el array.
+    // Es esta razón, por la que estaremos agregando la siguiente condicional.
+
+    if (this.compVals.length == 8) {
+      data["menufds"] = this.compVals[7]['id'];
+    }else if ( this.compVals.length == 4){
+      data["menufds"] = this.compVals[3]['id'];
+    }
+
+    if (this.currentID == null) {
+      data["id"] = new Date().getTime() + 1;
+    } else {
+      data["id"] = this.currentID;
+    }
+
+    this.db.saveDocument('presets', data).then(rf => {
+      alert('Preset guardado correctamente');
+      this.status = 0;
+      this.compVals = [];
+    })
+
+    this.slide.updateConfig();
+    
   }
 
 

@@ -49,9 +49,11 @@ export class NewFdsComboComponent implements OnInit {
     if (changes.data && changes.data.currentValue !== undefined) {
       this.currentID = parseInt(changes.data.currentValue.id)
       this.aditions = changes.data.currentValue['aditions'];
+      this.menuName = changes.data.currentValue['name'];
     } else if (changes.data && changes.data.currentValue == undefined) {
       this.currentID = null;
       this.aditions = [];
+      this.menuName = "";
     }
   } 
 
