@@ -46,7 +46,7 @@
             <option value="new">Crear nuevo preset</option>
             <option *ngFor="let preset of presets" [value]="preset.id">{{preset.title}}</option>
           </select>
-          <div class="custom-control custom-checkbox">
+          <div class="custom-control custom-checkbox" *ngIf="!currentID">
             <input [(ngModel)]="isFDS" type="checkbox" class="custom-control-input" id="isfds" name="isfds">
             <label class="custom-control-label" for="isfds">¿Es fin de Semana?</label>
           </div>
@@ -67,11 +67,21 @@
 
         <app-newfds [data]="compVals[0]" (takeInfo)="reciveValsComponent($event)" [searchInfo]="eventsSubject.asObservable()" *ngIf="compActive == 1 && isFDS" ></app-newfds>
 
-        <app-newCombo [data]="compVals[1]" (methodName)="reciveValsComponent($event)" [events]="eventsSubject.asObservable()" *ngIf="compActive == 1"></app-newCombo>
+        <!-- RESETEAR EL COMPONENETE -->
+        <!-- Es necesario hacer un "toggle" en los componentes para crear un reinizialización. -->
+        <app-newCombo [data]="compVals[1]" (methodName)="reciveValsComponent($event)" [events]="eventsSubject.asObservable()" *ngIf="compActive == 1 && isFDS"></app-newCombo>
+        <app-newCombo [data]="compVals[1]" (methodName)="reciveValsComponent($event)" [events]="eventsSubject.asObservable()" *ngIf="compActive == 1  && !isFDS"></app-newCombo>
+        <!-- FINAL DE RESETEAR EL COMPONENTE -->
 
         <app-newfdscombo [data]="compVals[2]" (takeInfo)="reciveValsComponent($event)" [searchInfo]="eventsSubject.asObservable()" *ngIf="compActive == 1 && isFDS"></app-newfdscombo>
 
+
+        <!-- RESETEAR EL COMPONENETE -->
+        <!-- Es necesario hacer un "toggle" en los componentes para crear un reinizialización. -->
         <app-newEjecutive [data]="compVals[2]" (takeInfo)="reciveValsComponent($event)" [searchInfo]="eventsSubject.asObservable()" *ngIf="compActive == 1 && !isFDS"></app-newEjecutive>
+        <app-newEjecutive [data]="compVals[3]" (takeInfo)="reciveValsComponent($event)" [searchInfo]="eventsSubject.asObservable()" *ngIf="compActive == 1 && isFDS"></app-newEjecutive>
+        <!-- FINAL DE RESETEAR EL COMPONENTE -->
+
 
         <!-- Mostrar en pestaña 2 -->
         <app-slider *ngIf="compActive == 2"></app-slider>

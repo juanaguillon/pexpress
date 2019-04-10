@@ -15,7 +15,7 @@
     </div>
   </div>
   
-  <div class="form-group" *ngIf="launchers.length > 0">
+  <div class="form-group" *ngIf="launchers && launchers.length > 0">
     <div class="card">
       <ul class="list-group list-group-flush" >
         <li class="list-group-item d-flex justify-content-between" *ngFor="let launcher of launchers; let i = index">

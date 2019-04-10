@@ -87,7 +87,6 @@ export class SliderComponent implements OnInit {
 
   private sliderDocs() {
     const completeSubs = ( ) => {
-      console.log( 'complete')
       this.currentImagesStatus = true;
     }
     

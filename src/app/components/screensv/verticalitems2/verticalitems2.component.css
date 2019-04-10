@@ -7,8 +7,7 @@
 .titulo{
 	height: auto;
 	display: block;
-	min-height: 61%;
-	margin-bottom: 1.5vh;
+	margin-bottom: 0px;
 }
 .titulo h3{
   letter-spacing: 3px;
@@ -23,6 +22,7 @@
 	height: 50%!important;
 }
 
+
 #theProductos{
 	-webkit-transform: rotate(90deg);
 	transform: rotate(90deg);
@@ -35,12 +35,22 @@
   font-family: 'Germania One', cursive;
 }
 
-.words-desc h3{
-	font-size: 3.2vw;
-	letter-spacing: inherit;
-	max-width: 100%;
-	min-width: 81%;
-	width: auto;
+.li-title{
+	color: #fbce65;
+	margin-right: 8px;	
+}
+
+span.li-text-left {
+	display: inline-block;
+	width: 78%;
+	vertical-align: middle;
+	/* padding-right: 10px;
+	border-right: 4px dotted #ffb300; */
+}
+.li-text-right{
+	text-align: right;
+	display: inline-block;
+	width: 22%;
 }
 
 .combo-day{
@@ -53,14 +63,18 @@
 }
 
 .combo-day > ul{
-	width: 50%;
+	width: 100%;
 	text-align: left;
-	font-size: 85%;
+	font-size: 4vh;
 	display: inline-block;
 	font-weight: bold;
 	font-family: 'Roboto Slab', serif;
 }
 
+.combo-day > ul > li{
+	padding: 7px 0;
+	border-bottom: 3px dashed #fbce65;
+}
 .combo-day .price-combo{
 	width: 50%;
 	font-size: 240%;
@@ -71,18 +85,19 @@
 
 .post-combo{
 	color: #fbce65;
-	border-top: 3px dashed;
+	border-top: none;
 	border-bottom: 3px dashed;
 	display: block;
 	flex-direction: column;
 	margin-bottom: 1.5vh;
 	justify-content: center;
+	margin-top: 0.7vh;
 }
 
 .post-combo > p {
 	padding: 1px 0;
-	justify-content: space-between;
-	font-size: 6vh;
+	justify-content: flex-start;
+	font-size: 5.6vh;
 	line-height: 1.2;
 }
 .post-combo > p span{
@@ -192,11 +207,37 @@
 .exec-launcer-title.two{
   margin-left: auto;
 }
+.intern-flexing{
+	margin: 1.2vh 0;
+}
 
+.intern-flexing > *{
+	display: inline-block;
+	width: 50%;
+	vertical-align: middle;
+}
+.intern-flexing > ul{
+line-height: 1.2;
+	font-family: 'Roboto Slab', serif;
+	text-align: left;
+	font-weight: bold;
+	font-size: 4.1vh;
+}
+
+.intern-flexing > h3{
+	font-size: 10vh;
+}
+
+.words-desc2 .exec-launcer-title{
+	width: 100%;
+	font-size: 5vh;
+	line-height: 1;
+	padding: 0.7vh 0;
+}
 owl-carousel {
 	display: block;
 	max-height: 310px;
-	height: 310px;
+	height: 216px;
 	margin: 0px -15px;
 	margin-bottom: 15px;
 }

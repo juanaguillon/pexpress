@@ -22,14 +22,13 @@ import { ListProductComponent } from './components/listProduct/listProduct.compo
 import { UpdateProductComponent } from './components/updateProduct/updateProduct.component';
 import { ViewproductsComponent } from './components/viewproducts/viewproducts.component';
 import { SlideimagesComponent } from './components/slideimages/slideimages.component';
-import { VerticalItemsComponent } from './components/verticalItems/verticalItems.component';
 
 // Directives
 
 // Environment
 import { environment } from '../environments/environment'; 
 import { LoginComponent } from './components/login/login.component';
-import { VerticalItems2Component } from './components/verticalitems2/verticalitems2.component';
+import { ScreensvModule } from './components/screensv/screensv.module';
 
 @NgModule({
   declarations: [
@@ -39,9 +38,7 @@ import { VerticalItems2Component } from './components/verticalitems2/verticalite
     UpdateProductComponent,
     ViewproductsComponent,
     SlideimagesComponent,
-    VerticalItemsComponent,
     LoginComponent,
-    VerticalItems2Component
   ],
   imports: [
     BrowserModule,
@@ -54,6 +51,7 @@ import { VerticalItems2Component } from './components/verticalitems2/verticalite
     OwlModule,
     AdminModule,
     ScreenTwoModule,
+    ScreensvModule
   ],
   providers: [],
   bootstrap: [AppComponent]

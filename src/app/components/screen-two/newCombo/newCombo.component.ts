@@ -15,13 +15,16 @@ export class NewComboComponent implements OnInit {
   vals:any = {}
   inValues:any = {}
   theCombo:any[] = []
+
+  currentID:number;
+  
   private eventSubs:any;
   
   constructor() { }
 
   ngOnInit() {
     this.eventSubs = this.events.subscribe( ( ) => {
-      this.inValues.id = new Date().getTime();
+      this.inValues.id = this.currentID != null ? this.currentID : new Date().getTime();
       this.inValues.type = "combo";
       this.inValues.combos = this.theCombo;
       this.methodName.emit( this.inValues )
@@ -34,8 +37,10 @@ export class NewComboComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges): void {
     if ( changes.data && changes.data.currentValue !== undefined){
+      this.currentID = parseInt(changes.data.currentValue.id)
       this.theCombo = changes.data.currentValue['combos'];
     } else if (changes.data && changes.data.currentValue == undefined ){
+      this.currentID = null;
       this.theCombo = [];
     }
   }

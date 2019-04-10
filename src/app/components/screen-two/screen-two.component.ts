@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { DatabaseService } from 'src/app/services/database.service';
-import { Subject} from 'rxjs';
+import { Subject, empty} from 'rxjs';
 import { SlideService } from 'src/app/services/slide.service';
 import { switchMap, combineAll } from 'rxjs/operators';
 
@@ -58,70 +58,103 @@ export class ScreenTwoComponent implements OnInit {
   ngOnInit() {}
 
 
-  /* Emitir seleccion de datos a los componenets hijos */
+  /** 
+   * Emitir seleccion de datos a los componenets hijos 
+   * Esta función se emitirá al momento de clickear el botón "Guardar Preset" en el componenete padre.
+   * */
   emitToChildren( ){
+    
+    
     this.eventsSubject.subscribe({      
       next: ( ) => {
         this.saveDataChildrens( );
       }
-    })
-
-
+    });
     this.eventsSubject.next();
+
 
   }  
 
-  saveDataChildrens( ){
 
+  private saveDataChildrens( ):void{
     // Evitar multiples click al guardar
     if ( this.status == 1 ) return;
-
-    console.log( this.compVals );
-    this.compVals = []
     
-    // Loading status
-    // this.status = 1;
-    // if ( this.currentID == null ){
-    //   this.compVals[1]['id'] += 10;
-    //   this.compVals[2]['id'] += 20;
-    // }
-    
-    // let savedChecked = true;    
-    // const err = ( ) => {
-    //   alert('Error al guardar el preset. Intente nuevamente');
-    //   savedChecked = false;
-    //   return false;
-    // }
+    if ( this.compVals.length > 0){
 
-    
-    // this.db.saveDocument('secondscreen', this.compVals[0] ).catch(err);
-    // this.db.saveDocument('secondscreen', this.compVals[1] ).catch(err);
-    // this.db.saveDocument('secondscreen', this.compVals[2] ).catch(err);
+      // Loading status
+      this.status = 1;
+      if ( this.currentID == null ){
 
-    // if ( savedChecked ){
-    //   let data = {
-    //     menu: this.compVals[0]["id"],
-    //     combo: this.compVals[1]["id"],
-    //     ejec: this.compVals[2]["id"],
-    //     title: this.currentTitle
-    //   }
+        // Con esta adición + diez, se evitará la reescritura de el documento, pues si se imprime el array compVals, se notará que los id tienen el mismo número, y esto provacará que no se guarde correctamente los 3 documentos.
+        this.compVals[1]['id'] += 10;
+        this.compVals[2]['id'] += 20;
 
-    //   if ( this.currentID == null ){
-    //     data["id"] = new Date().getTime();
-    //   }else{
-    //     data["id"] = this.currentID;
-    //   }
-    //   this.db.saveDocument('presets', data ).then( rf => {
-    //     alert('Preset guardado correctamente');
-    //     this.status = 0;
-    //   })
-    //   this.slide.updateConfig();
-    // }
+        if ( this.compVals.length > 3  ){
+          this.compVals[3]['id'] += 30;
+        }
+        
+        
+      }
+      
+      let savedChecked = true;    
+      const err = ( ) => {
+        alert('Error al guardar el preset. Intente nuevamente');
+        savedChecked = false;
+        return false;
+      }
+  
+      // En caso error al guardar los documentos, se cambiar la variable savedChecked, y no permitirá guardar el preset actual.
+      
+      this.db.saveDocument('secondscreen', this.compVals[0] ).catch(err);
+      this.db.saveDocument('secondscreen', this.compVals[1] ).catch(err);
+      this.db.saveDocument('secondscreen', this.compVals[2] ).catch(err);      
+      
+      if (this.compVals.length == 4) {
+        this.db.saveDocument('secondscreen', this.compVals[3]).catch(err);
+      }
+      
+
+      if ( savedChecked ){
+
+        // Guardar en la colección de presets.
+
+        let data = {
+          menu: this.compVals[0]["id"],
+          combo: this.compVals[1]["id"],
+          ejec: this.compVals[2]["id"],
+          title: this.currentTitle,
+          type: (this.isFDS) ? 'fds' : 'nofds'
+        }
+
+        if (this.compVals.length == 4) {
+          data["menufds"] = this.compVals[3]['id'];
+        }
+  
+        if ( this.currentID == null ){
+          data["id"] = new Date().getTime();
+        }else{
+          data["id"] = this.currentID;
+        }
+
+
+        
+        this.db.saveDocument('presets', data ).then( rf => {
+          alert('Preset guardado correctamente');
+          this.status = 0;
+          this.compVals = [];
+        })
+        this.slide.updateConfig();
+      }
+    }  
+
+    this.compVals = [];
 
     
   }
 
   // Obtener la configuración actual.
+  // Esta configuración será usada para mostrar en la pantalla vertical de la aplicación. */verticalproductos.*
   checkIfHadPresets( ){
     this.db.getDocById( 'config','actual_presets' ).subscribe( doc => {
       this.config = doc["config"];
@@ -146,11 +179,20 @@ export class ScreenTwoComponent implements OnInit {
           let comboID = doc.get('combo');
           let ejecID = doc.get('ejec');
           this.currentTitle = doc.get('title'); 
-          return [
+          this.isFDS = doc.get('type') && doc.get('type') == 'fds' ? true: false;
+          let returnedAr = [
             this.slide.getSecondScreenDocById(menuID),
             this.slide.getSecondScreenDocById(comboID),
             this.slide.getSecondScreenDocById(ejecID)
-          ]          
+          ]
+
+          if ( this.isFDS ){
+            returnedAr.push(this.slide.getSecondScreenDocById(doc.get('menufds')) )
+          }
+
+          // console.log(returnedAr)
+          
+          return returnedAr;
         }),
         combineAll()
       )

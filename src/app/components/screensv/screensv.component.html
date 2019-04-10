@@ -1,0 +1,3 @@
+<app-verticalitems2 (click)="openFullScreen()" *ngIf="presetType == 'fds'" [preset]="currentPreset"></app-verticalitems2>
+
+<app-verticalItems (click)="openFullScreen()" *ngIf="!presetType" [preset]="currentPreset"></app-verticalItems>

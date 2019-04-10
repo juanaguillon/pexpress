@@ -17,6 +17,7 @@ export class NewEjecutiveComponent implements OnInit {
   aditions = [];
   menus = []
 
+  currentID:number;
 
   inValues: any = {}
   subscibedObject:any;
@@ -25,7 +26,7 @@ export class NewEjecutiveComponent implements OnInit {
 
   ngOnInit() {
     this.subscibedObject = this.searchInfo.subscribe( ( ) => {
-      this.inValues.id = new Date().getTime();
+      this.inValues.id = this.currentID != null ? this.currentID : new Date().getTime();
       this.inValues.type = "ejecutive";
       this.inValues.menus = this.menus;
 
@@ -40,8 +41,10 @@ export class NewEjecutiveComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.data && changes.data.currentValue != undefined) {
       this.menus = changes.data.currentValue.menus;
+      this.currentID = parseInt(changes.data.currentValue.id)
     } else if (changes.data && changes.data.currentValue == undefined) {
       this.menus = [];
+      this.currentID = null;
     }
   }
   

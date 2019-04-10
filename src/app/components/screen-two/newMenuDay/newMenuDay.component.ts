@@ -20,6 +20,9 @@ export class NewMenuDayComponent implements OnInit {
   adiciones:string[] = [];
   currentAdition = "";
   inValues: any = {}
+
+  // Evitar la nueva creación de menu en caso de estar en actualización.
+  currentID:number;
   
   subscribeObject:any;
 
@@ -29,7 +32,7 @@ export class NewMenuDayComponent implements OnInit {
 
   ngOnInit() { 
     this.subscribeObject = this.searchInfo.subscribe( ( ) => {
-      this.inValues.id = new Date().getTime();
+      this.inValues.id = this.currentID != null ? this.currentID : new Date().getTime();
       this.inValues.aditions = this.adiciones;
       this.inValues.type = 'menuday';
 
@@ -45,12 +48,19 @@ export class NewMenuDayComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+
     if ( changes.data && changes.data.currentValue != undefined ){
       this.inValues = changes.data.currentValue;
       this.adiciones = changes.data.currentValue.aditions;
+
+      this.currentID = parseInt(changes.data.currentValue.id)
+
     } else if (changes.data && changes.data.currentValue == undefined) {
       this.inValues = {};
       this.adiciones = [];
+
+      this.currentID = null;
+
     }
   }
 

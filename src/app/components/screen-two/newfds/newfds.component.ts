@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter, SimpleChanges } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -17,13 +17,16 @@ export class NewFdsComponent implements OnInit {
   launchers = [];
   launcData:any = {}
 
+  currentID:number;
+
   // Valores que serán almacenadas en la base de datos.
   inValues:any = {}
 
   
   ngOnInit() { 
     this.subscribeData = this.searchInfo.subscribe( doc => {
-      this.inValues.id = new Date().getTime();
+
+      this.inValues.id = this.currentID != null ? this.currentID : new Date().getTime();
       this.inValues.type = "fdslaunchs"
       this.inValues.aditions = this.launchers;
 
@@ -35,6 +38,16 @@ export class NewFdsComponent implements OnInit {
   ngOnDestroy(): void {
     this.subscribeData.unsubscribe();
   }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.data && changes.data.currentValue !== undefined) {
+      this.currentID = parseInt(changes.data.currentValue.id)
+      this.launchers = changes.data.currentValue['aditions'];
+    } else if (changes.data && changes.data.currentValue == undefined) {
+      this.currentID = null;
+      this.launchers = [];
+    }
+  } 
 
   addLaunch(  ){
 

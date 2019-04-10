@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -17,6 +17,11 @@ export class NewFdsComboComponent implements OnInit {
 
   // Valors que serán guardados en la base de datos.
   inValues:any = {}
+
+
+  // Evitar la nueva creación de menu en caso de estar en actualización.
+  currentID: number;
+
   
   menuName:string;
   subs;
@@ -26,10 +31,10 @@ export class NewFdsComboComponent implements OnInit {
 
   ngOnInit(): void {
     this.subs = this.searchInfo.subscribe( doc => {
-      this.inValues.id = new Date().getTime();
+      this.inValues.id = this.currentID != null ? this.currentID : new Date().getTime();
       this.inValues.type = "fdscombo"
       this.inValues.aditions = this.aditions;
-
+      this.inValues.name = this.menuName
       this.takeInfo.emit( this.inValues );
     })
   }
@@ -39,6 +44,16 @@ export class NewFdsComboComponent implements OnInit {
     //Add 'implements OnDestroy' to the class.
     this.subs.unsubscribe()
   }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.data && changes.data.currentValue !== undefined) {
+      this.currentID = parseInt(changes.data.currentValue.id)
+      this.aditions = changes.data.currentValue['aditions'];
+    } else if (changes.data && changes.data.currentValue == undefined) {
+      this.currentID = null;
+      this.aditions = [];
+    }
+  } 
 
   removeAdition( i ){
     this.aditions.splice(i, 1)

@@ -5,7 +5,6 @@ import { ListProductComponent } from './components/listProduct/listProduct.compo
 import { UpdateProductComponent } from './components/updateProduct/updateProduct.component';
 import { ViewproductsComponent } from './components/viewproducts/viewproducts.component';
 import { SlideimagesComponent } from './components/slideimages/slideimages.component';
-import { VerticalItemsComponent } from './components/verticalItems/verticalItems.component';
 import { LoginComponent } from './components/login/login.component';
 
 // Rutas de modulos
@@ -14,7 +13,7 @@ import { adminRoutes } from './components/admin/admin.module'
 import { AuthGuard } from './services/auth.guard';
 import { NoauthGuard } from './services/noauth.guard';
 import { ScreenTwoComponent } from './components/screen-two/screen-two.component';
-import { VerticalItems2Component } from './components/verticalitems2/verticalitems2.component';
+import { ScreensvComponent } from './components/screensv/screensv.component';
 
 
 const routes: Routes = [
@@ -31,11 +30,7 @@ const routes: Routes = [
   {
     path:'productos',
     component: ListProductComponent
-  },
-  {
-    path:'verticalproductos',
-    component: VerticalItemsComponent
-  },
+  },  
   {
     path: 'nuevo-producto',
     component: RegisterProductComponent,
@@ -62,9 +57,10 @@ const routes: Routes = [
     canActivate: [AuthGuard]   
   },
   {
-    path: 'fds',
-    component: VerticalItems2Component
+    path:'verticalproductos',
+    component: ScreensvComponent
   }
+  
   
 ];
 
