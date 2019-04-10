@@ -10,19 +10,13 @@
       <div class="combo-day">
         <ul>
           <li *ngFor="let ad of menu.aditions">
-            <span class="li-text-left">
-              {{ad.name}}
+            <span class="li-text-left" [innerHTML]="ad.name |  getFirstWord : 'li-title' | sanitizeHTML">
             </span>
-            <span class="li-price li-text-right">${{ad.price}}</span>
+            <span class="li-price li-text-right">${{ad.price | number}}</span>
 
           </li>
 
-          <!-- <li>
-            <span class="li-text-left">
-              <span class="li-title">Currasco</span> Argentino
-            </span>
-            <span class="li-price li-text-right">$24.000</span>
-          </li> -->
+         
          
         </ul>
         
@@ -32,66 +26,63 @@
     <div class="post-combo">
       <p *ngFor="let combo of combo.combos">
         <span>{{combo.name}}</span>
-        <span>${{combo.price}}</span>
+        <span>${{combo.price | number}}</span>
       </p>
      
     </div>
 
     <div class="words-desc2">
-      <h3 class="exec-launcer-title">Carne - Pechuga - Lomo - Milanesa - Trucha - Mojarra - Bagre Frito o Salsa</h3>
+      <h3 class="exec-launcer-title">{{launcs.name}}</h3>
       <div class="intern-flexing">
         <ul>
-          <li>Ensalada</li>
-          <li>Arroz</li>
-          <li>Francesa</li>
-          <li>Bebida</li>
+          <li *ngFor="let ad of launcs.aditions">{{ad.name}}</li>
         </ul>    
         <h3>$15.000</h3>    
       </div>
     </div>
 
-    <div class="exec-lanuchers position-relative">
+    <div *ngIf="ejec.menus" class="exec-lanuchers position-relative">
       <div>
         <div class="exec-launcer-title">
-          <h3>Churrasco</h3>
+          <h3>{{ejec.menus[0].name}}</h3>
         </div>
         <div class="exec-launcers-items">
           <ul>
-            <li>Papa + Yuca</li>
-            <li>Maduro</li>
-            <li>Guacamole</li>
-            <li>Bebida</li>
+            <li *ngFor="let ad of ejec.menus[0].aditions">{{ad}}</li>
           </ul>
         </div>
         <span class="exec-launchers-price">
-          $20.000
+          ${{ejec.menus[0].price | number}}
         </span>
       </div>
-
-      <div class="position-absolute absolute-ofert">
-        <p> + Sopa <br>$13.500</p>
-      </div>
-
+    
+      <!-- <div class="position-absolute absolute-ofert">
+        <p> + Sopa <br>$13,500</p>
+      </div> -->
+    
       <div>
         <div class="exec-launcer-title two">
-          <h3>Parrilla Mixta</h3>
+          <h3>{{ejec.menus[1].name}}</h3>
         </div>
         <div class="exec-launcers-items">
           <ul>
-            <li>Papa + Yuca</li>
-            <li>Maduro</li>
-            <li>Guacamole</li>
-            <li>Bebida</li>
+            <li *ngFor="let ad of ejec.menus[1].aditions">{{ad}}</li>
           </ul>
         </div>
         <span class="exec-launchers-price">
-          $12.600
+          ${{ejec.menus[1].price | number}}
         </span>
       </div>
-
-
+    
+    
     </div>
 
   </div>
 </section>
 
+<!-- <pre class="text-left">
+  {{ menu |json}}
+  {{ combo |json}}
+  {{ ejec |json}}
+  {{ launcs |json}}
+</pre> -->

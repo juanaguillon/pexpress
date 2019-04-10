@@ -35,7 +35,7 @@
 }
 
 .words-desc h3{
-	font-size: 2.7vw;
+	font-size: 3.4vw;
 	letter-spacing: inherit;
 	max-width: 100%;
 	min-width: 81%;
@@ -81,7 +81,7 @@
 .post-combo > p {
 	padding: 1px 0;
 	justify-content: space-between;
-	font-size: 6vh;
+	font-size: 3.4vw;
 	line-height: 1.2;
 }
 .post-combo > p span{
@@ -133,7 +133,7 @@
 }
 .exec-lanuchers{
 	height: 24%;
-	font-size: 2.1vw;
+	font-size: 2.3vw;
 	margin-top: 1%;
 	align-items: center;
 }
@@ -183,7 +183,7 @@
 
 .exec-launcer-title {
 	background: black;
-	width: 81%;
+	width: 89%;
 	border-radius: 7px;
 	padding: 0 1.7vw;
 }

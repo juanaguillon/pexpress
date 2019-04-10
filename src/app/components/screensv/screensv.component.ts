@@ -44,10 +44,8 @@ export class ScreensvComponent implements OnInit {
     )
 
     pipedPreset.subscribe( doc => {
-      if (doc.get('type') && doc.get('type') == 'fds' ){
-        this.presetType = 'fds';
-      }
-      this.currentPreset = doc
+      this.presetType = doc.get('type')
+      this.currentPreset = doc;
     });   
 
   }

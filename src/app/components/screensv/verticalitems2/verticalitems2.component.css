@@ -35,7 +35,7 @@
   font-family: 'Germania One', cursive;
 }
 
-.li-title{
+span.li-title{
 	color: #fbce65;
 	margin-right: 8px;	
 }
@@ -65,7 +65,7 @@ span.li-text-left {
 .combo-day > ul{
 	width: 100%;
 	text-align: left;
-	font-size: 4vh;
+	font-size: 2.1vw;
 	display: inline-block;
 	font-weight: bold;
 	font-family: 'Roboto Slab', serif;
@@ -96,8 +96,7 @@ span.li-text-left {
 
 .post-combo > p {
 	padding: 1px 0;
-	justify-content: flex-start;
-	font-size: 5.6vh;
+	font-size: 2.6vw;
 	line-height: 1.2;
 }
 .post-combo > p span{
@@ -149,7 +148,7 @@ span.li-text-left {
 }
 .exec-lanuchers{
 	height: 24%;
-	font-size: 30px;
+	font-size: 2.1vw;
 	margin-top: 1%;
 	align-items: center;
 }
@@ -190,7 +189,7 @@ span.li-text-left {
 .exec-launcers-items{
 	font-family: 'Roboto Slab', serif;
 	font-weight: bold;
-	font-size: 30px;
+	font-size: 100%;
 	line-height: 1.3;
 }
 .exec-launcers-items ul{
@@ -217,27 +216,26 @@ span.li-text-left {
 	vertical-align: middle;
 }
 .intern-flexing > ul{
-line-height: 1.2;
+	line-height: 1.2;
 	font-family: 'Roboto Slab', serif;
 	text-align: left;
 	font-weight: bold;
-	font-size: 4.1vh;
+	font-size: 2.4vw;
 }
 
 .intern-flexing > h3{
-	font-size: 10vh;
+	font-size: 5.8vw;
 }
 
 .words-desc2 .exec-launcer-title{
 	width: 100%;
 	font-size: 5vh;
 	line-height: 1;
-	padding: 0.7vh 0;
+	padding: 0.7vw 0;
 }
 owl-carousel {
 	display: block;
-	max-height: 310px;
-	height: 216px;
+	height: 15vw;
 	margin: 0px -15px;
 	margin-bottom: 15px;
 }

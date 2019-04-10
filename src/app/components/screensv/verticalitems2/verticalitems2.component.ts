@@ -1,11 +1,10 @@
 import { Component, OnInit, SimpleChanges, Input } from '@angular/core';
 import { SlideService } from 'src/app/services/slide.service';
-import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-verticalitems2',
   templateUrl: './verticalitems2.component.html',
-  styleUrls: ['./verticalitems2.component.css']
+  styleUrls: ['./verticalitems2.component.css'],
 })
 export class VerticalItems2Component implements OnInit {
 
@@ -14,6 +13,8 @@ export class VerticalItems2Component implements OnInit {
   elem;
 
   images = [];
+
+
   launcs: any = {}
   combo: any = {};
   ejec: any = {}
@@ -68,7 +69,8 @@ export class VerticalItems2Component implements OnInit {
 
       let menuID = this.preset.get('menu');
       let comboID = this.preset.get('combo');
-      let ejecID = this.preset.get('ejec');
+      let ejecID = this.preset.get('menufds');
+      let launcID = this.preset.get('ejec');
 
       this.slide.getSecondScreenDocById(menuID)
         .subscribe(doc => {
@@ -83,6 +85,11 @@ export class VerticalItems2Component implements OnInit {
       this.slide.getSecondScreenDocById(ejecID)
         .subscribe(doc => {
           this.ejec = doc.data()
+        });
+
+      this.slide.getSecondScreenDocById(launcID)
+        .subscribe(doc => {
+          this.launcs = doc.data()
         });
 
       this.status = 1;

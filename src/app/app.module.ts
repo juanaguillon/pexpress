@@ -51,7 +51,7 @@ import { ScreensvModule } from './components/screensv/screensv.module';
     OwlModule,
     AdminModule,
     ScreenTwoModule,
-    ScreensvModule
+    ScreensvModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

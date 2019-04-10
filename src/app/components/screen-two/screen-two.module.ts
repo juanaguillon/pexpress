@@ -14,7 +14,7 @@ import { SliderComponent } from './slider/slider.component';
 import { ChangeClassDirective } from 'src/app/shared/changeClass.directive';
 import { NewFdsComponent } from './newfds/newfds.component';
 import { NewFdsComboComponent } from './newfdscombo/newfdscombo.component';
-import { SanitizeHTMLPipe } from 'src/app/shared/sanitizeHTML.pipe';
+import { SharedModule } from 'src/app/shared.module';
 
 
 
@@ -24,6 +24,7 @@ import { SanitizeHTMLPipe } from 'src/app/shared/sanitizeHTML.pipe';
     BrowserModule,
     RouterModule,
     FormsModule,
+    SharedModule
   ],
   declarations: [
     ScreenTwoComponent,
@@ -34,7 +35,7 @@ import { SanitizeHTMLPipe } from 'src/app/shared/sanitizeHTML.pipe';
     SliderComponent,
     NewFdsComponent,
     NewFdsComboComponent,
-    SanitizeHTMLPipe
+    
   ],
   bootstrap: [ ScreenTwoComponent ]
 })

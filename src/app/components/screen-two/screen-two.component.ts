@@ -23,6 +23,7 @@ export class ScreenTwoComponent implements OnInit {
   actualPreset:number;
   currentID:number;
 
+
   compActive = 1;
   presets = []
   config = [];
@@ -104,15 +105,17 @@ export class ScreenTwoComponent implements OnInit {
         return false;
       }
   
-      // En caso error al guardar los documentos, se cambiar la variable savedChecked, y no permitirá guardar el preset actual.
+      // En caso error al guardar los documentos, se cambiar la variable savedChecked, y no permitirá guardar el preset actual.      
       
-      this.db.saveDocument('secondscreen', this.compVals[0] ).catch(err);
-      this.db.saveDocument('secondscreen', this.compVals[1] ).catch(err);
-      this.db.saveDocument('secondscreen', this.compVals[2] ).catch(err);      
-      
-      if (this.compVals.length == 4) {
-        this.db.saveDocument('secondscreen', this.compVals[3]).catch(err);
+       if (this.compVals.length == 8){
+        this.compVals.splice(0,4);
       }
+      this.db.saveDocument('secondscreen', this.compVals[0]).catch(err);
+      this.db.saveDocument('secondscreen', this.compVals[1]).catch(err);
+      this.db.saveDocument('secondscreen', this.compVals[2]).catch(err);
+      this.db.saveDocument('secondscreen', this.compVals[3]).catch(err);
+
+      console.log( this.compVals );
       
 
       if ( savedChecked ){
@@ -168,7 +171,6 @@ export class ScreenTwoComponent implements OnInit {
       )
       
       preset.subscribe( docs => {
-        console.log(docs)
         this.compVals = docs.map( doc => {
           return doc.data();
         })        
