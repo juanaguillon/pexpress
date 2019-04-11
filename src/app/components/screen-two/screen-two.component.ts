@@ -111,7 +111,6 @@ export class ScreenTwoComponent implements OnInit {
       this.db.saveDocument('secondscreen', this.compVals[2]).catch(err);
       this.db.saveDocument('secondscreen', this.compVals[3]).catch(err);
 
-      console.log( this.compVals );
       
 
       if ( savedChecked ){
