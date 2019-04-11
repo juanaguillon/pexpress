@@ -16,6 +16,7 @@ export class ScreensvComponent implements OnInit {
   currentPreset;
   elem;
 
+  isNight: boolean;
   
   constructor(private slide: SlideService) {
     this.getPresets()
@@ -24,7 +25,15 @@ export class ScreensvComponent implements OnInit {
 
   ngOnInit(): void {
     this.elem = document.documentElement;
-   
+    setInterval(() => {
+
+      let currentDate = new Date().getHours();
+      if (currentDate >= 17) {
+        this.isNight = true;
+        clearInterval()
+      }
+
+    }, 3600000)
    }
 
 

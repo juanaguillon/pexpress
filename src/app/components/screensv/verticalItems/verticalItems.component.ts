@@ -48,6 +48,8 @@ export class VerticalItemsComponent implements OnInit {
 
   ngOnInit() {
     this.elem = document.documentElement;
+
+   
    }
 
   // Obtener datos de slider
@@ -65,7 +67,8 @@ export class VerticalItemsComponent implements OnInit {
     if ( changes.preset.currentValue != undefined ){
       let menuID = this.preset.get('menu');
       let comboID = this.preset.get('combo');
-      let ejecID = this.preset.get('menufds');
+      console.log(this.preset.data());
+      let ejecID = this.preset.get('menufds') || this.preset.get('ejec') ;
   
       this.slide.getSecondScreenDocById(menuID)
       .subscribe( doc => {
