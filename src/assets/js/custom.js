@@ -11,8 +11,6 @@ $(document).ready(function () {
 
 		var scroll = $('.menu').scrollTop();
 
-		console.log(scroll);
-
 		if (scroll >= 1400) {
 
 			p = 0;

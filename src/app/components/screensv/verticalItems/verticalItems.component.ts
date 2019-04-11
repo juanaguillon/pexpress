@@ -8,13 +8,15 @@ import { SlideService } from 'src/app/services/slide.service';
 })
 export class VerticalItemsComponent implements OnInit {
 
-  @Input() preset
+  @Input() preset;
+  @Input() isnight: boolean;
   elem;
   
   images = [];
   menu: any = {}
   combo: any = {};
   ejec: any = {}
+  menufds:any;
   status = 0;
 
   slideOption = {
@@ -64,11 +66,12 @@ export class VerticalItemsComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges): void {
 
-    if ( changes.preset.currentValue != undefined ){
+    if ( changes.preset && changes.preset.currentValue != undefined ){
+      
       let menuID = this.preset.get('menu');
       let comboID = this.preset.get('combo');
-      console.log(this.preset.data());
-      let ejecID = this.preset.get('menufds') || this.preset.get('ejec') ;
+      let menufds = this.preset.get('ejec');
+      let ejecID = this.preset.get('menufds') ;
   
       this.slide.getSecondScreenDocById(menuID)
       .subscribe( doc => {
@@ -82,9 +85,13 @@ export class VerticalItemsComponent implements OnInit {
 
       this.slide.getSecondScreenDocById(ejecID)
       .subscribe( doc => {
-        console.log(doc.data());
         this.ejec = doc.data()
       });
+
+      this.slide.getSecondScreenDocById(menufds)
+        .subscribe(doc => {
+          this.menufds = doc.data()
+        });
 
       this.status = 1;
 

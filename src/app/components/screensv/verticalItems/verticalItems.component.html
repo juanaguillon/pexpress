@@ -1,18 +1,24 @@
 
-<section *ngIf="status == 1 " id="theProductos">
+<section *ngIf="status == 1 " id="theProductos" [ngClass]="{'isnighter': isnight}">
   <div class="vertical-products">
     <div class="titulo" id="tituloclicking" >
+
       <owl-carousel [options]="slideOption" [carouselClasses]="['owl-theme', 'sliding', 'carouselowl']" [items]="images">
         <ul class="fotos owl-carousel owl-theme" *ngFor="let prod of images">
           <li><img [src]="prod"></li>
         </ul>
       </owl-carousel>
-      <h3>{{menu.name | uppercase}}</h3>
-      <div class="words-desc">
+
+      <h3 *ngIf="! isnight">{{menu.name | uppercase}}</h3>
+      <h3 *ngIf="menufds && isnight">{{menufds.name | uppercase}}</h3>
+
+      <div *ngIf="! isnight" class="words-desc">
         <h3 class="exec-launcer-title">{{menu.aliments}}</h3>
       </div>
-     <p style="font-size: 6vw;">${{menu.price | number}}</p>
-      <div class="combo-day">
+
+      <p  *ngIf="! isnight" style="font-size: 6vw;">${{menu.price | number}}</p>
+
+      <div *ngIf="! isnight" class="combo-day">
         <ul>
           <li *ngFor="let aliment of menu.aditions">{{aliment}}</li>
         </ul>
@@ -28,8 +34,14 @@
       </div>
     </div>
 
-    <div class="post-combo">
+    <div *ngIf="! isnight" class="post-combo">
       <p *ngFor="let cb of combo.combos">
+        <span>{{cb.name}}</span>
+        <span>${{ cb.price | number}}</span>
+      </p>
+    </div>
+    <div *ngIf="isnight && menufds" class="post-combo">
+      <p *ngFor="let cb of menufds.combos">
         <span>{{cb.name}}</span>
         <span>${{ cb.price | number}}</span>
       </p>
@@ -50,7 +62,7 @@
         </span>
       </div>
 
-      <div class="position-absolute absolute-ofert">
+      <div *ngIf="! isnight" class="position-absolute absolute-ofert">
         <p> + Sopa <br>$13.500</p>
       </div>
       
