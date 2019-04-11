@@ -7,73 +7,66 @@ import { Observable } from 'rxjs';
   styleUrls: ['./newnight.component.css']
 })
 export class NewNightComponent implements OnInit {
-  @Output() takeInfo = new EventEmitter();
-  @Input() searchInfo: Observable<any>;
+  @Output() takeInfo = new EventEmitter<string>();
+  @Input() searchInfo: Observable<void>;
   @Input() data;
 
-  aditionData: any = {}
-  aditions: any[] = []
-
-  // Valors que serán guardados en la base de datos.
+  vals: any = {}
   inValues: any = {}
+  theCombo: any[] = []
+  nightName:string;
 
-
-  // Evitar la nueva creación de menu en caso de estar en actualización.
   currentID: number;
 
-
-  menuName: string;
-  subs;
-
+  private eventSubs: any;
 
   constructor() { }
 
-  ngOnInit(): void {
-    this.subs = this.searchInfo.subscribe(doc => {
+  ngOnInit() {
+    this.eventSubs = this.searchInfo.subscribe(() => {
       this.inValues.id = this.currentID != null ? this.currentID : new Date().getTime();
-      this.inValues.type = "fdscombo"
-      this.inValues.aditions = this.aditions;
-      this.inValues.name = this.menuName
-      this.takeInfo.emit(this.inValues);
+      this.inValues.type = "nightcombo";
+      this.inValues.combos = this.theCombo;
+      this.inValues.name = this.nightName;
+      this.takeInfo.emit(this.inValues)
     })
   }
 
   ngOnDestroy(): void {
-    //Called once, before the instance is destroyed.
-    //Add 'implements OnDestroy' to the class.
-    this.subs.unsubscribe()
+    this.eventSubs.unsubscribe();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.data && changes.data.currentValue !== undefined) {
       this.currentID = parseInt(changes.data.currentValue.id)
-      this.aditions = changes.data.currentValue['aditions'];
-      this.menuName = changes.data.currentValue['name'];
+      this.theCombo = changes.data.currentValue['combos'];
+      this.nightName = changes.data.currentValue["name"]
     } else if (changes.data && changes.data.currentValue == undefined) {
       this.currentID = null;
-      this.aditions = [];
-      this.menuName = "";
+      this.theCombo = [];
+      this.nightName = "";
     }
   }
 
-  removeAdition(i) {
-    this.aditions.splice(i, 1)
-  }
-
-  addAdition() {
-    if (Object.values(this.aditionData).length == 0 || this.aditionData == {}) {
-      alert('Debes agregar almenos una adicion.')
+  addCombo() {
+    let lengt = Object.keys(this.vals).length;
+    if (lengt < 2) {
+      alert('Añade nombre y precio a el combo')
       return;
     }
 
-    this.aditions.push(this.aditionData);
-    this.aditionData = {};
-
+    this.theCombo.push(this.vals)
+    this.vals = {};
   }
 
-  addAditionKey(e) {
+  enteringCombo(e) {
+    e.preventDefault();
     if (e.keyCode == 13) {
-      this.addAdition();
+      this.addCombo();
     }
+  }
+
+  removeAdition(i: number) {
+    this.theCombo.splice(i, 1);
   }
 }

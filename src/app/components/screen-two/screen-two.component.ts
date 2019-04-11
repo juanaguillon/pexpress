@@ -68,6 +68,7 @@ export class ScreenTwoComponent implements OnInit {
     
     this.eventsSubject.subscribe({      
       next: ( ) => {
+        
         this.saveDataChildrens( );
       }
     });
@@ -91,10 +92,6 @@ export class ScreenTwoComponent implements OnInit {
         this.compVals[1]['id'] += 10;
         this.compVals[2]['id'] += 20;
         this.compVals[3]['id'] += 30;
-
-        
-        
-        
       }
       
       let savedChecked = true;    
@@ -122,7 +119,7 @@ export class ScreenTwoComponent implements OnInit {
       }
     }  
 
-    this.compVals = [];
+    
 
     
   }

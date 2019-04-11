@@ -75,7 +75,7 @@
 
         <app-newfdscombo [data]="compVals[2]" (takeInfo)="reciveValsComponent($event)" [searchInfo]="eventsSubject.asObservable()" *ngIf="compActive == 1 && isFDS"></app-newfdscombo>
         
-        <app-newnight *ngIf="compActive == 1 && !isFDS"></app-newnight>
+        <app-newnight [data]="compVals[2]" (takeInfo)="reciveValsComponent($event)" [searchInfo]="eventsSubject.asObservable()" *ngIf="compActive == 1 && !isFDS"></app-newnight>
         
 
         <!-- RESETEAR EL COMPONENETE -->

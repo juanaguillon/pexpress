@@ -1,31 +1,40 @@
-<h2 class="text-dark">Menú diario</h2>
+<h2>Nocturno</h2>
 <div class="form-group">
-  <label for="name_day">Nombre</label>
-  <input class="form-control" [(ngModel)]="menuName" id="name_day" name="name_day" type="text">
-  <small class="text-muted form-text">EJ: Carne - Pechuga - Lomo - Milanesa - Trucha - Mojarra</small>
+  <label for="night_name">Título</label>
+  <input class="form-control" [(ngModel)]="nightName" type="text" name="night_name" id="night_name">
 </div>
 
-<div class="form-group">
-  <label for="list_day">Lista de adiciones</label>
-  <div class="form-row">
-    <div class="col-md-10">
-      <input (keyup)="addAditionKey($event)" class="form-control" [(ngModel)]="aditionData.name" type="text"
-        name="list_day" id="list_day">
+<div class="form-row">
+  
+  <div class="form-group col-md-6">
+    <label for="full_name">Nombre de Combo</label>
+    <div class="input-group">
+      <input (keyup)="enteringCombo($event)" [(ngModel)]="vals.name" type="text" class="form-control" name="full_name"
+        id="full_name" placeholder="Ej: Hamburguesa">
     </div>
-    <div class="col-md-2">
-      <button type="button" (click)="addAdition()" class="btn btn-success">Añadir item</button>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="full_price">Precio</label>
+    <div class="input-group">
+      <input (keyup)="enteringCombo($event)" [(ngModel)]="vals.price" type="number" class="form-control"
+        name="full_price" id="full_price">
     </div>
+  </div>
+  <div class="form-group col less-margin">
+    <a class="btn btn-sm btn-success" (click)="addCombo()">Agregar combo</a>
   </div>
 </div>
 
-<div class="form-group" *ngIf="aditions && aditions.length > 0">
+<div class="form-group" *ngIf="theCombo.length > 0">
   <div class="card">
     <ul class="list-group list-group-flush">
-      <li class="list-group-item d-flex justify-content-between" *ngFor="let launcher of aditions; let i = index">
-        <span class="text-success">{{launcher.name}}</span>
-        <span class="text-muted">
-          <button type="button" (click)="removeAdition(i)" class="btn btn-danger btn-sm ml-2">x</button>
-        </span>
+      <li *ngFor="let combo of theCombo; let i = index"
+        class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1 text-success">{{combo.name}}</h5>
+          <small>${{combo.price | number }}<button (click)="removeAdition(i)"
+              class="btn btn-danger btn-sm">x</button></small>
+        </div>
       </li>
     </ul>
   </div>

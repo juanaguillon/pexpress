@@ -63,10 +63,9 @@ export class VerticalItemsComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges): void {
 
     if ( changes.preset.currentValue != undefined ){
-
       let menuID = this.preset.get('menu');
       let comboID = this.preset.get('combo');
-      let ejecID = this.preset.get('ejec');
+      let ejecID = this.preset.get('menufds');
   
       this.slide.getSecondScreenDocById(menuID)
       .subscribe( doc => {
@@ -80,6 +79,7 @@ export class VerticalItemsComponent implements OnInit {
 
       this.slide.getSecondScreenDocById(ejecID)
       .subscribe( doc => {
+        console.log(doc.data());
         this.ejec = doc.data()
       });
 
