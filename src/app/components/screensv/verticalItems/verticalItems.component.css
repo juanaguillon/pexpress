@@ -11,7 +11,7 @@
 }
 .titulo h3{
   letter-spacing: 3px;
-	font-size: 4vw;
+	font-size: 5.4vw;
 }
 .carouselowl{
 	display: block;
@@ -54,7 +54,7 @@
 .combo-day > ul{
 	width: 60%;
 	text-align: left;
-	font-size: 2.3vw;
+	font-size: 2.5vw;
 	display: inline-block;
 	font-weight: bold;
 	font-family: 'Roboto Slab', serif;
@@ -81,7 +81,7 @@
 .post-combo > p {
 	padding: 1px 0;
 	justify-content: space-between;
-	font-size: 3.4vw;
+	font-size: 3.8vw;
 	line-height: 1.2;
 }
 .post-combo > p span{
@@ -194,7 +194,7 @@
 
 owl-carousel {
 	display: block;
-	height: 23vw;
+	height: 300px;
 	margin: 0px -15px;
 	margin-bottom: 15px;
 }

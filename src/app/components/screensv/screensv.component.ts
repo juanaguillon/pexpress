@@ -67,7 +67,7 @@ export class ScreensvComponent implements OnInit {
     let pipedPreset = presets.pipe(
       map(results => {
         return results.map(rf => {
-          let cday = new Date().getDay() + 1;
+          let cday = new Date().getDay();
           return rf["config"][cday];
         })
       }),

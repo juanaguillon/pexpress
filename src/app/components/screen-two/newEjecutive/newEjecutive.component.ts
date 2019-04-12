@@ -11,7 +11,7 @@ export class NewEjecutiveComponent implements OnInit {
   @Output() takeInfo = new EventEmitter;
   @Input() searchInfo:Observable<any>;
   @Input() data;
-  
+
   vals: any = {}
   currentAdition = ""
   aditions = [];
@@ -21,7 +21,7 @@ export class NewEjecutiveComponent implements OnInit {
 
   inValues: any = {}
   subscibedObject:any;
- 
+
   constructor() { }
 
   ngOnInit() {
@@ -37,7 +37,7 @@ export class NewEjecutiveComponent implements OnInit {
   ngOnDestroy(): void {
     this.subscibedObject.unsubscribe();
   }
-  
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.data && changes.data.currentValue != undefined) {
       this.menus = changes.data.currentValue.menus;
@@ -47,12 +47,12 @@ export class NewEjecutiveComponent implements OnInit {
       this.currentID = null;
     }
   }
-  
+
 
   addAdition() {
-    
+
     if ( this.currentAdition == "") return false;
-    
+
     this.aditions.push(this.currentAdition)
     this.currentAdition = "";
   }
@@ -76,12 +76,12 @@ export class NewEjecutiveComponent implements OnInit {
 
     this.aditions = [ ]
     this.vals = {}
-    
+
   }
 
   removeAdition(i: number) {
     this.menus.splice(i, 1);
   }
 
-  
+
 }
