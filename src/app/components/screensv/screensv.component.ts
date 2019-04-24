@@ -29,6 +29,8 @@ export class ScreensvComponent implements OnInit {
     this.elem = document.documentElement;
 
     let date =  new Date();
+    date.setUTCHours(-4);
+
     if ( date.getHours( ) < 17 ){
 
       let min = 60 - date.getMinutes();

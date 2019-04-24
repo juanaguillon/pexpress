@@ -33,25 +33,13 @@ setInterval( function() {
 	
 }, 600);
 
-
-
-// $('.owl-carousel').owlCarousel({
-// autoplay: true,
-// autoplaySpeed: 700,
-//   loop:true,
-//   margin:0,
-//   nav:true,
-//   responsive:{
-//       0:{
-//           items:1
-//       },
-//       600:{
-//           items:1
-//       },
-//       1000:{
-//           items:1
-//       }
-//   }
-// })
+$(window).on('resize', function( ){
+	var s = $(".exec-lanuchers").position();
+	if(s.left > 1){
+		var cheight = $("owl-carousel").height()
+		$("owl-carousel").height(cheight + s.left);
+	}
+	console.log( s )
+});
 
 
