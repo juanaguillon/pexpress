@@ -231,3 +231,12 @@ section.isnighter .post-combo > p {
   font-size: 4.2vw;
   line-height: 1.2;
 }
+
+.contact{
+	width: 100vh;
+	bottom: 0;
+	margin-left: -15px;
+	font-size: 55%;
+	text-align: right;
+	padding: 0 15px;
+}

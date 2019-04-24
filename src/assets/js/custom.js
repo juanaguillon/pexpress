@@ -35,11 +35,10 @@ setInterval( function() {
 
 $(window).on('resize', function( ){
 	var s = $(".exec-lanuchers").position();
-	if(s.left > 1){
+	if(s.left > 55){
 		var cheight = $("owl-carousel").height()
-		$("owl-carousel").height(cheight + s.left);
+		$("owl-carousel").height(cheight + (s.left - 55));
 	}
-	console.log( s )
 });
 
 
