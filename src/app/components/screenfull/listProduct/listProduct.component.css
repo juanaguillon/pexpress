@@ -4,6 +4,16 @@
 	position: absolute;
 	right: 0;
 }
+h1.logo_title{
+	z-index: 2;
+	position: absolute;
+	top: 0;
+	height: 17vh;
+	left: 17vw;
+}
+h1.logo_title * {
+	height: 100%;
+}
 .txtplato.txtplatoright {
 	position: absolute;
 	top: 50%;

@@ -1,9 +1,13 @@
 <div class="container">
   <div class="jumbotron col-md-6 offset-md-3" *ngIf=" increate == 'create' ">
-    <form >
+    <form (submit)="generateSlider($event)">
       <div class="form-group">
-        <label for="">Nombre de Imagen</label>
+        <label for="full_image_name">Nombre de Imagen</label>
         <input type="text" name="full_image_name" id="full_image_name" class="form-control" [(ngModel)]="currentSlide.name">
+      </div>     
+      <div class="form-group">
+        <label for="full_price">Precio</label>
+        <input type="number" name="full_price" id="full_price" class="form-control" [(ngModel)]="currentSlide.price">
       </div>     
       <div class="custom-file">
         <input type="file" name="full_image_data" id="full_image_data" (change)="generateImage( $event )" class="custom-file-input">
@@ -11,7 +15,7 @@
       </div>
 
       <div class="form-group text-center">
-        <button type="button" class="btn btn-success" (click)="generateSlider( )">Guardar</button>
+        <input value="Guardar" type="submit" class="btn btn-success">
       </div>
 
     </form>

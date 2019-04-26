@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { map, switchMap, mergeMap, concatMap, tap, flatMap } from 'rxjs/operators/';
-import { of, merge, forkJoin } from 'rxjs';
+import { Component, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import { map, flatMap } from 'rxjs/operators/';
+import { of } from 'rxjs';
 import { ProductService } from '../../../services/product.service';
 import { SlideService } from '../../../services/slide.service';
-
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-listProduct',
@@ -12,6 +12,7 @@ import { SlideService } from '../../../services/slide.service';
 })
 export class ListProductComponent implements OnInit {
 
+  @ViewChild('slickModal') slickModal
 	products:any[] = []; 
   images = [ ];
   slideOption = {
@@ -41,8 +42,6 @@ export class ListProductComponent implements OnInit {
       this.products = resp;  
     });
 
-
-
     // Obtener datos de slider
     this.slide.getAllDocs( )
     .pipe(
@@ -50,20 +49,27 @@ export class ListProductComponent implements OnInit {
           return results.map( f => {
             return {
               id: f.payload.doc.get('id'),
-              name: f.payload.doc.get('name')
+              name: f.payload.doc.get('name'),
+              price: f.payload.doc.get('price')
             }
           } )
         }
       ),
       flatMap( result => {
-        
         let mp = []
         result.forEach(element => {
-          mp.push(this.slide.getImageById(element.id))           
-        });
 
-        return forkJoin(mp); 
-        
+          this.slide.getImageById(element.id).toPromise()
+          .then( result =>{
+            mp.push({
+              image: result,
+              title : element.name,
+              price: element.price
+            })  
+          })        
+                   
+        }); 
+        return of(mp);
       } )
      
     )     
@@ -72,6 +78,16 @@ export class ListProductComponent implements OnInit {
       this.images = res;
     });
   }
+
+  ngOnChanges(changes: SimpleChanges): void {   
+    console.log( changes )
+    this.slickModal.unslick()
+    this.slickModal.slick( this.slideOption )
+    
+    
+  }
+
+  
 
   ngOnInit() {
   }

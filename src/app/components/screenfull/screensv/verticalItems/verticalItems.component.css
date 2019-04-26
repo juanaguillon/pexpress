@@ -16,6 +16,8 @@
 .titulo h3 {
   letter-spacing: 3px;
 	font-size: 7vh;
+	margin-top: 1vh;
+	line-height: 1;
 }
 .carouselowl {
   display: block;
@@ -48,11 +50,13 @@
 } */
 
 .words-desc h3 {
-	font-size: 5.1vh;
-  letter-spacing: inherit;
-  max-width: 100%;
-  min-width: 81%;
-  width: auto;
+  font-size: 5.1vh;
+	letter-spacing: inherit;
+	max-width: 100%;
+	min-width: 81%;
+	width: auto;
+	line-height: 1.1;
+	margin: 0;
 }
 
 .combo-day {
@@ -67,7 +71,7 @@
 .combo-day > ul {
   width: 60%;
   text-align: left;
-  font-size: 4.2vh;
+	font-size: 3.2vh;
   display: inline-block;
   font-weight: bold;
   font-family: "Roboto Slab", serif;
@@ -75,7 +79,7 @@
 
 .combo-day .price-combo {
   width: 40%;
-  font-size: 6.2vh;
+  font-size: 3.2vh;
   display: inline-block;
   text-align: center;
   vertical-align: top;
@@ -94,7 +98,7 @@
 .post-combo > p {
   padding: 1px 0;
   justify-content: space-between;
-	font-size: 2.6vw;
+  font-size: 2.8vw;
   line-height: 1.2;
 }
 .post-combo > p span {
@@ -109,7 +113,6 @@
 }
 
 .mini-price {
-  font-size: 60%;
   font-family: "Roboto Slab", serif;
   font-weight: bold;
 }
@@ -151,7 +154,7 @@
 }
 
 .exec-lanuchers h3 {
-	font-size: 171%;
+	font-size: 6vh;
 	line-height: 1;
 }
 
@@ -182,12 +185,12 @@
   background: #ffb300;
   color: black;
   border-radius: 15px;
-  font-size: 147%;
+  font-size: 4.4vh;
 }
 .exec-launcers-items {
   font-family: "Roboto Slab", serif;
   font-weight: bold;
-  font-size: 2.3vw;
+  font-size: 3.2vh;
   line-height: 1.3;
 }
 .exec-launcers-items ul {
@@ -247,10 +250,10 @@ section.isnighter .post-combo > p {
 }
 
 .contact{
-	width: 100vh;
+	width: 54.4vw;
 	bottom: 0;
 	margin-left: -15px;
 	font-size: 55%;
 	text-align: right;
-	padding: 0 15px;
+	padding: 0 1vw;
 }

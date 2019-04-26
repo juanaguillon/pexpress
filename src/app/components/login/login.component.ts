@@ -19,8 +19,13 @@ export class LoginComponent implements OnInit {
     private auth: AuthService,
     private router:Router
   ) {
+
+    
     this.auth.getCurrentUser().subscribe(user => {
       this.currentUser = user;
+      if (user && user.email == 'tavocreativo@gmail.com'){
+        this.router.navigate(["/admin/listing"])
+      }
     })
   }
 

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { SlideService } from '../../services/slide.service';
-import { Slider } from '../../shared/slider';
 import { ActivatedRoute } from '@angular/router';
 
 
@@ -16,7 +15,8 @@ export class SlideimagesComponent implements OnInit {
   currentSlide = {
     id: null,
     name: "",
-    image: {}      
+    image: {},
+    price: null    
   }
 
   constructor(
@@ -36,8 +36,9 @@ export class SlideimagesComponent implements OnInit {
     this.currentSlide.image = $e.target.files[0];
   }
 
-  generateSlider( ){
-    if ( ! this.currentSlide.image || ! this.currentSlide.name ){
+  generateSlider( e ){
+    e.preventDefault()
+    if (!this.currentSlide.image || !this.currentSlide.name || !this.currentSlide.price){
       alert('Todos los campos son requeridos');
       return false;
     }
@@ -48,7 +49,8 @@ export class SlideimagesComponent implements OnInit {
     .then( () => {
       let data = {
         id: idImage,
-        name: this.currentSlide.name
+        name: this.currentSlide.name,
+        price: this.currentSlide.price
       }
       this.slide.saveDocument( idImage, data ).then( ( ) => {
         alert('Slide creado correctamente');
