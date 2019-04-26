@@ -11,12 +11,18 @@ import { SharedModule } from 'src/app/shared.module';
   declarations: [
     VerticalItemsComponent,
     VerticalItems2Component,
-    ScreensvComponent    
+    ScreensvComponent
   ],
   imports: [
     CommonModule,
     OwlModule,
-    SharedModule
+    SharedModule,
+    
+  ],
+  exports:[
+    VerticalItemsComponent,
+    VerticalItems2Component,
+    ScreensvComponent
   ]
 })
 export class ScreensvModule { }

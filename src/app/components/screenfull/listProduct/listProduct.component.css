@@ -1,0 +1,60 @@
+
+#theProductos{
+	width: 45%;
+	position: absolute;
+	right: 0;
+}
+.txtplato.txtplatoright {
+	position: absolute;
+	top: 50%;
+	width: 50%;
+	right: 0;
+	text-align: right;
+	height: auto;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+.txtplato.txtplatoright .titleplato{
+	background: rgba(0,0,0,0.7);
+	padding: 0 10px;
+}
+.txtplato.txtplatoright .titleplato .plato{
+	display: block;
+	width: 100%;
+}
+.txtplato.txtplatoright .titulo{
+	height: 50%;
+	width: 100%;
+}
+.titulo.precioplato {
+	background: url('src/assets/images/fondo.jpg')  center center no-repeat;
+	background-size: cover;
+	padding: 0px 10px;
+}
+.titulo.precioplato .precio{
+	display: block;
+	text-align: right;
+	width: 100%;
+}
+.single-card{
+	max-width: 25%;
+}
+.owl-carousel{
+	display: block;
+}
+.right{
+	overflow: hidden;
+	width: 100%;
+}
+.fotos{
+	height: 100vh;
+}
+h3{
+	font-size: 1.17em;
+  font-weight: bold;
+}
+
+a{
+	color: white;
+	text-decoration: none;
+}

@@ -1,3 +1,7 @@
+/* *{
+  line-height: 1;
+} */
+
 .titulo > h1 {
   height: 43%;
 }
@@ -11,7 +15,7 @@
 }
 .titulo h3 {
   letter-spacing: 3px;
-  font-size: 5.4vw;
+	font-size: 7vh;
 }
 .carouselowl {
   display: block;
@@ -23,7 +27,15 @@
   height: 50% !important;
 }
 
-#theProductos {
+#theProductos{
+  width: 55%;
+	position: absolute;
+	left: 0;
+  top: 0;
+  font-family: "Germania One", cursive;
+}
+
+/* #theProductos {
   -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
   -webkit-transform-origin: bottom left;
@@ -33,10 +45,10 @@
   height: 100vw;
   width: 100vh;
   font-family: "Germania One", cursive;
-}
+} */
 
 .words-desc h3 {
-  font-size: 3.4vw;
+	font-size: 5.1vh;
   letter-spacing: inherit;
   max-width: 100%;
   min-width: 81%;
@@ -55,7 +67,7 @@
 .combo-day > ul {
   width: 60%;
   text-align: left;
-  font-size: 2.5vw;
+  font-size: 4.2vh;
   display: inline-block;
   font-weight: bold;
   font-family: "Roboto Slab", serif;
@@ -63,7 +75,7 @@
 
 .combo-day .price-combo {
   width: 40%;
-  font-size: 6.2vw;
+  font-size: 6.2vh;
   display: inline-block;
   text-align: center;
   vertical-align: top;
@@ -82,7 +94,7 @@
 .post-combo > p {
   padding: 1px 0;
   justify-content: space-between;
-  font-size: 3.8vw;
+	font-size: 2.6vw;
   line-height: 1.2;
 }
 .post-combo > p span {
@@ -97,7 +109,7 @@
 }
 
 .mini-price {
-  font-size: 40%;
+  font-size: 60%;
   font-family: "Roboto Slab", serif;
   font-weight: bold;
 }
@@ -133,24 +145,25 @@
 }
 .exec-lanuchers {
   height: auto;
-  font-size: 2.3vw;
+  font-size: 2.3vh;
   margin-top: 1%;
   align-items: center;
 }
 
 .exec-lanuchers h3 {
-  font-size: 130%;
+	font-size: 171%;
+	line-height: 1;
 }
 
 .exec-lanuchers .exec-launchers-price {
-  font-size: 190%;
+	font-size: 7vh;
   display: block;
   margin: auto;
 }
 
 .exec-lanuchers .absolute-ofert {
   width: 100%;
-  height: 128%;
+	height: 105%;
   line-height: 1;
   margin: 0;
   top: 0;
@@ -193,7 +206,8 @@
 }
 
 owl-carousel {
-  display: block;
+  /* display: block; */
+  display: none;
   height: 300px;
   margin: 0px -15px;
   margin-bottom: 15px;

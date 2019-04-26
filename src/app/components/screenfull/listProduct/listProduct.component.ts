@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { map, switchMap, mergeMap, concatMap, tap, flatMap } from 'rxjs/operators/';
 import { of, merge, forkJoin } from 'rxjs';
-import { ProductService } from '../../services/product.service';
-import { SlideService } from '../../services/slide.service';
+import { ProductService } from '../../../services/product.service';
+import { SlideService } from '../../../services/slide.service';
 
 
 @Component({
@@ -16,21 +16,10 @@ export class ListProductComponent implements OnInit {
   images = [ ];
   slideOption = {
     autoplay: true,
-    autoplaySpeed: 700,
-      loop:true,
-      margin:0,
-      nav:true,
-      responsive:{
-        0:{
-            items:1
-        },
-        600:{
-            items:1
-        },
-        1000:{
-            items:1
-      }
-    }
+    autoplaySpeed: 4000,
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
   }
 
   constructor( private prservice:ProductService,
@@ -85,6 +74,10 @@ export class ListProductComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  slickInit( e ){
+    console.log('Slick Init');
   }
 
 

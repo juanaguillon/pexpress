@@ -1,19 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RegisterProductComponent } from './components/registerProduct/registerProduct.component';
-import { ListProductComponent } from './components/listProduct/listProduct.component';
+import { ListProductComponent } from './components/screenfull/listProduct/listProduct.component';
 import { UpdateProductComponent } from './components/updateProduct/updateProduct.component';
 import { ViewproductsComponent } from './components/viewproducts/viewproducts.component';
 import { SlideimagesComponent } from './components/slideimages/slideimages.component';
 import { LoginComponent } from './components/login/login.component';
 
 // Rutas de modulos
-import { adminRoutes } from './components/admin/admin.module'
+import { adminRoutes } from './components/admin/admin.module';
 
 import { AuthGuard } from './services/auth.guard';
 import { NoauthGuard } from './services/noauth.guard';
 import { ScreenTwoComponent } from './components/screen-two/screen-two.component';
-import { ScreensvComponent } from './components/screensv/screensv.component';
+import { ScreenFullComponent } from './components/screenfull/screenfull.component';
+import { ScreensvComponent } from './components/screenfull/screensv/screensv.component';
 
 
 const routes: Routes = [
@@ -59,6 +60,10 @@ const routes: Routes = [
   {
     path:'verticalproductos',
     component: ScreensvComponent
+  },
+  {
+    path:'fullscreen',
+    component: ScreenFullComponent
   }
   
   

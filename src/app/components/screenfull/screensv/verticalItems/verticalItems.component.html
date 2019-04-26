@@ -3,11 +3,11 @@
   <div class="vertical-products">
     <div class="titulo" id="tituloclicking" >
 
-      <owl-carousel [options]="slideOption" [carouselClasses]="['owl-theme', 'sliding', 'carouselowl']" [items]="images">
+      <!-- <owl-carousel [options]="slideOption" [carouselClasses]="['owl-theme', 'sliding', 'carouselowl']" [items]="images">
         <ul class="fotos owl-carousel owl-theme" *ngFor="let prod of images">
           <li><img [src]="prod"></li>
         </ul>
-      </owl-carousel>
+      </owl-carousel> -->
 
       <h3 *ngIf="! isnight">{{menu.name | uppercase}}</h3>
       <h3 *ngIf="menufds && isnight">{{menufds.name | uppercase}}</h3>
@@ -16,7 +16,7 @@
         <h3 class="exec-launcer-title">{{menu.aliments}}</h3>
       </div>
 
-      <p  *ngIf="! isnight" style="font-size: 6vw;">${{menu.price | number}}</p>
+      <p  *ngIf="! isnight" style="font-size: 6vh;	line-height: 1;">${{menu.price | number}}</p>
 
       <div *ngIf="! isnight" class="combo-day">
         <ul>

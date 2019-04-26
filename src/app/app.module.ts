@@ -18,17 +18,19 @@ import { ScreenTwoModule } from './components/screen-two/screen-two.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterProductComponent } from './components/registerProduct/registerProduct.component';
-import { ListProductComponent } from './components/listProduct/listProduct.component';
+import { ListProductComponent } from './components/screenfull/listProduct/listProduct.component';
 import { UpdateProductComponent } from './components/updateProduct/updateProduct.component';
 import { ViewproductsComponent } from './components/viewproducts/viewproducts.component';
 import { SlideimagesComponent } from './components/slideimages/slideimages.component';
+import { LoginComponent } from './components/login/login.component';
+// import { ScreensvModule } from './components/screenfull/screensv/screensv.module';
+import { ScreenFullComponent } from './components/screenfull/screenfull.component';
 
 // Directives
 
 // Environment
 import { environment } from '../environments/environment'; 
-import { LoginComponent } from './components/login/login.component';
-import { ScreensvModule } from './components/screensv/screensv.module';
+import { ScreenFullModule } from './components/screenfull/screenfull.module';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { ScreensvModule } from './components/screensv/screensv.module';
     ViewproductsComponent,
     SlideimagesComponent,
     LoginComponent,
+    ScreenFullComponent
+
   ],
   imports: [
     BrowserModule,
@@ -51,7 +55,8 @@ import { ScreensvModule } from './components/screensv/screensv.module';
     OwlModule,
     AdminModule,
     ScreenTwoModule,
-    ScreensvModule,
+    ScreenFullModule
+    // ScreensvModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

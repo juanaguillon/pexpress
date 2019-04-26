@@ -33,12 +33,12 @@ setInterval( function() {
 	
 }, 600);
 
-$(window).on('resize', function( ){
-	var s = $(".exec-lanuchers").position();
-	if(s.left > 55){
-		var cheight = $("owl-carousel").height()
-		$("owl-carousel").height(cheight + (s.left - 55));
-	}
-});
+// $(window).on('resize', function( ){
+// 	var s = $(".exec-lanuchers").position();
+// 	if(s.left > 55){
+// 		var cheight = $("owl-carousel").height()
+// 		$("owl-carousel").height(cheight + (s.left - 55));
+// 	}
+// });
 
 
