@@ -16,6 +16,7 @@ export class ListProductComponent implements OnInit {
 	products:any[] = []; 
   images = [ ];
   slideOption = {
+    pauseOnHover:false,
     autoplay: true,
     autoplaySpeed: 4000,
     infinite: true,
@@ -77,6 +78,14 @@ export class ListProductComponent implements OnInit {
     .subscribe( res => {
       this.images = res;
     });
+  }
+
+  afterChange(e) {
+    $(".slick-current img.image_slide_animation").addClass("active");
+  }
+
+  beforeChange(e) {
+    $(".slick-current img.image_slide_animation").removeClass("active");
   }
 
   ngOnChanges(changes: SimpleChanges): void {   

@@ -1,0 +1,60 @@
+#pantalla_vertical {
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+  -webkit-transform-origin: bottom left;
+  transform-origin: bottom left;
+  position: absolute;
+  top: -100vw;
+  height: 100vw;
+  width: 100vh;
+  font-family: "Germania One", cursive;
+}
+
+* {
+  box-sizing: border-box;
+}
+.backround_media {
+  height: 100vw;
+	position: absolute;
+}
+
+.front_container {
+  padding: 0 2vh;
+  position: relative;
+  z-index: 2;
+  height: 100vw;
+}
+.title_logo {
+  left: 0;
+  width: 50%;
+  margin-bottom: 37vw;
+  height: 13vw;
+}
+.title_logo img,
+.title_logo h1 {
+  height: 100%;
+}
+.text_container {
+  font-family: Germania One;
+  font-size: 13.5vh;
+}
+.text_container > div {
+  line-height: 1;
+  text-align: left;
+}
+.title_product h3 {
+  line-height: 1;
+  color: #ffc314;
+  font-size: 80%;
+}
+.title_price span {
+  line-height: 1;
+  font-size: 60%;
+}
+.absolute_container {
+  /* CAMBIAR VH */
+  /* padding: 0 2vh; */
+}
+.container_slider{
+  background-position-x: 40%;background-position-y: top;background-size: auto 100%;
+}

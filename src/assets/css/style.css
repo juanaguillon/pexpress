@@ -21,6 +21,7 @@ body {
   height: 100%;
   margin: 0;
   text-align: center;
+  overflow: hidden;
 }
 
 h1,
@@ -142,7 +143,7 @@ ul {
   box-sizing: border-box;
   height: 100%;
   left: 0px;
-  padding: 0px 1vw;
+  padding: 0px 1.5vw;
   position: absolute;
   width: 100%;
 }
@@ -155,6 +156,13 @@ ul {
   transform: scale(1.1);
 }
 
+.image_slide_animation{
+  transition: all 4s linear;
+  transform: scale(1);
+}
+.image_slide_animation.active{
+  transform: scale(1.2);
+}
 span.li-title {
   color: #fbce65;
   margin-right: 8px;

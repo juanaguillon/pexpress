@@ -31,6 +31,7 @@ import { ScreenFullComponent } from './components/screenfull/screenfull.componen
 // Environment
 import { environment } from '../environments/environment'; 
 import { ScreenFullModule } from './components/screenfull/screenfull.module';
+import { PantallaVerticalComponent } from './components/pantalla-vertical/pantalla-vertical.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ScreenFullModule } from './components/screenfull/screenfull.module';
     ViewproductsComponent,
     SlideimagesComponent,
     LoginComponent,
-    ScreenFullComponent
+    ScreenFullComponent,
+    PantallaVerticalComponent
 
   ],
   imports: [

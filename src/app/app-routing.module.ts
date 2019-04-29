@@ -15,12 +15,13 @@ import { NoauthGuard } from './services/noauth.guard';
 import { ScreenTwoComponent } from './components/screen-two/screen-two.component';
 import { ScreenFullComponent } from './components/screenfull/screenfull.component';
 import { ScreensvComponent } from './components/screenfull/screensv/screensv.component';
+import { PantallaVerticalComponent } from './components/pantalla-vertical/pantalla-vertical.component';
 
 
 const routes: Routes = [
   {
     path:'',
-    redirectTo: 'productos',
+    redirectTo: 'pv',
     pathMatch: "full"
   },
   {
@@ -64,6 +65,10 @@ const routes: Routes = [
   {
     path:'fullscreen',
     component: ScreenFullComponent
+  },
+  {
+    path:'pv',
+    component: PantallaVerticalComponent
   }
   
   

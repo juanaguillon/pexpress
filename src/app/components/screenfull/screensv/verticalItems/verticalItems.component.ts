@@ -44,7 +44,7 @@ export class VerticalItemsComponent implements OnInit {
   ) {
 
     // this.getPresets();
-    this.getSliderDocs();
+    // this.getSliderDocs();
 
   }
 
@@ -63,6 +63,8 @@ export class VerticalItemsComponent implements OnInit {
       });
 
   }
+
+  
 
   ngOnChanges(changes: SimpleChanges): void {
 

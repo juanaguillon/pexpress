@@ -16,7 +16,7 @@
 .titulo h3 {
   letter-spacing: 3px;
 	font-size: 7vh;
-	margin-top: 1vh;
+	margin-top: 1.5vh;
 	line-height: 1;
 }
 .carouselowl {
@@ -250,10 +250,10 @@ section.isnighter .post-combo > p {
 }
 
 .contact{
-	width: 54.4vw;
+	width: 54vw;
 	bottom: 0;
 	margin-left: -15px;
 	font-size: 55%;
 	text-align: right;
-	padding: 0 1vw;
+	padding: 0px 1.5vw;
 }

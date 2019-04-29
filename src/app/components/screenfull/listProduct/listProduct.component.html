@@ -13,10 +13,12 @@
 		</ul>
 	</div> -->
 	<div class="right">
-		<h1 class="logo_title"><a routerLink="/login"><img class="logo" src="assets/images/logo_parrilla_express.png"></a></h1>
-		<ngx-slick-carousel class="carousel fotos owl-carousel owl-theme" (init)="slickInit($event)" [config]="slideOption"
+		<h1 class="logo_title"><a routerLink="/login"><img class="logo" src="assets/images/logo_parrilla_express.png"></a>
+		</h1>
+		<ngx-slick-carousel (afterChange)="afterChange($event)" (beforeChange)="beforeChange($event)" class="carousel fotos owl-carousel owl-theme" (init)="slickInit($event)" [config]="slideOption"
 			#slickModal="slick-carousel">
-			<div ngxSlickItem class="slide" *ngFor="let prod of images"><img [src]="prod.image">
+			<div ngxSlickItem  class="slide"
+				*ngFor="let prod of images"><img class="image_slide_animation" [src]="prod.image">
 				<div class="txtplato txtplatoright">
 					<div class="titulo titleplato">
 						<h3 class="plato">{{prod.title}}</h3>
