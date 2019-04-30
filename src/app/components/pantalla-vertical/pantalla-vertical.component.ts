@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-pantalla-vertical',
@@ -15,55 +16,29 @@ export class PantallaVerticalComponent implements OnInit {
       {
         title: 'Hamburguesa',
         image: 'assets/images/foto_1.jpg',
-        price: 21000
+        price: 9000
       },
       {
         title: 'Churrasco',
         image: 'assets/images/foto_9.jpg',
-        price: 22000
-      }
-    ]
-
-    this.data2 = [
+        price: 17000
+      },      
       {
-        title: 'Hamburguesa 2',
-        image: 'assets/images/foto_1.jpg',
-        price: 12000
+        title: 'Costillas BBQ',
+        image: 'assets/images/costillas2.jpg',
+        price: 23000
       },
       {
-        title: 'Churrasco 2',
-        image: 'assets/images/foto_9.jpg',
-        price: 32000
-      }
-    ]
-
-    let s = [
-      {
-        title: 'Hamburguesa 2',
-        image: 'assets/images/foto_1.jpg',
-        price: 12000
+        title: 'Mojarra',
+        image: 'assets/images/foto_8.jpg',
+        price: 24000
       },
       {
-        title: 'Churrasco 2',
-        image: 'assets/images/foto_9.jpg',
-        price: 32000
+        title: 'Parrilla',
+        image: 'assets/images/foto_7.jpg',
+        price: 25000
       }
-    ]
-    let r = [
-      {
-        title: 'Hamburguesa',
-        image: 'assets/images/foto_1.jpg',
-        price: 21000
-      },
-      {
-        title: 'Churrasco',
-        image: 'assets/images/foto_9.jpg',
-        price: 22000
-      }
-    ]
-    let f = this.intersect(s, r)
-    console.log(f);
-    
+    ]   
     
   }
 
@@ -72,11 +47,18 @@ export class PantallaVerticalComponent implements OnInit {
     
   }
 
-  intersect(a, b) {
-    var t;
-    if (b.length > a.length) t = b, b = a, a = t; // indexOf to loop over shorter
-    return a.filter(function (e) {
-      return b.indexOf(e) > -1;
-    });
+  beforeChange(e){
+    console.log(e)
+    $(".slick-current .image_fully").removeClass("active");
+
   }
+
+  afterChange(e){
+    console.log(e)
+    $(".slick-current .image_fully").addClass("active");
+    
+  }
+
+  
+  
 }

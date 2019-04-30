@@ -15,46 +15,84 @@
 }
 .backround_media {
   height: 100vw;
-	position: absolute;
+  position: absolute;
 }
 
 .front_container {
-  padding: 0 2vh;
+  padding: 0px 3vh;
   position: relative;
   z-index: 2;
   height: 100vw;
 }
 .title_logo {
   left: 0;
-  width: 50%;
-  margin-bottom: 37vw;
+  width: 100%;
+  position: fixed;
   height: 13vw;
+  z-index: 13;
 }
 .title_logo img,
 .title_logo h1 {
   height: 100%;
+  text-align: -webkit-center;
 }
 .text_container {
+  position: absolute;
   font-family: Germania One;
   font-size: 13.5vh;
+  width: 60%;
+  margin-top: 45vw;
+  text-align: left;
 }
 .text_container > div {
   line-height: 1;
   text-align: left;
+  width: 60%;
 }
 .title_product h3 {
+  padding: 10px;
   line-height: 1;
-  color: #ffc314;
+  color: #000000;
   font-size: 80%;
+  background: #ffee00;
+  display: inline;
 }
 .title_price span {
   line-height: 1;
   font-size: 60%;
+  width: 100%;
+  color: #fff3d2;
+  padding: 12px;
+  background: #f91700;
 }
-.absolute_container {
-  /* CAMBIAR VH */
-  /* padding: 0 2vh; */
+.linea {
+  border: 3px solid rgb(255, 238, 0);
+  height: 96.7%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 95%;
+  z-index: 10;
 }
-.container_slider{
-  background-position-x: 40%;background-position-y: top;background-size: auto 100%;
+
+.container_slider {
+  background-position-x: 40%;
+  background-position-y: top;
+  background-size: auto 100%;
+}
+.only_slider_container {
+  overflow: hidden;
+  position: relative;
+}
+.image_fully {
+  height: 100vw;
+  position: absolute;
+  right: -100%;
+  transition: right 6s linear;
+  /* left: 0; */
+}
+.image_fully.active{
+  right: -70%;
 }
