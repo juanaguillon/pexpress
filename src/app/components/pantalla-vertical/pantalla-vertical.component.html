@@ -40,9 +40,26 @@
           </div>
           <!-- FINAL TEXT CONTAINER -->
 
-        </div>
-        <div *ngIf="i < data.length" class="only_slider_container">
-          <img  [src]="data[i + 1].image" alt="" class="image_fully">
+        </div>        
+
+      </div>
+      
+
+    </ngx-slick-carousel>
+    <ngx-slick-carousel (afterChange)="afterChange($event)" (beforeChange)="beforeChange($event)" [config]="{
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: -1,
+      autoplay:true,
+      autoplaySpeed:6000,
+      pauseOnHover: false,
+      pauseOnFocus:false
+      
+    }" class="carousel" #slickModal="slick-carousel" >
+      <div ngxSlickItem *ngFor="let d of data; let i = index" class="container_slider slide" >
+
+        <div class="only_slider_container">
+          <img [src]="d.image" alt="" class="image_fully">
           <!-- TEXT CONTAINER -->
           <div class="front_container">
             
@@ -50,11 +67,11 @@
             <div class="text_container">
 
               <div class="title_product">
-                <h3>{{data[i + 1].title}}</h3>
+                <h3>{{d.title}}</h3>
               </div>
               <div class="title_price">
                 <span>
-                  ${{data[i + 1].price | number}}
+                  ${{d.price | number}}
                 </span>
               </div>
             </div>
@@ -63,7 +80,7 @@
           </div>
           <!-- FINAL TEXT CONTAINER -->
 
-        </div>
+        </div>        
 
       </div>
       
