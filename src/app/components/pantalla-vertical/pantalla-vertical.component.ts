@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
+import { SlideService } from 'src/app/services/slide.service';
+import { map, flatMap } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-pantalla-vertical',
@@ -11,34 +14,71 @@ export class PantallaVerticalComponent implements OnInit {
   data = []
   data2 = []
   
-  constructor() {
-    this.data = [
-      {
-        title: 'Hamburguesa',
-        image: 'assets/images/foto_1.jpg',
-        price: 9000
-      },
-      {
-        title: 'Churrasco',
-        image: 'assets/images/foto_9.jpg',
-        price: 17000
-      },      
-      {
-        title: 'Costillas BBQ',
-        image: 'assets/images/costillas2.jpg',
-        price: 23000
-      },
-      {
-        title: 'Mojarra',
-        image: 'assets/images/foto_8.jpg',
-        price: 24000
-      },
-      {
-        title: 'Parrilla',
-        image: 'assets/images/foto_7.jpg',
-        price: 25000
-      }
-    ]   
+  constructor(
+    private slide:SlideService
+  ) {
+    this.slide.getAllDocs2()
+      .pipe(
+        map(results => {
+          return results.map(f => {
+            return {
+              id: f.payload.doc.get('id'),
+              name: f.payload.doc.get('name'),
+              price: f.payload.doc.get('price')
+            }
+          })
+        }
+        ),
+        flatMap(result => {
+          let mp = []
+          result.forEach(element => {
+
+            this.slide.getImageById(element.id).toPromise()
+              .then(result => {
+                mp.push({
+                  image: result,
+                  title: element.name,
+                  price: element.price
+                })
+              })
+
+          });
+          return of(mp);
+        })
+
+      )
+
+      .subscribe(res => {
+        this.data = res;
+      });
+
+    // this.data = [
+    //   {
+    //     title: 'Hamburguesa',
+    //     image: 'assets/images/foto_1.jpg',
+    //     price: 9000
+    //   },
+    //   {
+    //     title: 'Churrasco',
+    //     image: 'assets/images/foto_9.jpg',
+    //     price: 17000
+    //   },      
+    //   {
+    //     title: 'Costillas BBQ',
+    //     image: 'assets/images/costillas2.jpg',
+    //     price: 23000
+    //   },
+    //   {
+    //     title: 'Mojarra',
+    //     image: 'assets/images/foto_8.jpg',
+    //     price: 24000
+    //   },
+    //   {
+    //     title: 'Parrilla',
+    //     image: 'assets/images/foto_7.jpg',
+    //     price: 25000
+    //   }
+    // ];    
     
   }
 

@@ -8,6 +8,7 @@ import { AdminComponent } from './admin.component';
 import { AdminListingComponent } from './admin-listing/admin-listing.component';
 import { AdminScreenOneComponent } from './admin-screen-one/admin-screen-one.component';
 import { AuthGuard } from 'src/app/services/auth.guard';
+import { AdminVerticalSliderComponent } from './admin-vertical-slider/adminverticalslider.component';
 
 export const adminRoutes: Routes = [
   {
@@ -27,6 +28,10 @@ export const adminRoutes: Routes = [
       {
         path: "screen-one",
         component: AdminScreenOneComponent
+      },
+      {
+        path:"vertical-slider",
+        component: AdminVerticalSliderComponent
       }     
 
     ]
@@ -37,7 +42,8 @@ export const adminRoutes: Routes = [
   declarations: [
     AdminListingComponent,
     AdminComponent,
-    AdminScreenOneComponent
+    AdminScreenOneComponent,
+    AdminVerticalSliderComponent
   ],
   imports: [
     BrowserModule,
