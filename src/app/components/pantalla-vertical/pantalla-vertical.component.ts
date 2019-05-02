@@ -48,13 +48,11 @@ export class PantallaVerticalComponent implements OnInit {
   }
 
   beforeChange(e){
-    console.log(e)
     $(".slick-current .image_fully").removeClass("active");
 
   }
 
   afterChange(e){
-    console.log(e)
     $(".slick-current .image_fully").addClass("active");
     
   }

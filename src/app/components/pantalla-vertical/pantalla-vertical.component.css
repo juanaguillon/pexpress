@@ -41,7 +41,7 @@
   font-family: Germania One;
   font-size: 13.5vh;
   width: 60%;
-  margin-top: 45vw;
+  margin-top: 20vw;
   text-align: left;
 }
 .text_container > div {
@@ -85,14 +85,14 @@
 .only_slider_container {
   overflow: hidden;
   position: relative;
+  height: 50vw;
 }
 .image_fully {
-  height: 100vw;
+  height: 50vw;
   position: absolute;
-  right: -100%;
+  /* right: -100%; */
   transition: right 6s linear;
-  /* left: 0; */
 }
-.image_fully.active{
+/* .image_fully.active{
   right: -70%;
-}
+} */
