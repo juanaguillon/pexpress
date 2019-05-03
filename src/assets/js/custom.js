@@ -43,6 +43,13 @@ var slick2 = {
 };
 
 $(window).on("resize", function() {
+  if ($(".slick_1").hasClass("slick-initialized")) {
+    $(".slick_1").slick("unslick");
+  }
+  if ($(".slick_2").hasClass("slick-initialized")) {
+    $(".slick_2").slick("unslick");
+  }
+
   $(".slick_1").slick(slick1);
   setTimeout(() => {
     $(".slick_2").slick(slick2);
@@ -53,7 +60,7 @@ $(window).on("resize", function() {
 //   $(".owl-carousel").slick("unslick");
 // if ($(".owl-carouselD").hasClass("slick-initialized"))
 // 	$(".owl-carouselD").slick("unslick");
-	
+
 // $(".owl-carousel").slick({
 //   autoplay: true,
 //   autoplaySpeed: 8000,

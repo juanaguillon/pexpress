@@ -60,6 +60,9 @@ ul {
   position: absolute;
   width: 40%;
 }
+.overhidden{
+  overflow: hidden;
+}
 /*LOGO*/
 .logo {
   height: 178px;

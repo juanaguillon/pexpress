@@ -13,9 +13,18 @@ export class PantallaVerticalComponent implements OnInit {
 
   data = []
   data2 = []
-  
+  slideConfig = {
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 6000,
+    pauseOnHover: false,
+    pauseOnFocus: false
+  }
+
   constructor(
-    private slide:SlideService
+    private slide: SlideService
   ) {
     this.slide.getAllDocs2()
       .pipe(
@@ -79,24 +88,33 @@ export class PantallaVerticalComponent implements OnInit {
     //     price: 25000
     //   }
     // ];    
-    
+
   }
 
 
   ngOnInit(): void {
-    
+    document.body.classList.add('overhidden');
   }
 
-  beforeChange(e){
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    document.body.classList.remove('overhidden');
+
+  }
+
+  
+
+  beforeChange(e) {
     $(".slick-current .image_fully").removeClass("active");
 
   }
 
-  afterChange(e){
+  afterChange(e) {
     $(".slick-current .image_fully").addClass("active");
-    
+
   }
 
-  
-  
+
+
 }
