@@ -1,4 +1,4 @@
-<section id="pantalla_vertical">
+<section id="pantalla_vertical" (click)="openFullScreen()">
 
 
   
@@ -39,7 +39,7 @@
 
     </div>
     <div  class="carousel slick_2" >
-      <div *ngFor="let d of data.reverse(); let i = index" class="container_slider slide" >
+      <div *ngFor="let d of data2; let i = index" class="container_slider slide" >
 
         <div class="only_slider_container">
           <img [src]="d.image" alt="" class="image_fully">

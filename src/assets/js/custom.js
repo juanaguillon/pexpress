@@ -42,19 +42,19 @@ var slick2 = {
   pauseOnFocus: false
 };
 
-$(window).on("resize", function() {
-  if ($(".slick_1").hasClass("slick-initialized")) {
-    $(".slick_1").slick("unslick");
-  }
-  if ($(".slick_2").hasClass("slick-initialized")) {
-    $(".slick_2").slick("unslick");
-  }
+// $(window).on("resize", function() {
+//   if ($(".slick_1").hasClass("slick-initialized")) {
+//     $(".slick_1").slick("unslick");
+//   }
+//   if ($(".slick_2").hasClass("slick-initialized")) {
+//     $(".slick_2").slick("unslick");
+//   }
 
-  $(".slick_1").slick(slick1);
-  setTimeout(() => {
-    $(".slick_2").slick(slick2);
-  }, 3000);
-});
+//   $(".slick_1").slick(slick1);
+//   setTimeout(() => {
+//     $(".slick_2").slick(slick2);
+//   }, 3000);
+// });
 
 // if ($(".owl-carousel").hasClass("slick-initialized"))
 //   $(".owl-carousel").slick("unslick");

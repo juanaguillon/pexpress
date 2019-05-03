@@ -59,6 +59,7 @@ span.li-text-left {
 	text-align: right;
 	display: inline-block;
 	width: 15%;
+	font-family: Germania One;
 }
 
 .combo-day{
@@ -73,7 +74,7 @@ span.li-text-left {
 .combo-day > ul{
 	width: 100%;
 	text-align: left;
-	font-size: 2.7vh;
+	font-size: 2.9vh;
 	display: inline-block;
 	font-weight: bold;
 	font-family: 'Roboto Slab', serif;
@@ -104,7 +105,7 @@ span.li-text-left {
 
 .post-combo > p {
 	padding: 1px 0;
-	font-size: 2.8vh;
+	font-size: 2.9vh;
 	line-height: 1.2;
 }
 .post-combo > p span{
@@ -117,6 +118,8 @@ span.li-text-left {
 }
 .post-combo > p span:last-child{
 	text-align: right;
+	font-weight: bold;
+	font-size: 100%;
 }
 
 .mini-price{

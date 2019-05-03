@@ -61,6 +61,10 @@ export class SlideimagesComponent implements OnInit {
       console.log( err );
     })
   }
+  
+  deleteSlide(id) {
+    this.slide.deleteSlide1(id);
+  }
 
 
 

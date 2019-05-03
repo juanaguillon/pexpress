@@ -83,6 +83,23 @@ export class SlideService {
     const docs = this.getAllDocs2();
     return docs.pipe(map(mapF), flatMap(flatF))
   }
+  deleteSlide1( id:number){
+    this.stg.storage.ref('productos/' + id ).delete()
+    .then( ref => {
+      this.db.doc('slide/' + id ).delete( ).then( ref => {
+        alert('Imágen eliminada correctamente');
+      })
+    })
+  }
+
+  deleteSlide2( id:number){
+    this.stg.storage.ref('productos/' + id ).delete()
+    .then( ref => {
+      this.db.doc('slide2/' + id ).delete( ).then( ref => {
+        alert('Imágen eliminada correctamente');
+      })
+    })
+  }
 
 
 

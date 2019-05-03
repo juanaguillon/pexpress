@@ -13,6 +13,10 @@
 * {
   box-sizing: border-box;
 }
+
+.slick_1,.slick_2{
+  height: 50vw;
+}
 .backround_media {
   height: 100vw;
   position: absolute;
@@ -39,8 +43,8 @@
 .text_container {
   position: absolute;
   font-family: Germania One;
-  font-size: 13.5vh;
-  width: 60%;
+	font-size: 4.6vw;
+  width: 80%;
   margin-top: 20vw;
   text-align: left;
 }
@@ -48,9 +52,10 @@
   line-height: 1;
   text-align: left;
   width: 60%;
+  margin-bottom: 0.5vw;
 }
 .title_product h3 {
-  padding: 10px;
+	padding: 0.7vw;
   line-height: 1;
   color: #000000;
   font-size: 80%;
@@ -62,7 +67,7 @@
   font-size: 60%;
   width: 100%;
   color: #fff3d2;
-  padding: 12px;
+	padding: 0.9vw;
   background: #f91700;
 }
 .linea {

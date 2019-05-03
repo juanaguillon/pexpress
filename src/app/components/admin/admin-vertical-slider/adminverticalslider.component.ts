@@ -20,7 +20,7 @@ export class AdminVerticalSliderComponent implements OnInit {
     private slide: SlideService,
   ) {
 
-    this.slide.getAllDocs().subscribe(response => {
+    this.slide.getAllDocs2().subscribe(response => {
       this.sliders = response.map(data => data.payload.doc.data());
     })
   }
@@ -55,5 +55,9 @@ export class AdminVerticalSliderComponent implements OnInit {
         alert('Error al crear slide');
         console.log(err);
       })
+  }
+
+  deleteSlide( id ){
+    this.slide.deleteSlide2( id );
   }
 }

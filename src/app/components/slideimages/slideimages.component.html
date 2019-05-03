@@ -23,6 +23,19 @@
 
     
   </div>
+  <div class="row">
+    <div *ngFor="let slide of sliders" class="col-md-3 card">
+      <img class="card-img-top"
+        src="https://firebasestorage.googleapis.com/v0/b/pexpress-cf486.appspot.com/o/productos%2F{{slide.id}}?alt=media&token=0263e0ed-9d6f-4937-b55c-2866211af5d0"
+        alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title text-dark">{{slide.name}}</h5>
+        <p class="card-text text-muted">${{slide.price | number}}</p>
+        <button (click)="deleteSlide(slide.id)" class="btn btn-danger btn-sm">X</button>
+      </div>
+    </div>
+  
+  </div>
   
 
 </div>
