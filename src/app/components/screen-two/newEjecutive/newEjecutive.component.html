@@ -32,7 +32,7 @@
           </li>
         </ul>
       </div>
-      <div class="form-group text-right mt-2"><button (click)="addMenu( )" class="btn btn-success">Añadir Menú</button></div>
+      <div class="form-group text-right mt-2"><button [attr.data-index]="buttonSend.index || 0" [attr.data-event]="buttonSend.action" (click)="sendEditingAdition($event)" [class]="buttonSend.className">{{buttonSend.text}}</button></div>
     </div>  
 
     <!-- ACORDION -->
@@ -44,7 +44,7 @@
               <h5 class="text-muted">
                 {{menu.name}}
               </h5>
-              <span class="text-muted">${{menu.price | number}} <button (click)="removeAdition(i)" class="btn btn-danger btn-sm">x</button>    </span>
+              <span class="text-muted">${{menu.price | number}} <button (click)="removeAdition(i)" class="btn btn-danger btn-sm">x</button><button [attr.data-index]="i" (click)="prepareToEditAdition($event)" class="btn btn-primary btn-sm">&#8635;</button></span>
             </a>
           </div>
           

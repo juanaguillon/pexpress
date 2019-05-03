@@ -19,11 +19,7 @@ export class NewComboComponent implements OnInit {
   currentID:number;
 
   /* Boton que se usará para editar o eliminar un combo, desde la lista de combos. */
-  buttonSend:any = {
-    className: 'btn btn-success btn-sm',
-    text: 'Agregar Combo',
-    action: 'add'
-  }
+  buttonSend:any;
 
   private eventSubs:any;
 
@@ -36,6 +32,8 @@ export class NewComboComponent implements OnInit {
       this.inValues.combos = this.theCombo;
       this.methodName.emit( this.inValues )
     } )
+
+    this.setTypeOfButtonAdition('add');
   }
 
   ngOnDestroy(): void {
@@ -57,12 +55,12 @@ export class NewComboComponent implements OnInit {
     e.preventDefault();
     let event = e.target.getAttribute('data-event');
 
-
     if ( event == 'add'){
       this.addCombo();
     }else if ( event == 'edit'){
       let i = e.target.getAttribute('data-index');
       this.setEditAdition( i );
+      this.setTypeOfButtonAdition( "add" )
     }
   }
 
@@ -82,7 +80,12 @@ export class NewComboComponent implements OnInit {
   enteringCombo( e ){
     e.preventDefault();
     if ( e.keyCode == 13 ){
-      this.addCombo ( );
+      if ( this.buttonSend.action == 'add'){
+        this.addCombo ( );
+
+      } else if (this.buttonSend.action == 'edit'){
+        this.setEditAdition( this.buttonSend.index );
+      }
     }
   }
 
@@ -91,22 +94,42 @@ export class NewComboComponent implements OnInit {
     this.theCombo.splice(i,1);
   }
 
-  editAdition( i:number, ){
+  editAdition( i:number){
+
     this.vals.name = this.theCombo[i]["name"];
     this.vals.price = this.theCombo[i]["price"];
 
 
-    this.buttonSend.text = 'Editar Combo';
-    this.buttonSend.className = 'btn btn-primary btn-sm';
-    this.buttonSend.action = 'edit';
+    this.setTypeOfButtonAdition('edit')
     this.buttonSend.index = i;
+
 
   }
 
   private setEditAdition( index:number){
-
-    this.theCombo[index] = this.vals;
+    let newVal = this.vals;
+    this.theCombo[index] = newVal;
+    this.vals = {}
     
+  }
+
+  /** Cambiar el estilo de botón para agregar o editar un combo. 
+   * @param {string} type Valor a ser transofrmado, permite add (Añadir nuevo menú) o edit ( para editar un menu)
+   */
+  private setTypeOfButtonAdition( type:string ){
+    if ( type == 'add' ){
+      this.buttonSend = {
+        className: 'btn btn-success btn-sm',
+        text: 'Agregar Combo',
+        action: 'add'
+      }
+    }else if ( type == "edit"){
+      this.buttonSend = {
+        text: 'Editar Combo',
+        className: "btn btn-primary btn-sm",
+        action: 'edit'
+      }
+    }
   }
 
 
