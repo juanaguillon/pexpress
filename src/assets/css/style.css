@@ -163,7 +163,7 @@ ul {
   transform: scale(1);
 }
 .image_slide_animation.active{
-  transform: scale(1.2);
+  transform: scale(1.08);
 }
 span.li-title {
   color: #fbce65;

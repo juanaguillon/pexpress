@@ -21,7 +21,7 @@ export class PantallaVerticalComponent implements OnInit {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 6000,
+    autoplaySpeed: 10000,
     pauseOnHover: false,
     pauseOnFocus: false
   }
@@ -117,7 +117,7 @@ export class PantallaVerticalComponent implements OnInit {
       setTimeout(() => {
         
         $(".slick_2").slick(this.slideConfig);
-      }, 3000);
+      }, 5000);
       
     }, 3000);
   }

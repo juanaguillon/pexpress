@@ -19,6 +19,8 @@ export class VerticalItems2Component implements OnInit {
   combo: any = {};
   ejec: any = {}
   menu:any = {}
+  menu1 = []
+  menu2 = []
   status = 0;
 
   slideOption = {
@@ -74,7 +76,14 @@ export class VerticalItems2Component implements OnInit {
 
       this.slide.getSecondScreenDocById(menuID)
         .subscribe(doc => {
+          
           this.menu = doc.data()
+          setTimeout(() => {
+            var mid = Math.ceil(this.menu.aditions.length / 2);
+            this.menu1 = this.menu.aditions.slice(0, mid);
+            this.menu2 = this.menu.aditions.slice(mid);
+
+          }, 3000);
         })
 
       this.slide.getSecondScreenDocById(comboID)

@@ -1,75 +1,105 @@
-<section  id="fds_productos">
+<section id="fds_productos">
   <div class="vertical-products wmedium">
     <div class="titulo" id="tituloclicking">
-      
+
       <div class="combo-day">
+        <p class="firts_li_ul" *ngIf="menu1.length > 0">
+          <span class="li-text-left" [innerHTML]="menu1[0].name |  getFirstWord : 'li-title' | sanitizeHTML">
+          </span>
+          <span class="li-price li-text-right">${{menu1[0].price | number}}</span>
+        </p>
         <ul>
-          <li *ngFor="let ad of menu.aditions">
+          <ng-container *ngFor="let ad of menu1" >
+            <li *ngIf="ad != menu1[0]">
+              <span class="li-text-left" [innerHTML]="ad.name |  getFirstWord : 'li-title' | sanitizeHTML">
+              </span>
+              <span class="li-price li-text-right">${{ad.price | number}}</span>
+
+
+            </li>
+            
+          </ng-container>
+          <li>
+            <span class="li-text-left" [innerHTML]="combo.combos[1].name |  getFirstWord : 'li-title' | sanitizeHTML">
+            </span>
+            <span class="li-price li-text-right">${{combo.combos[1].price | number}}</span>
+          </li>
+
+        </ul>
+        <ul>
+          <li *ngFor="let ad of menu2">
             <span class="li-text-left" [innerHTML]="ad.name |  getFirstWord : 'li-title' | sanitizeHTML">
             </span>
             <span class="li-price li-text-right">${{ad.price | number}}</span>
 
           </li>
 
-         
-         
         </ul>
-        
+
       </div>
     </div>
 
     <div class="post-combo">
-      <p *ngFor="let combo of combo.combos">
-        <span>{{combo.name}}</span>
-        <span>${{combo.price | number}}</span>
-      </p>
-     
+      <ng-container *ngFor="let cb of combo.combos">
+        <p *ngIf="cb != combo.combos[1]" >
+          <span>{{cb.name}}</span>
+          <span>${{cb.price | number}}</span>
+
+          
+        </p>
+      </ng-container>
+
     </div>
 
-    <div class="words-desc2">
-      <h3 class="exec-launcer-title">{{launcs.name}}</h3>
-      <div class="intern-flexing">
-        <ul>
-          <li *ngFor="let ad of launcs.aditions">{{ad.name}}</li>
-        </ul>    
-        <h3>$15.000</h3>    
-      </div>
-    </div>
 
-    <div *ngIf="ejec.menus" class="exec-lanuchers position-relative">
-      <div>
-        <div class="exec-launcer-title">
-          <h3>{{ejec.menus[0].name}}</h3>
-        </div>
-        <div class="exec-launcers-items">
+    <div class="rigt_content">
+      <div class="words-desc2">
+        <h3 class="exec-launcer-title">{{launcs.name}}</h3>
+        <div class="intern-flexing">
           <ul>
-            <li *ngFor="let ad of ejec.menus[0].aditions">{{ad}}</li>
+            <li *ngFor="let ad of launcs.aditions">{{ad.name}}</li>
           </ul>
+          <h3>$15.000</h3>
         </div>
-        <span class="exec-launchers-price">
-          ${{ejec.menus[0].price | number}}
-        </span>
       </div>
-    
-      <!-- <div class="position-absolute absolute-ofert">
-        <p> + Sopa <br>$13,500</p>
-      </div> -->
-    
-      <div>
-        <div class="exec-launcer-title two">
-          <h3>{{ejec.menus[1].name}}</h3>
+
+
+      <div *ngIf="ejec.menus" class="exec-lanuchers position-relative">
+        <div>
+          <div class="exec-launcer-title">
+            <h3>{{ejec.menus[0].name}}</h3>
+          </div>
+          <div class="exec-launcers-items">
+            <ul>
+              <li *ngFor="let ad of ejec.menus[0].aditions">{{ad}}</li>
+            </ul>
+          </div>
+          <span class="exec-launchers-price">
+            ${{ejec.menus[0].price | number}}
+          </span>
         </div>
-        <div class="exec-launcers-items">
-          <ul>
-            <li *ngFor="let ad of ejec.menus[1].aditions">{{ad}}</li>
-          </ul>
+
+        <div class="position-absolute absolute-ofert">
+          <p> + Sopa <br>$16,000</p>
         </div>
-        <span class="exec-launchers-price">
-          ${{ejec.menus[1].price | number}}
-        </span>
+
+        <div>
+          <div class="exec-launcer-title two">
+            <h3>{{ejec.menus[1].name}}</h3>
+          </div>
+          <div class="exec-launcers-items">
+            <ul>
+              <li *ngFor="let ad of ejec.menus[1].aditions">{{ad}}</li>
+            </ul>
+          </div>
+          <span class="exec-launchers-price">
+            ${{ejec.menus[1].price | number}}
+          </span>
+        </div>
+
+
       </div>
-    
-    
+
     </div>
 
   </div>
