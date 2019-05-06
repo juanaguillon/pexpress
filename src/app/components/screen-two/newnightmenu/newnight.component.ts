@@ -16,6 +16,8 @@ export class NewNightComponent implements OnInit {
   theCombo: any[] = []
   nightName:string;
 
+  buttonSend:any;
+
   currentID: number;
 
   private eventSubs: any;
@@ -23,6 +25,8 @@ export class NewNightComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.setTypeButtonSend('add');
+    
     this.eventSubs = this.searchInfo.subscribe(() => {
       this.inValues.id = this.currentID != null ? this.currentID : new Date().getTime();
       this.inValues.type = "nightcombo";
@@ -69,4 +73,68 @@ export class NewNightComponent implements OnInit {
   removeAdition(i: number) {
     this.theCombo.splice(i, 1);
   }
+
+
+  /** Preparar para editar una menu. */
+  prepareToEditAdition(e) {
+    e.preventDefault()
+
+    this.setTypeButtonSend('edit');
+    this.buttonSend.index = e.target.getAttribute('data-index')
+    let i = this.buttonSend.index;
+    let newVals = {
+      name: this.theCombo[i].name,
+      price: this.theCombo[i].price
+    }
+
+
+    this.vals = newVals;
+    
+  }
+
+  /* Guardar menú modificado */
+  private setEditAdition(i) {
+    let newVal = {
+      name: this.vals.name,
+      price: this.vals.price,
+    }
+
+
+    this.theCombo[i] = newVal;
+    this.vals = {}
+  }
+
+  /** Se ejecuta al clickear el botón para agregar/editar combo */
+  sendEditingAdition(e) {
+    e.preventDefault();
+    let event = e.target.getAttribute('data-event');
+
+    if (event == 'add') {
+      this.addCombo();
+    } else if (event == 'edit') {
+
+      let index = e.target.getAttribute('data-index');
+      this.setEditAdition(index);
+      this.setTypeButtonSend("add")
+    }
+  }
+
+  /** Cambiar el botón de añadir/editar menú */
+  private setTypeButtonSend(type: string) {
+    if ('add' == type) {
+      this.buttonSend = {
+        text: "Añadir combo",
+        className: 'btn btn-sm btn-success',
+        action: 'add'
+      }
+    } else if (type == 'edit') {
+      this.buttonSend = {
+        text: "Editar combo",
+        className: 'btn btn-sm btn-primary',
+        action: 'edit'
+      }
+    }
+  }
+  
+  
 }

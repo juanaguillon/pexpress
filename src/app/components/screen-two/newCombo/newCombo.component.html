@@ -24,7 +24,7 @@
       <li *ngFor="let combo of theCombo; let i = index" class="list-group-item list-group-item-action flex-column align-items-start">
         <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1 text-success">{{combo.name}}</h5>
-          <small>${{combo.price | number }}<button (click)="removeAdition(i)" class="btn btn-danger btn-sm">x</button><button (click)="editAdition(i)" class="btn btn-primary btn-sm">&#8635;</button></small>
+          <small>${{combo.price | number }}<button (click)="removeAdition(i)" class="btn btn-danger btn-sm">&#10006;</button><button (click)="editAdition(i)" class="ml-2 btn btn-primary btn-sm">&#9998;</button></small>
         </div>
       </li>
     </ul>

@@ -46,7 +46,7 @@
               <h5 class="text-muted">
                 {{menu.name}}
               </h5>
-              <span class="text-muted">${{menu.price | number}} <button (click)="removeMenu(i)" class="btn btn-danger btn-sm">x</button><button [attr.data-index]="i" (click)="prepareToEditAdition($event)" class="btn btn-primary btn-sm">&#8635;</button></span>
+              <span class="text-muted">${{menu.price | number}} <button (click)="removeMenu(i)" class="btn btn-danger btn-sm">&#10006;</button><button [attr.data-index]="i" (click)="prepareToEditAdition($event)" class="ml-2 btn btn-primary btn-sm">&#9998;</button></span>
             </a>
           </div>
           

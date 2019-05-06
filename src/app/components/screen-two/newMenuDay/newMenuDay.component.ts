@@ -26,11 +26,16 @@ export class NewMenuDayComponent implements OnInit {
   
   subscribeObject:any;
 
+  buttonSend:any;
+
   constructor() {
     
   }
 
   ngOnInit() { 
+
+    this.setTypeOfButton('add');
+    
     this.subscribeObject = this.searchInfo.subscribe( ( ) => {
       this.inValues.id = this.currentID != null ? this.currentID : new Date().getTime();
       this.inValues.aditions = this.adiciones;
@@ -64,6 +69,12 @@ export class NewMenuDayComponent implements OnInit {
     }
   }
 
+  /** -----------
+   * ADICIONES
+   * -----------
+   */
+
+  /** Agregar Adicion con click  */
   addAdition(  ){
     if ( !this.currentAdition ){
       alert('Agrega una adicion antes')
@@ -75,17 +86,73 @@ export class NewMenuDayComponent implements OnInit {
 
   }
 
+  /** Agregar/Editar adición */
+
   addAditionWithEnter( e ){
     if (e.keyCode == 13 ){
       this.addAdition( );
     }
   }
 
+  /** Eliminar adicion */
   removeAdition( i:number ){
 
     this.adiciones.splice(i, 1 );
     
   }
-
   
+  /**
+   * -------------------
+   * EDICIONES
+   * -----------------
+   * Ediciones de las adiciones de menú
+   */
+  
+  prepareToEdit(e){
+    e.preventDefault()
+
+    this.setTypeOfButton('edit');
+    let i = e.target.getAttribute('data-index')
+    this.buttonSend.index = i;
+    this.currentAdition = this.adiciones[i];
+
+  }
+
+  sendAdition(e){
+    e.preventDefault();
+
+    let event = e.target.getAttribute('data-event');
+    if ( event === "add"){
+      this.addAdition()
+      
+    }else if ( event === "edit"){
+      
+      this.setAdition(e.target.getAttribute('data-index'))
+      this.setTypeOfButton('add');
+    }
+    
+  }
+
+  private setAdition( i ){
+    let ad = this.currentAdition;
+    this.adiciones[i] = ad;
+    this.currentAdition = "";
+  }
+
+  /** Modificar el botón principal, ya sea agregar o editar la adicion actual. */
+  private setTypeOfButton(type:string){
+    if ( type == "add" ){
+      this.buttonSend = {
+        text:'&#10010;',
+        className: 'btn btn-success',
+        action:"add"
+      }
+    }else if ( type == "edit"){
+      this.buttonSend = {
+        text: 'Editar',
+        className: 'btn btn-primary',
+        action: "edit"
+      }
+    }
+  }
 }

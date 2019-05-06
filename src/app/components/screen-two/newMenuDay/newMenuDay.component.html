@@ -15,7 +15,7 @@
     <small class="form-text text-muted">Agrega los alimentos que añades a el menú del dia. EJ: Sopa o fruta.</small>
   </div>
   <div class="form-group col-2 d-flex flex-column justify-content-center">
-    <button (click)="addAdition( )" [disabled]="currentAdition == '' " class="btn btn-success">+</button>
+    <button (click)="sendAdition( $event )" [attr.data-index]="buttonSend.index" [attr.data-event]="buttonSend.action" [disabled]="currentAdition == '' "  class="{{buttonSend.className}}" [innerHTML]="buttonSend.text | sanitizeHTML"></button>
   </div>
 </div>
 
@@ -24,7 +24,11 @@
     <ul class="list-group list-group-flush" *ngFor="let ad of adiciones; let i = index">
       <li class="list-group-item d-flex justify-content-between">        
         <span class="text-success">{{ad}}</span>
-        <button (click)="removeAdition(i)" class="btn btn-danger btn-sm">x</button>
+        <div class="buttons_actions">
+          <button (click)="removeAdition(i)" class="btn btn-danger btn-sm">&#10006;</button>
+          <button [attr.data-index]="i" (click)="prepareToEdit($event)" class="ml-2 btn btn-primary btn-sm">&#9998;</button>
+
+        </div>
       </li>
     </ul>
   </div>  

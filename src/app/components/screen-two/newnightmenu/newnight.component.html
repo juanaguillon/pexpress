@@ -5,7 +5,7 @@
 </div>
 
 <div class="form-row">
-  
+
   <div class="form-group col-md-6">
     <label for="full_name">Nombre de Combo</label>
     <div class="input-group">
@@ -21,7 +21,7 @@
     </div>
   </div>
   <div class="form-group col less-margin">
-    <a class="btn btn-sm btn-success" (click)="addCombo()">Agregar combo</a>
+    <a class="{{buttonSend.className}}" [attr.data-index]="buttonSend.index" [attr.data-event]="buttonSend.action" (click)="sendEditingAdition($event)">{{buttonSend.text}}</a>
   </div>
 </div>
 
@@ -32,8 +32,10 @@
         class="list-group-item list-group-item-action flex-column align-items-start">
         <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1 text-success">{{combo.name}}</h5>
-          <small>${{combo.price | number }}<button (click)="removeAdition(i)"
-              class="btn btn-danger btn-sm">x</button></small>
+          <small>${{combo.price | number }}
+            <button (click)="removeAdition(i)" class="btn btn-danger btn-sm">&#10006;</button>
+            <button [attr.data-index]="i" (click)="prepareToEditAdition($event)" class="ml-2 btn btn-primary btn-sm">&#9998;</button>
+          </small>
         </div>
       </li>
     </ul>
