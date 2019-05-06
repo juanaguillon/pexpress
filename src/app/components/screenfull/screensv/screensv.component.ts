@@ -17,50 +17,48 @@ export class ScreensvComponent implements OnInit {
   elem;
 
   isNight: boolean = false;
-  
+
   constructor(private slide: SlideService) {
     this.getPresets()
-   
-   }
+
+  }
 
   ngOnInit(): void {
 
 
     this.elem = document.documentElement;
 
-    let date =  new Date();
-    date.setUTCHours(-6);
-    console.log(date.getUTCHours() )
+    let date = new Date();
 
-    if ( date.getUTCHours( ) < 17 ){
+    if (date.getHours() < 17) {
 
       let min = 60 - date.getMinutes();
       setTimeout(() => {
-  
+
         let date = new Date().getHours();
-        if ( date != 17 ){
+        if (date != 17) {
           setInterval(() => {
-      
+
             let currentDate = new Date().getHours();
             if (currentDate == 17) {
               this.isNight = true;
               clearInterval()
             }
-      
+
           }, 3600000);
-        } else if (date == 17 ){
+        } else if (date == 17) {
           this.isNight = true;
         }
-  
-        
-      }, min * 60000 );
 
-    }else{
+
+      }, min * 60000);
+
+    } else {
       this.isNight = true;
     }
 
-    
-   }
+
+  }
 
 
   public getPresets() {
@@ -74,16 +72,18 @@ export class ScreensvComponent implements OnInit {
           return rf["config"][cday];
         })
       }),
-      switchMap(presets => this.slide.getPresetById(presets[0]))     
+      switchMap(presets => this.slide.getPresetById(presets[0]))
 
     )
 
-    pipedPreset.subscribe( doc => {
+    pipedPreset.subscribe(doc => {
       this.presetType = doc.get('type')
       this.currentPreset = doc;
-    });   
+    });
 
   }
+
+  
 
   openFullScreen() {
     if (this.elem.requestFullscreen) {
@@ -99,5 +99,5 @@ export class ScreensvComponent implements OnInit {
       this.elem.msRequestFullscreen();
     }
   }
-  
+
 }

@@ -82,10 +82,17 @@ export class NewEjecutiveComponent implements OnInit {
 
   }
 
-  removeAdition(i: number) {
+
+  /* Remover un menu ejecutivo entero */
+  removeMenu(i: number) {
     this.menus.splice(i, 1);
   }
 
+
+  /* Remove adiciones especificas */
+  removeAdition(i:number){
+    this.aditions.splice(i,1);
+  }
 
   /** Preparar para editar una menu. */
   prepareToEditAdition(e) {
@@ -103,6 +110,7 @@ export class NewEjecutiveComponent implements OnInit {
     }
   }
 
+  /* Guardar menú modificado */
   private setEditAdition(i) {
     let newVal = {
       name: this.vals.title,

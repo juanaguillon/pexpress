@@ -25,9 +25,11 @@
             </div>
           </li>
 
-          <li *ngFor="let ad of aditions" class="list-group-item flex-column align-items-start">
+          <li *ngFor="let ad of aditions; let ix = index" class="list-group-item flex-column align-items-start">
             <div class="d-flex w-100 justify-content-between">
               <span class="text-success">{{ad}}</span>
+              <button (click)="removeAdition(ix)" class="btn btn-danger btn-sm">x</button>
+
             </div>
           </li>
         </ul>
@@ -44,7 +46,7 @@
               <h5 class="text-muted">
                 {{menu.name}}
               </h5>
-              <span class="text-muted">${{menu.price | number}} <button (click)="removeAdition(i)" class="btn btn-danger btn-sm">x</button><button [attr.data-index]="i" (click)="prepareToEditAdition($event)" class="btn btn-primary btn-sm">&#8635;</button></span>
+              <span class="text-muted">${{menu.price | number}} <button (click)="removeMenu(i)" class="btn btn-danger btn-sm">x</button><button [attr.data-index]="i" (click)="prepareToEditAdition($event)" class="btn btn-primary btn-sm">&#8635;</button></span>
             </a>
           </div>
           
