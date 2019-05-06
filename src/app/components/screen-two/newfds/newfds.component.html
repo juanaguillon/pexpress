@@ -11,7 +11,7 @@
       <input (keyup)="addLaunchKey($event)" [(ngModel)]="launcData.price" type="number" name="item_price" id="item_price" class="form-control">
     </div>
     <div class="col-md-4">
-      <button (click)="addLaunch( )" type="button" class="btn btn-success btn-sm my-1">Agregar almuerzo</button>
+      <button (click)="sendEditingAdition( $event)" [attr.data-index]="buttonSend.index" [attr.data-event]="buttonSend.action" type="button" class="{{buttonSend.className}}">{{buttonSend.text}}</button>
     </div>
   </div>
   
@@ -22,7 +22,8 @@
           <span class="text-success">{{launcher.name}}</span>
           <span class="text-muted">
             ${{launcher.price | number }} 
-            <button (click)="removeAdition(i)" class="btn btn-danger btn-sm ml-2">x</button>
+            <button (click)="removeAdition(i)" class="btn btn-danger btn-sm ml-2">&#10006;</button>
+            <button (click)="prepareToEditAdition($event)" [attr.data-index]="i" class="btn btn-primary btn-sm ml-2">&#9998;</button>
           </span>
           
         </li>
