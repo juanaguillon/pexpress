@@ -12,7 +12,7 @@
       <input (keyup)="addAditionKey($event)" class="form-control" [(ngModel)]="aditionData.name" type="text" name="list_day" id="list_day">
     </div>
     <div class="col-md-2">        
-      <button type="button" (click)="addAdition()" class="btn btn-success">Añadir item</button>
+      <button type="button" [attr.data-index]="buttonSend.index" [attr.data-event]="buttonSend.action" (click)="sendEditingAdition($event)" class="{{buttonSend.className}}">{{buttonSend.text}}</button>
     </div>
   </div>    
 </div>
@@ -23,7 +23,8 @@
       <li class="list-group-item d-flex justify-content-between" *ngFor="let launcher of aditions; let i = index">
         <span class="text-success">{{launcher.name}}</span>
         <span class="text-muted">
-          <button type="button" (click)="removeAdition(i)" class="btn btn-danger btn-sm ml-2">x</button>
+          <button type="button" (click)="removeAdition(i)" class="btn btn-danger btn-sm ml-2">&#10006;</button>
+          <button type="button" [attr.data-index]="i" (click)="prepareToEditAdition($event)" class="btn btn-primary btn-sm ml-2">&#9998;</button>
         </span>  
       </li>
     </ul>

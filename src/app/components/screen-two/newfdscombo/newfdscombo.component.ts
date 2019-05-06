@@ -22,6 +22,8 @@ export class NewFdsComboComponent implements OnInit {
   // Evitar la nueva creación de menu en caso de estar en actualización.
   currentID: number;
 
+  buttonSend:any;
+
   
   menuName:string;
   subs;
@@ -30,6 +32,9 @@ export class NewFdsComboComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
+    this.setTypeButtonSend('add')
+    
     this.subs = this.searchInfo.subscribe( doc => {
       this.inValues.id = this.currentID != null ? this.currentID : new Date().getTime();
       this.inValues.type = "fdscombo"
@@ -75,6 +80,60 @@ export class NewFdsComboComponent implements OnInit {
   addAditionKey( e){
     if ( e.keyCode == 13 ){
       this.addAdition( );
+    }
+  }
+
+
+  prepareToEditAdition(e) {
+    e.preventDefault()
+
+    this.setTypeButtonSend('edit');
+    this.buttonSend.index = e.target.getAttribute('data-index')
+    let i = this.buttonSend.index;
+    
+    this.aditionData = {
+      name: this.aditions[i].name
+    }
+  }
+
+  /* Guardar menú modificado */
+  private setEditAdition(i) {
+    let newVal = {
+      name: this.aditionData.name
+    }
+    this.aditions[i] = newVal;
+    this.aditionData = {}
+  }
+
+  /** Se ejecuta al clickear el botón para agregar/editar menú */
+  sendEditingAdition(e) {
+    e.preventDefault();
+    let event = e.target.getAttribute('data-event');
+
+    if (event == 'add') {
+      this.addAdition();
+    } else if (event == 'edit') {
+
+      let index = e.target.getAttribute('data-index');
+      this.setEditAdition(index);
+      this.setTypeButtonSend("add")
+    }
+  }
+
+  /** Cambiar el botón de añadir/editar menú */
+  private setTypeButtonSend(type: string) {
+    if ('add' == type) {
+      this.buttonSend = {
+        text: "Añadir item",
+        className: 'btn btn-success',
+        action: 'add'
+      }
+    } else if (type == 'edit') {
+      this.buttonSend = {
+        text: "Editar item",
+        className: 'btn btn-primary',
+        action: 'edit'
+      }
     }
   }
   
