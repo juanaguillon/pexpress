@@ -17,7 +17,7 @@ export class NewMenuDayComponent implements OnInit {
   @Input() searchInfo: Observable<any>;
   @Input() data;
   
-  adiciones:string[] = [];
+  adiciones:any[] = [];
   currentAdition = "";
   inValues: any = {}
 

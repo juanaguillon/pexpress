@@ -19,7 +19,7 @@
   </div>
 </div>
 
-<div class="form-group" *ngIf="adiciones.length > 0">
+<div class="form-group" *ngIf="adiciones && adiciones.length > 0">
   <div class="card">
     <ul class="list-group list-group-flush" *ngFor="let ad of adiciones; let i = index">
       <li class="list-group-item d-flex justify-content-between">        
